@@ -3,7 +3,7 @@
   font-family:'Times New Roman', Times, serif;
   background-image: url(./images/background.jpg);
   background-repeat: no-repeat;
-  background-position:  right top;
+  background-position:  right;
   background-size: 100% 100%;
   background-color:steelblue;
 }
@@ -15,6 +15,7 @@
   font-weight:bold;
   text-align:center;
 }
+
 .welcome_prompt
 {
   font-size: 16px;
@@ -36,5 +37,20 @@
 .table_content_global_rule
 {
   text-align: center;
+  border-collapse: collapse;
 }
 
+tr,td
+{
+  border: 2px solid black;
+}
+
+tr:nth-child(odd)
+{
+  background-color: whitesmoke;
+}
+
+tr:nth-child(even)
+{
+  background-color: gainsboro;
+}
