@@ -1,3 +1,32 @@
-.title
+#title
 {
+  font-family: 'Times New Roman', Times, serif;
+  font-size:30px;
+  font-style:normal;
+  font-weight:bold;
+}
+.welcome_prompt
+{
+  font-family:'Times New Roman', Times, serif;
+  font-size: 14px;
+  font-style: oblique;
+  font-weight:bold;
+}
+
+#subtitle
+{
+  font-family:'Times New Roman', Times, serif;
+  font-size: 14px;
+  font-style: oblique;
+  font-weight: bold;
+}
+
+.unordered_list
+{
+  list-style-type: lower-greek;
+}
+
+.ordered_list
+{
+  list-style-type:armenian;
 }
