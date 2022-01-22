@@ -1,7 +1,7 @@
 .body_global_style
 {
   font-family:'Times New Roman', Times, serif;
-  background-image: url(..//images/background.jpg);
+  background-image: url(../images/background.jpg);
   background-repeat: no-repeat;
   background-position:  right;
   background-size: 100% 100%;
@@ -24,6 +24,13 @@
   text-align:center;
 }
 
+.paragraph
+{
+  font-size: 14px;
+  font-style: italic;
+  font-weight:normal;
+  text-align:center;
+}
 .unordered_list
 {
   list-style-type: lower-greek;
@@ -40,17 +47,20 @@
   border-collapse: collapse;
 }
 
-tr,td
+.caption_borders
+{
+  border-collapse: collapse;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+tr
 {
   border: 2px solid black;
 }
 
-tr:nth-child(odd)
+td
 {
-  background-color: whitesmoke;
-}
-
-tr:nth-child(even)
-{
-  background-color: gainsboro;
+  border: 2px solid black;
 }
