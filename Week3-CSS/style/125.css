@@ -23,14 +23,21 @@
   font-weight:bold;
   text-align:center;
 }
-
-.paragraph
+.product_talking
 {
-  font-size: 14px;
+  font-size: 15px;
   font-style: italic;
   font-weight:normal;
   text-align:center;
 }
+
+.product_price
+{
+  font-size: 15px;
+  font-style:normal;
+  font-weight:normal;
+}
+
 .unordered_list
 {
   list-style-type: lower-greek;
