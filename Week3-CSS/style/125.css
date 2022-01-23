@@ -5,7 +5,7 @@
   background-repeat: no-repeat;
   background-position:  right;
   background-size: 100% 100%;
-  background-color:steelblue;
+  background-color:#99a4bc;
 }
 
 #title
@@ -23,6 +23,7 @@
   font-weight:bold;
   text-align:center;
 }
+
 .product_talking
 {
   font-size: 15px;
@@ -56,29 +57,29 @@
 
 .table_caption
 {
-  background-color:#90b8dd;
+  background-color:#99a4bc;
 }
 
 .caption_borders
 {
-  background-color:#90b8dd;
+  background-color:#99a4bc;
   border-collapse: collapse;
-  border-top: 2px solid black;
-  border-left: 2px solid black;
-  border-right: 2px solid black;
+  border-top: 2px solid #5b5c54;
+  border-left: 2px solid #5b5c54;
+  border-right: 2px solid #5b5c54;
 }
 
 tr
 {
-  border: 2px solid black;
+  border: 2px solid #5b5c54;
 }
 
 tr:hover
 {
-  background-color:#93a9e5;
+  background-color:#99a4bc;
 }
 
 td
 {
-  border: 2px solid black;
+  border: 2px solid #5b5c54;
 }
