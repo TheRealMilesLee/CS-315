@@ -1,4 +1,5 @@
-.body_global_style {
+.body_global_style
+{
   font-family: sans-serif, monospace, serif;
   background-image: url(../images/background.jpg);
   background-repeat: no-repeat;
@@ -7,14 +8,16 @@
   background-color: #99a4bc;
 }
 
-#title {
+#title
+{
   font-size: 30px;
   font-style: normal;
   font-weight: bold;
   text-align: center;
 }
 
-.welcome_prompt {
+.welcome_prompt
+{
   font-family: cursive, fantasy;
   font-size: 16px;
   font-style: italic;
@@ -22,7 +25,8 @@
   text-align: center;
 }
 
-.product_talking {
+.product_talking
+{
   font-family: cursive, fantasy;
   font-size: 15px;
   font-style: italic;
@@ -30,30 +34,36 @@
   text-align: center;
 }
 
-.product_price {
+.product_price
+{
   font-size: 15px;
   font-style: normal;
   font-weight: normal;
 }
 
-.unordered_list {
+.unordered_list
+{
   list-style-type: lower-greek;
 }
 
-.ordered_list {
+.ordered_list
+{
   list-style-type: armenian;
 }
 
-.table_content_global_rule {
+.table_content_global_rule
+{
   text-align: center;
   border-collapse: collapse;
 }
 
-.table_caption {
+.table_caption
+{
   background-color: #99a4bc;
 }
 
-.caption_borders {
+.caption_borders
+{
   background-color: #99a4bc;
   border-collapse: collapse;
   border-top: 2px solid #5b5c54;
@@ -61,14 +71,17 @@
   border-right: 2px solid #5b5c54;
 }
 
-tr {
+tr
+{
   border: 2px solid #5b5c54;
 }
 
-tr:hover {
+tr:hover
+{
   background-color: #99a4bc;
 }
 
-td {
+td
+{
   border: 2px solid #5b5c54;
 }
