@@ -4,10 +4,14 @@ body
   margin-left: auto;
   margin-right: auto;
 }
+
 header
 {
+  right:0;
+  left:0;
+  min-width:1024px;
+  height:48px;
   border-width: 30px;
-  border-style:hidden;
   margin-bottom: 10px;
   border-radius: 15px;
   text-align: center;
