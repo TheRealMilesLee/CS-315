@@ -1,3 +1,9 @@
+body
+{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
 header
 {
   border-width: 30px;
@@ -13,12 +19,23 @@ header
   float: top;
 }
 
+.hyperlink
+{
+  color: white;
+}
+
 #container
 {
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 20px;
+  grid-column-gap: 10px;
+}
+
+#introduction
+{
+  grid-row: 1/1;
+  grid-column: 2/5;
 }
 
 aside
@@ -119,4 +136,27 @@ tr:hover
 td
 {
   border: 2px solid #5b5c54;
+}
+
+.align_footer
+{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  text-align: center;
+}
+footer
+{
+
+  font-size: 1em;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-align:inherit;
+  border-width: 30px;
+  border-style:hidden;
+  color: black;
+  display: block;
+  float: top;
+  text-size-adjust:100%;
 }
