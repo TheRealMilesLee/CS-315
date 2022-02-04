@@ -20,7 +20,6 @@ header
   color: white;
   background: #252b2e;
   display: block;
-  float: top;
 }
 
 .hyperlink
@@ -162,6 +161,5 @@ footer
   border-style:hidden;
   color: black;
   display: block;
-  float: top;
   text-size-adjust:100%;
 }
