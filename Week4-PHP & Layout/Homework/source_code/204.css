@@ -49,8 +49,8 @@ aside
   border-style:solid;
   border-radius: 20px;
   margin-right: 10px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
   color: white;
   background-color:#252b2e;
 }
@@ -99,11 +99,13 @@ aside
 .unordered_list
 {
   list-style-type: lower-greek;
+  font-size: 20px;
 }
 
 .ordered_list
 {
   list-style-type: armenian;
+    font-size: 20px;
 }
 
 .table_content_global_rule
