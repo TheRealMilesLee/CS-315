@@ -1,0 +1,41 @@
+/* Jon Beck */
+/* CSS for Zelda's vocabulary quiz */
+body
+{
+    font-family: sans-serif;
+    margin-left: 4em;
+}
+
+#choices
+{
+    list-style-type: none;
+    text-indent: -33px;
+}
+
+li
+{
+    padding-bottom: 1em;
+}
+
+.partofspeech
+{
+    font-style: italic;
+}
+
+#submit_section
+{
+    text-align: center;
+}
+
+input[type="radio"]
+{
+    display: inline-block;
+    width: 20px;
+    vertical-align: text-top;
+}
+
+button[type="submit"]
+{
+    font-size: 16pt;
+    font-weight: bold;
+}
