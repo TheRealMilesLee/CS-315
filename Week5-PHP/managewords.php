@@ -10,7 +10,6 @@
  */
 const DEFINITION_FILENAME = 'words.txt';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,5 +27,7 @@ const DEFINITION_FILENAME = 'words.txt';
             <option value="Delete"> Delete a word </option>
         </select>
     </label>
+    <button id="submit" type="submit">Submit</button>
+
   </body>
 </html>
