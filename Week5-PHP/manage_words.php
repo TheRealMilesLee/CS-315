@@ -24,7 +24,7 @@ const DEFINITION_FILENAME = 'words.txt';
   delete a word.
 </p>
 <h2> Add a new word </h2>
-<form method="post" action="manage_words.php">
+<form method="post" action="echo.php">
   <p>
     What's the word?
     <input type='text' id='new_word' name='new_word' required />
