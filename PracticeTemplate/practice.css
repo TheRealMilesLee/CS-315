@@ -4,3 +4,27 @@ th,tr, td
   border-collapse:collapse;
   text-align:center;
 }
+
+.container
+{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+
+.content
+{
+  grid-column-start: 1;
+  grid-column-end: 5;
+  grid-row: 2/3;
+}
+
+p.content
+{
+  color: white;
+}
+
+p[content]
+{
+  color: black;
+}

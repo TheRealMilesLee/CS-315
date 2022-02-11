@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="author" content="balasasa" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../1.css" />
+    <title> Title of the website </title>
+  </head>
+  <body>
+    ...
+  </body>
+</html>
