@@ -21,6 +21,15 @@ const DEFINITION_FILENAME = 'words.txt';
     <h1> Word Manager </h1>
     <p> This is the Zelda's GRE vocabulary manager, choose to add a new word or delete a word.</p>
     <h2> Add a new world </h2>
+    <form>
+        <p>
+            The word is <input type="text" id="whattheydid" name="whattheydid" size="32" />
+        </p>
+        <P>
+
+        </P>
+
+    </form>
     <h2> Delete a word </h2>
     <button id="submit" type="submit">Submit</button>
   </body>
