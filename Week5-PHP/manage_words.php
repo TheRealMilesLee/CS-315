@@ -20,7 +20,7 @@ function output_to_file(array $paired_array): void
     $part_of_speech_total = $paired_array[$index]['part'];
     $definition_total = $paired_array[$index]['definition'];
     $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
-    file_put_contents('filename.txt', $result, LOCK_EX | FILE_APPEND);
+    file_put_contents('results.txt', $result, LOCK_EX | FILE_APPEND);
   }
 }
 
@@ -150,7 +150,9 @@ if ( isset($_POST) && isset($_POST['new_word'])
     <label for="del_word"> What's the word? </label>
     <input type='text' id='del_word' name='del_word' required />
   </p>
-  <input type='submit' value='Delete option' name='submit_delete_word' />
+  <p>
+    <input type='submit' value='Delete entry' name='submit_delete_word' />
+  </p>
 </form>
 <?php
 if ( isset($_POST) && isset($_POST['del_word'])
