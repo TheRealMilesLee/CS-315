@@ -10,37 +10,47 @@
  */
 define('DEFINITION_FILENAME', 'results.txt');
 
-function delete_word($file_to_load, $delete_word)
+/**
+ * This function is to read the file and make a word-speech and definition
+ * pair.
+ * @param $file_to_load is the file to load from disk
+ * @return array is the key-value paired word list
+ */
+function getPaired_array($file_to_load): array
 {
   $paired_array = array();
   $total_lines = file($file_to_load, FILE_IGNORE_NEW_LINES);
-  for ($loop = 0;$loop < count($total_lines); $loop++)
+  for ($loop = 0; $loop < count($total_lines); $loop++)
   {
     list($word, $part, $definition) = explode("\t", $total_lines[$loop]);
     $combined = "$part \t $definition";
     $paired_array[] = array($word => $combined);
   }
+  return $paired_array;
+}
+
+/**
+ * This function is to delete the word
+ * @param $file_to_load is the file that comes from disk
+ * @param $delete_word is the word that user wants to delete
+ */
+function delete_word($file_to_load, $delete_word)
+{
+  $paired_array = getPaired_array($file_to_load);
   unset($paired_array[$delete_word]);
-  print_r($paired_array);
+  file_put_contents('filename.txt', print_r($paired_array, true));
 }
 
 function validate($file_to_load, $word_new, $input_result)
 {
-  $paired_array = array();
-  $total_lines = file($file_to_load, FILE_IGNORE_NEW_LINES);
-  for ($loop = 0;$loop < count($total_lines); $loop++)
-  {
-    list($word, $part, $definition) = explode("\t", $total_lines[$loop]);
-    $combined = "$part \t $definition";
-    $paired_array[] = array($word => $combined);
-  }
+  $paired_array = getPaired_array($file_to_load);
   if (is_numeric(array_search($word_new,$paired_array)))
   {
     echo 'The word is already exist!';
   }
   else
   {
-    file_put_contents('3.txt', $input_result, LOCK_EX | FILE_APPEND);
+    file_put_contents(DEFINITION_FILENAME, $input_result, LOCK_EX | FILE_APPEND);
   }
 }
 ?>
