@@ -20,7 +20,7 @@ function output_to_file(array $paired_array): void
     $part_of_speech_total = $paired_array[$index]['part'];
     $definition_total = $paired_array[$index]['definition'];
     $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
-    file_put_contents('results.txt', $result, LOCK_EX | FILE_APPEND);
+    file_put_contents(DEFINITION_FILENAME, $result, LOCK_EX | FILE_APPEND);
   }
 }
 
@@ -53,6 +53,7 @@ function getPaired_array($file_to_load): array
   $paired_array = array();
   $total_lines = file($file_to_load, FILE_IGNORE_NEW_LINES);
   ksort($total_lines);
+
   for ($loop = 0; $loop < count($total_lines); $loop++)
   {
     list($word, $part, $definition) = explode("\t", $total_lines[$loop]);
@@ -140,6 +141,7 @@ if ( isset($_POST) && isset($_POST['new_word'])
     $paired_array[] =
       array('word' => $lowercase_word, 'part' => $part_speech, 'definition' => $definition);
     ksort($paired_array);
+    var_dump($paired_array);
     output_to_file($paired_array);
   }
 }
