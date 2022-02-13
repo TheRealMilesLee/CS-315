@@ -1,1 +1,6 @@
-aaa 	 noun 	 aaa 
+vivacious	adjective	lively in temper, conduct, or spirit; sprightly
+volubility	adjective	easily rolling or turning; rotating
+waft	verb	to be driven or carried along, as by the air
+welter	verb	to become deeply sunk, soaked, or involved
+writ	noun	something written; writing
+abandon 	 noun 	 being thrown away
