@@ -168,7 +168,6 @@
       $lowercase_word = strtolower($word_new);
       // Make sure there's no duplicate entry
       $position = search_word($paired_array, $word_new, $part_speech);
-      var_dump($position);
       if ($position < count($paired_array))
       {
   ?>
