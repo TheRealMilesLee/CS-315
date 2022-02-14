@@ -171,7 +171,9 @@
       if ($position < count($paired_array))
       {
   ?>
+        <p>
           <?= 'The entry has already exists'; ?>
+        </p>
   <?php
       }
       else
