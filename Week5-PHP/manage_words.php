@@ -100,7 +100,7 @@
     $paired_array = getPaired_array($file_to_load);
     // Locate the word to be deleted
     $position = search_word($paired_array, $delete_word);
-    if ($position == count($paired_array))
+    if ($position == count($paired_array) - 1)
     {
 ?>
        <?= 'No entries found!';?>
@@ -165,7 +165,7 @@
       $lowercase_word = strtolower($word_new);
       // Make sure there's no duplicate entry
       $position = search_word($paired_array, $word_new);
-      if ($position == count($paired_array))
+      if ($position == count($paired_array) - 1)
       {
   ?>
         <?= "The entry has already exists"; ?>
