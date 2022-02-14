@@ -10,36 +10,61 @@
  */
 define('DEFINITION_FILENAME', 'results.txt');
 /**
+ * @param $array
+ */
+function sort_array(&$array)
+{
+  for ($index = 0; $index < count($array) - 1; $index++)
+  {
+    $next_index = $index + 1;
+    if (strcmp($array[$index]['word'], $array[$next_index]['word']) < 0)
+    {
+      $temp = $array[$index];
+      $array[$index] = $array[$next_index];
+      $array[$next_index] = $temp;
+    }
+  }
+}
+
+/**
  * @param array $paired_array is the array to output
  */
 function output_to_file(array $paired_array): void
 {
   for ($index = 0; $index < count($paired_array); $index++)
   {
+    if (!array_key_exists($index, $paired_array))
+    {
+      $index++;
+    }
     $words_total = $paired_array[$index]['word'];
     $part_of_speech_total = $paired_array[$index]['part'];
     $definition_total = $paired_array[$index]['definition'];
     $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
-    file_put_contents(DEFINITION_FILENAME, $result, LOCK_EX | FILE_APPEND);
+    file_put_contents("1.txt", $result, LOCK_EX | FILE_APPEND);
   }
 }
 
-function search_word($array, $word_to_search): int
+function search_word(&$array, $word_to_search): int
 {
-  $index = 0;
   $found = false;
-  $position = -1;
+  $index = 0;
   while ($index < count($array) && !$found)
   {
     if ($array[$index]['word'] == $word_to_search)
     {
-      $position = $index;
       $found = true;
     }
-    $index++;
+    else
+    {
+      $index++;
+    }
   }
-  unset($index);
-  return $position;
+  if ($found)
+  {
+    unset($array[$index]);
+  }
+  return $index;
 }
 
 /**
@@ -52,8 +77,7 @@ function getPaired_array($file_to_load): array
 {
   $paired_array = array();
   $total_lines = file($file_to_load, FILE_IGNORE_NEW_LINES);
-  ksort($total_lines);
-
+  asort($total_lines);
   for ($loop = 0; $loop < count($total_lines); $loop++)
   {
     list($word, $part, $definition) = explode("\t", $total_lines[$loop]);
@@ -80,7 +104,7 @@ function delete_word($file_to_load, $delete_word)
   {
     echo "No entries found! ";
   }
-  ksort($paired_array);
+  sort_array($paired_array);
   output_to_file($paired_array);
 }
 ?>
@@ -132,16 +156,15 @@ if ( isset($_POST) && isset($_POST['new_word'])
   $definition = $_POST['def_new_word'];
   $lowercase_word = strtolower($word_new);
   $position = search_word($paired_array, $word_new);
-  if ($position > -1)
+  if ($position == count($paired_array) - 1)
   {
     echo 'The word is already exist!';
   }
   else
   {
-    $paired_array[] =
-      array('word' => $lowercase_word, 'part' => $part_speech, 'definition' => $definition);
-    ksort($paired_array);
-    var_dump($paired_array);
+    $paired_array[] = array('word' => $lowercase_word, 'part' =>
+      $part_speech, 'definition' => $definition);
+    sort_array($paired_array);
     output_to_file($paired_array);
   }
 }
