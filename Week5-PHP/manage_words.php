@@ -6,33 +6,22 @@
  * 2. Delete a word from the current list
  * @author Hengyi Li
  * @copyright Copyright (c). 2022 Hengyi Li. All rights reserved
- * @version 0.0.1 Alpha
+ * @version 10.2.13 Release
  */
 define('DEFINITION_FILENAME', 'results.txt');
 /**
- * @param $array
- */
-function sort_array(&$array)
-{
-  for ($index = 0; $index < count($array) - 1; $index++)
-  {
-    $next_index = $index + 1;
-    if (strcmp($array[$index]['word'], $array[$next_index]['word']) < 0)
-    {
-      $temp = $array[$index];
-      $array[$index] = $array[$next_index];
-      $array[$next_index] = $temp;
-    }
-  }
-}
-
-/**
+ * This function is to output the contents to the file
  * @param array $paired_array is the array to output
  */
 function output_to_file(array $paired_array): void
 {
+  // Sort the array in ascending order
+  array_multisort($paired_array,SORT_ASC, SORT_REGULAR);
+  // cleanup original content for new input
+  file_put_contents(DEFINITION_FILENAME, '');
   for ($index = 0; $index < count($paired_array); $index++)
   {
+    // Jump the hole in the array
     if (!array_key_exists($index, $paired_array))
     {
       $index++;
@@ -41,10 +30,15 @@ function output_to_file(array $paired_array): void
     $part_of_speech_total = $paired_array[$index]['part'];
     $definition_total = $paired_array[$index]['definition'];
     $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
-    file_put_contents("1.txt", $result, LOCK_EX | FILE_APPEND);
+    file_put_contents(DEFINITION_FILENAME, $result, LOCK_EX | FILE_APPEND);
   }
 }
 
+/**
+ * @param array $array is the array to sort
+ * @param string $word_to_search is the word that search in the array
+ * @return int is the index of the word
+ */
 function search_word(&$array, $word_to_search): int
 {
   $found = false;
@@ -68,15 +62,16 @@ function search_word(&$array, $word_to_search): int
 }
 
 /**
- * This function is to read the file and make a word-speech and definition
- * pair.
- * @param $file_to_load
- * @return array is the key-value paired word list
+ * This function is to make a key-value pair array
+ * @param string $file_to_load is the file that load from disk
+ * @return array is the paired array with key-values.
  */
 function getPaired_array($file_to_load): array
 {
   $paired_array = array();
+  // read the file from disk
   $total_lines = file($file_to_load, FILE_IGNORE_NEW_LINES);
+  //sort the file in ascending order
   asort($total_lines);
   for ($loop = 0; $loop < count($total_lines); $loop++)
   {
@@ -89,22 +84,22 @@ function getPaired_array($file_to_load): array
 
 /**
  * This function is to delete the word
- * @param $file_to_load
- * @param $delete_word
+ * @param string $file_to_load is the file that load from disk
+ * @param string $delete_word is the word that user want to delete
  */
 function delete_word($file_to_load, $delete_word)
 {
   $paired_array = getPaired_array($file_to_load);
+  // Locate the word to be deleted
   $position = search_word($paired_array, $delete_word);
-  if ($position > -1)
+  if ($position == count($paired_array) - 1)
   {
-    unset($paired_array[$position]);
+    echo 'No entries found! ';
   }
   else
   {
-    echo "No entries found! ";
+    unset($paired_array[$position]);
   }
-  sort_array($paired_array);
   output_to_file($paired_array);
 }
 ?>
@@ -155,6 +150,7 @@ if ( isset($_POST) && isset($_POST['new_word'])
   $part_speech = $_POST['speech'];
   $definition = $_POST['def_new_word'];
   $lowercase_word = strtolower($word_new);
+  // Make sure there's no duplicate entry
   $position = search_word($paired_array, $word_new);
   if ($position == count($paired_array) - 1)
   {
@@ -164,7 +160,6 @@ if ( isset($_POST) && isset($_POST['new_word'])
   {
     $paired_array[] = array('word' => $lowercase_word, 'part' =>
       $part_speech, 'definition' => $definition);
-    sort_array($paired_array);
     output_to_file($paired_array);
   }
 }
