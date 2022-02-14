@@ -119,7 +119,7 @@
     <meta charset="utf-8" />
     <title> Manage Words </title>
     <meta name="author" content="Hengyi Li" />
-    <link rel="stylesheet" href="manage_words.css"/>
+    <link rel="stylesheet" href="managewords.css"/>
   </head>
   <body>
   <h1 class="header_topic"> Word Manager </h1>
@@ -130,7 +130,7 @@
   <hr />
   <br />
   <p class="sub-title"> Add a new word </p>
-  <form method="post" action="manage_words.php">
+  <form method="post" action="managewords.php">
     <p>
       <label for="new_word"> What's the word? </label>
       <input type='text' id='new_word' name='new_word' required />
@@ -182,7 +182,7 @@
   <hr />
   <br />
   <p class="sub-title"> Delete a word </p>
-  <form method="post" action="manage_words.php">
+  <form method="post" action="managewords.php">
     <p>
       <label for="del_word"> What's the word? </label>
       <input type='text' id='del_word' name='del_word' required />
