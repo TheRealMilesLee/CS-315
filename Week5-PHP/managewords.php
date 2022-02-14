@@ -44,13 +44,14 @@
    * @param string $word_to_search is the word that search in the array
    * @return int is the index of the word
    */
-  function search_word(&$array, $word_to_search): int
+  function search_word(&$array, $word_to_search, $part_of_speech): int
   {
     $found = false;
     $index = 0;
     while ($index < count($array) && !$found)
     {
-      if ($array[$index]['word'] == $word_to_search)
+      if (strcmp($array[$index]['word'], $word_to_search) == 0 &&
+        strcmp($array[$index]['part'],$part_of_speech) == 0)
       {
         $found = true;
       }
@@ -95,12 +96,12 @@
    * @param string $file_to_load is the file that load from disk
    * @param string $delete_word is the word that user want to delete
    */
-  function delete_word($file_to_load, $delete_word)
+  function delete_word($file_to_load, $delete_word, $part_of_speech)
   {
     $paired_array = getPaired_array($file_to_load);
     // Locate the word to be deleted
-    $position = search_word($paired_array, $delete_word);
-    if ($position == count($paired_array) - 1)
+    $position = search_word($paired_array, $delete_word, $part_of_speech);
+    if ($position == count($paired_array))
     {
 ?>
        <?= 'No entries found!';?>
@@ -164,7 +165,7 @@
       $definition = $_POST['def_new_word'];
       $lowercase_word = strtolower($word_new);
       // Make sure there's no duplicate entry
-      $position = search_word($paired_array, $word_new);
+      $position = search_word($paired_array, $word_new, $part_speech);
       if ($position == count($paired_array) - 1)
       {
   ?>
@@ -188,6 +189,17 @@
       <input type='text' id='del_word' name='del_word' required />
     </p>
     <p>
+      <label for='speech_del'>
+        What's the part of speech of the word?
+      </label>
+      <select name="speech_del" id="speech_del">
+        <option value='noun'> noun</option>
+        <option value='adjective'> adjective</option>
+        <option value='adverb'> adverb</option>
+        <option value='verb'> verb</option>
+      </select>
+    </p>
+    <p>
       <input type='submit' value='Delete entry' name='submit_delete_word' />
     </p>
   </form>
@@ -195,8 +207,10 @@
     if ( isset($_POST) && isset($_POST['del_word'])
       && preg_match('|^[A-Za-z]+$|', $_POST['del_word']))
     {
+      $part_speech = $_POST['speech_del'];
       $deleted_word = $_POST['del_word'];
-      delete_word(DEFINITION_FILENAME, $deleted_word);
+      $lowercase_word_delete = strtolower($deleted_word);
+      delete_word(DEFINITION_FILENAME, $lowercase_word_delete, $part_speech);
     }
   ?>
   </body>
