@@ -9,6 +9,8 @@
  * @version 10.2.13 Release
  */
 define('DEFINITION_FILENAME', 'results.txt');
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
 /**
  * This function is to output the contents to the file
  * @param array $paired_array is the array to output
