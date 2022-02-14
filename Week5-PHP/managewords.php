@@ -104,7 +104,9 @@
     if ($position == count($paired_array))
     {
 ?>
-       <?= 'No entries found!';?>
+      <p>
+        <?= 'No entries found!';?>
+      </p>
 <?php
     }
     else
@@ -166,10 +168,11 @@
       $lowercase_word = strtolower($word_new);
       // Make sure there's no duplicate entry
       $position = search_word($paired_array, $word_new, $part_speech);
-      if ($position == count($paired_array) - 1)
+      var_dump($position);
+      if ($position < count($paired_array))
       {
   ?>
-        <?= "The entry has already exists"; ?>
+          <?= 'The entry has already exists'; ?>
   <?php
       }
       else
