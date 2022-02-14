@@ -107,87 +107,87 @@ function delete_word($file_to_load, $delete_word)
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title> Manage Words </title>
-  <meta name="author" content="Hengyi Li" />
-  <link rel="stylesheet" href="manage_words.css"/>
-</head>
-<body>
-<h1 class="header_topic"> Word Manager </h1>
-<p>
-  This is the Zelda's GRE vocabulary manager, choose to add a new word or
-  delete a word.
-</p>
-<hr />
-<br />
-<p class="sub-title"> Add a new word </p>
-<form method="post" action="manage_words.php">
+  <head>
+    <meta charset="utf-8" />
+    <title> Manage Words </title>
+    <meta name="author" content="Hengyi Li" />
+    <link rel="stylesheet" href="manage_words.css"/>
+  </head>
+  <body>
+  <h1 class="header_topic"> Word Manager </h1>
   <p>
-    <label for="new_word"> What's the word? </label>
-    <input type='text' id='new_word' name='new_word' required />
+    This is the Zelda's GRE vocabulary manager, choose to add a new word or
+    delete a word.
   </p>
-  <p>
-    <label for="speech"> What's the part of speech of the word? </label>
-    <select name="speech" id="speech">
-      <option value='noun'> noun</option>
-      <option value='adjective'> adjective</option>
-      <option value='adverb'> adverb</option>
-      <option value='verb'> verb</option>
-    </select>
-  </p>
-  <p>
-    <label for="def_new_word"> What's the definition of the word? </label>
-    <input type='text' id="def_new_word" name="def_new_word" required />
-  </p>
-  <p>
-    <input type='submit' value='Submit Report' name='submit' />
-  </p>
-</form>
-<?php
-$paired_array = getPaired_array(DEFINITION_FILENAME);
-if ( isset($_POST) && isset($_POST['new_word'])
-  && preg_match('|^[A-Za-z]+$|', $_POST['new_word'])
-  && isset($_POST['def_new_word'])
-  && preg_match('|^[A-Za-z;( -]+|', $_POST['def_new_word']))
-{
-  $word_new = $_POST['new_word'];
-  $part_speech = $_POST['speech'];
-  $definition = $_POST['def_new_word'];
-  $lowercase_word = strtolower($word_new);
-  // Make sure there's no duplicate entry
-  $position = search_word($paired_array, $word_new);
-  if ($position == count($paired_array))
+  <hr />
+  <br />
+  <p class="sub-title"> Add a new word </p>
+  <form method="post" action="manage_words.php">
+    <p>
+      <label for="new_word"> What's the word? </label>
+      <input type='text' id='new_word' name='new_word' required />
+    </p>
+    <p>
+      <label for="speech"> What's the part of speech of the word? </label>
+      <select name="speech" id="speech">
+        <option value='noun'> noun</option>
+        <option value='adjective'> adjective</option>
+        <option value='adverb'> adverb</option>
+        <option value='verb'> verb</option>
+      </select>
+    </p>
+    <p>
+      <label for="def_new_word"> What's the definition of the word? </label>
+      <input type='text' id="def_new_word" name="def_new_word" required />
+    </p>
+    <p>
+      <input type='submit' value='Submit Report' name='submit' />
+    </p>
+  </form>
+  <?php
+  $paired_array = getPaired_array(DEFINITION_FILENAME);
+  if ( isset($_POST) && isset($_POST['new_word'])
+    && preg_match('|^[A-Za-z]+$|', $_POST['new_word'])
+    && isset($_POST['def_new_word'])
+    && preg_match('|^[A-Za-z;( -]+|', $_POST['def_new_word']))
   {
-    printf("%s", "The entry has already exist! ");
+    $word_new = $_POST['new_word'];
+    $part_speech = $_POST['speech'];
+    $definition = $_POST['def_new_word'];
+    $lowercase_word = strtolower($word_new);
+    // Make sure there's no duplicate entry
+    $position = search_word($paired_array, $word_new);
+    if ($position == count($paired_array))
+    {
+      printf("%s", "The entry has already exist! ");
+    }
+    else
+    {
+      $paired_array[] = array('word' => $lowercase_word, 'part' =>
+        $part_speech, 'definition' => $definition);
+      output_to_file($paired_array);
+    }
   }
-  else
+  ?>
+  <hr />
+  <br />
+  <p class="sub-title"> Delete a word </p>
+  <form method="post" action="manage_words.php">
+    <p>
+      <label for="del_word"> What's the word? </label>
+      <input type='text' id='del_word' name='del_word' required />
+    </p>
+    <p>
+      <input type='submit' value='Delete entry' name='submit_delete_word' />
+    </p>
+  </form>
+  <?php
+  if ( isset($_POST) && isset($_POST['del_word'])
+    && preg_match('|^[A-Za-z]+$|', $_POST['del_word']))
   {
-    $paired_array[] = array('word' => $lowercase_word, 'part' =>
-      $part_speech, 'definition' => $definition);
-    output_to_file($paired_array);
+    $deleted_word = $_POST['del_word'];
+    delete_word(DEFINITION_FILENAME, $deleted_word);
   }
-}
-?>
-<hr />
-<br />
-<p class="sub-title"> Delete a word </p>
-<form method="post" action="manage_words.php">
-  <p>
-    <label for="del_word"> What's the word? </label>
-    <input type='text' id='del_word' name='del_word' required />
-  </p>
-  <p>
-    <input type='submit' value='Delete entry' name='submit_delete_word' />
-  </p>
-</form>
-<?php
-if ( isset($_POST) && isset($_POST['del_word'])
-  && preg_match('|^[A-Za-z]+$|', $_POST['del_word']))
-{
-  $deleted_word = $_POST['del_word'];
-  delete_word(DEFINITION_FILENAME, $deleted_word);
-}
-?>
-</body>
+  ?>
+  </body>
 </html>
