@@ -8,7 +8,7 @@
    * @copyright Copyright (c). 2022 Hengyi Li. All rights reserved
    * @version 10.2.13 Release
    */
-  define('DEFINITION_FILENAME', 'results.txt');
+  define('DEFINITION_FILENAME', 'words.txt');
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
   /**
