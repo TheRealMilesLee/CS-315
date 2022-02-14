@@ -94,9 +94,9 @@ function delete_word($file_to_load, $delete_word)
   $paired_array = getPaired_array($file_to_load);
   // Locate the word to be deleted
   $position = search_word($paired_array, $delete_word);
-  if ($position == count($paired_array) - 1)
+  if ($position == count($paired_array))
   {
-    echo 'No entries found! ';
+      printf("%s", 'No entries found! ');
   }
   else
   {
@@ -157,9 +157,9 @@ if ( isset($_POST) && isset($_POST['new_word'])
   $lowercase_word = strtolower($word_new);
   // Make sure there's no duplicate entry
   $position = search_word($paired_array, $word_new);
-  if ($position == count($paired_array) - 1)
+  if ($position == count($paired_array))
   {
-    echo 'The word is already exist!';
+    printf("%s", "The entry has already exist! ");
   }
   else
   {
