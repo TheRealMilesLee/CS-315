@@ -102,7 +102,9 @@
     $position = search_word($paired_array, $delete_word);
     if ($position == count($paired_array))
     {
-        printf("%s", 'No entries found! ');
+?>
+       <?= 'No entries found!';?>
+<?php
     }
     else
     {
@@ -165,7 +167,9 @@
       $position = search_word($paired_array, $word_new);
       if ($position == count($paired_array))
       {
-        printf("%s", "The entry has already exist! ");
+  ?>
+        <?= "The entry has already exists"; ?>
+  <?php
       }
       else
       {
