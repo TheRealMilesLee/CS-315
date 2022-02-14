@@ -109,14 +109,17 @@ function delete_word($file_to_load, $delete_word)
   <meta charset="utf-8" />
   <title> Manage Words </title>
   <meta name="author" content="Hengyi Li" />
+  <link rel="stylesheet" href="manage_words.css"/>
 </head>
 <body>
-<h1> Word Manager </h1>
+<h1 class="header_topic"> Word Manager </h1>
 <p>
   This is the Zelda's GRE vocabulary manager, choose to add a new word or
   delete a word.
 </p>
-<h2> Add a new word </h2>
+<hr />
+<br />
+<p class="sub-title"> Add a new word </p>
 <form method="post" action="manage_words.php">
   <p>
     <label for="new_word"> What's the word? </label>
@@ -164,7 +167,9 @@ if ( isset($_POST) && isset($_POST['new_word'])
   }
 }
 ?>
-<h2> Delete a word </h2>
+<hr />
+<br />
+<p class="sub-title"> Delete a word </p>
 <form method="post" action="manage_words.php">
   <p>
     <label for="del_word"> What's the word? </label>
