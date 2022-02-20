@@ -18,7 +18,7 @@
   function output_to_file(array $paired_array): void
   {
     // Sort the array in ascending order
-    array_multisort($paired_array,SORT_ASC, SORT_REGULAR);
+    array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
     // cleanup original content for new input
     file_put_contents(DEFINITION_FILENAME, '');
     $index = 0;
@@ -199,34 +199,34 @@
   -->
   <p class="sub-title"> Delete a word </p>
   <form method="post" action="managewords.php">
-    <p>
-      <label for="del_word"> What's the word? </label>
-      <input type='text' id='del_word' name='del_word' required />
-    </p>
-    <p>
-      <label for='speech_del'>
-        What's the part of speech of the word?
-      </label>
-      <select name="speech_del" id="speech_del">
-        <option value="noun"> noun</option>
-        <option value="adjective"> adjective</option>
-        <option value="adverb"> adverb</option>
-        <option value="verb"> verb</option>
-      </select>
-    </p>
-    <p>
-      <input type='submit' value='Delete entry' name='submit_delete_word' />
-    </p>
+    <input type="hidden" name="del_word" value="<?= $words_total; ?>" />
+    <input type="hidden" name="speech_del" value="<?= $part_of_speech_total; ?>" />
+    <?php
+      array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
+      for ($index = 0; $index < count($paired_array); $index++)
+      {
+        if (!array_key_exists($index, $paired_array))
+        {
+          $index++;
+        }
+        $words_total = $paired_array[$index]['word'];
+        $part_of_speech_total = $paired_array[$index]['part'];
+        $definition_total = $paired_array[$index]['definition'];
+        $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
+        ?>
+        <input type='submit' value="Delete Entry" name='submit' />
+        <?= $index, " : ", $result , "<br />"?>
+        <?= "<br />" ?>
+      <?php
+      }
+    ?>
   </form>
   <?php
-    if ( isset($_POST) && isset($_POST['del_word'])
-      && preg_match('|^[A-Za-z]+$|', $_POST['del_word']))
-    {
-      $part_speech = $_POST['speech_del'];
-      $deleted_word = $_POST['del_word'];
-      $lowercase_word_delete = strtolower($deleted_word);
-      delete_word(DEFINITION_FILENAME, $lowercase_word_delete, $part_speech);
-    }
+    $deleted_word = $_POST["del_word"];
+    var_dump($part_speech);
+    $part_speech = $_POST["speech_del"];
+    var_dump($part_speech);
+    delete_word(DEFINITION_FILENAME, $deleted_word, $part_speech);
   ?>
   </body>
 </html>
