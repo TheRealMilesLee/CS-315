@@ -144,10 +144,10 @@
     <p>
       <label for="speech"> What's the part of speech of the word? </label>
       <select name="speech" id="speech">
-        <option value='noun'> noun</option>
-        <option value='adjective'> adjective</option>
-        <option value='adverb'> adverb</option>
-        <option value='verb'> verb</option>
+        <option value="noun"> noun</option>
+        <option value="adjective"> adjective</option>
+        <option value="adverb"> adverb</option>
+        <option value="verb"> verb</option>
       </select>
     </p>
     <p>
