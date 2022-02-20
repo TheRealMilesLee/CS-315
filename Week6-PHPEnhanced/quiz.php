@@ -21,7 +21,7 @@ define('NUMBER_OF_CHOICES', 4);
  * speech
  * @param $file name of the input file
  * @param $number_to_get how many defs to get after the real one
- * @return an array with element 0 an array of the word, the part of
+ * @return  array with element 0 an array of the word, the part of
  * speech, and the definition, and the other elements the randomly
  * chosen definitions
  */
@@ -31,13 +31,13 @@ function get_definitions($file, $number_to_get)
   $random_index = array_rand($lines);
   list($word, $part, $definition) = explode("\t", $lines[$random_index]);
   unset($lines[$random_index]);
-  
+
   $result = array();
   array_push($result, array($word, $part, $definition));
-  
+
   $matching_lines = preg_grep("/\t$part\t/", $lines);
   shuffle($matching_lines);
-  
+
   $count = 0;
   while ($count < count($matching_lines) && count($result) <= $number_to_get)
   {
@@ -45,7 +45,7 @@ function get_definitions($file, $number_to_get)
     array_push($result, explode("\t", $line)[2]);
     $count++;
   }
-  
+
   return $result;
 }
 
@@ -60,7 +60,7 @@ function shuffle_assoc(&$ary)
   {
     return false;
   }
-  
+
   $keys = array_keys($ary);
   shuffle($keys);
   $new_ary = array();
@@ -68,7 +68,7 @@ function shuffle_assoc(&$ary)
   {
     $new_ary[$key] = $ary[$key];
   }
-  
+
   $ary = $new_ary;
   return true;
 }
@@ -149,16 +149,16 @@ shuffle_assoc($all_definitions);
 
 <form action="quiz.php" method="post">
   <ul id="choices">
-    
+
     <?php foreach ($all_definitions as $index => $definition): ?>
       <li>
         <input type="radio" name="guess" value="<?= $index ?>" />
         <?= $definition ?>
       </li>
     <?php endforeach; ?>
-  
+
   </ul>
-  
+
   <input type="hidden" name="word" value="<?= $word ?>" />
   <input type="hidden" name="number_total"
          value="<?= $number_total ?>" />

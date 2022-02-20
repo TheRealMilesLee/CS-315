@@ -38,7 +38,7 @@
     }
     unset($paired_array[$index]);
   }
-  
+
   /**
    * @param array $array is the array to sort
    * @param string $word_to_search is the word that search in the array
@@ -66,7 +66,7 @@
     }
     return $index;
   }
-  
+
   /**
    * This function is to make a key-value pair array
    * @param string $file_to_load is the file that load from disk
@@ -90,7 +90,7 @@
     unset($total_lines[$loop]);
     return $paired_array;
   }
-  
+
   /**
    * This function is to delete the word
    * @param string $file_to_load is the file that load from disk
