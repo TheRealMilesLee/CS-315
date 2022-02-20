@@ -1,0 +1,33 @@
+/**
+ * Hengyi Li
+ */
+body
+{
+  font-family: sans-serif, monospace, serif;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.header_topic
+{
+  font-family: monospace, serif;
+  font-size: 30px;
+  font-style: oblique;
+  font-weight: bold;
+  text-align: center;
+}
+
+p
+{
+  font-family: monospace, serif;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+}
+
+.sub-title
+{
+  font-weight: bold;
+}
