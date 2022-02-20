@@ -11,6 +11,25 @@
   define("DEFINITION_FILENAME", "words.txt");
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
+
+  function display_entry(array $paired_array) : void
+  {
+    array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
+      for ($index = 0; $index < count($paired_array); $index++)
+      {
+        if (!array_key_exists($index, $paired_array))
+        {
+          $index++;
+        }
+        $words_total = $paired_array[$index]['word'];
+        $part_of_speech_total = $paired_array[$index]['part'];
+        $definition_total = $paired_array[$index]['definition'];
+        $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
+?>
+        <?= $index, " : ", $result , "<br />"?>
+<?php
+      }
+  }
   /**
    * This function is to output the contents to the file
    * @param array $paired_array is the array to output
@@ -199,34 +218,17 @@
   -->
   <p class="sub-title"> Delete a word </p>
   <form method="post" action="managewords.php">
-    <input type="hidden" name="del_word" value="<?= $words_total; ?>" />
-    <input type="hidden" name="speech_del" value="<?= $part_of_speech_total; ?>" />
     <?php
-      array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
-      for ($index = 0; $index < count($paired_array); $index++)
-      {
-        if (!array_key_exists($index, $paired_array))
-        {
-          $index++;
-        }
-        $words_total = $paired_array[$index]['word'];
-        $part_of_speech_total = $paired_array[$index]['part'];
-        $definition_total = $paired_array[$index]['definition'];
-        $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
-        ?>
-        <input type='submit' value="Delete Entry" name='submit' />
-        <?= $index, " : ", $result , "<br />"?>
-        <?= "<br />" ?>
-      <?php
-      }
+      $deleted_word = $_POST["del_word"];
+      var_dump($part_speech);
+      $part_speech = $_POST["speech_del"];
+      var_dump($part_speech);
+      delete_word(DEFINITION_FILENAME, $deleted_word, $part_speech);
     ?>
   </form>
+
   <?php
-    $deleted_word = $_POST["del_word"];
-    var_dump($part_speech);
-    $part_speech = $_POST["speech_del"];
-    var_dump($part_speech);
-    delete_word(DEFINITION_FILENAME, $deleted_word, $part_speech);
+    display_entry($paired_array);
   ?>
   </body>
 </html>
