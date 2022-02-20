@@ -44,7 +44,7 @@
    * @param string $word_to_search is the word that search in the array
    * @return int is the index of the word
    */
-  function search_word(&$array, $word_to_search, $part_of_speech): int
+  function search_word(array &$array, string $word_to_search, $part_of_speech): int
   {
     $found = false;
     $index = 0;
@@ -72,7 +72,7 @@
    * @param string $file_to_load is the file that load from disk
    * @return array is the paired array with key-values.
    */
-  function getPaired_array($file_to_load): array
+  function getPaired_array(string $file_to_load): array
   {
     $paired_array = array();
     // read the file from disk
@@ -96,7 +96,7 @@
    * @param string $file_to_load is the file that load from disk
    * @param string $delete_word is the word that user want to delete
    */
-  function delete_word($file_to_load, $delete_word, $part_of_speech)
+  function delete_word(string $file_to_load, string $delete_word, $part_of_speech)
   {
     $paired_array = getPaired_array($file_to_load);
     // Locate the word to be deleted
