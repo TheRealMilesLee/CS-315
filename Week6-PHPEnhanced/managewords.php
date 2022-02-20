@@ -8,7 +8,7 @@
    * @copyright Copyright (c). 2022 Hengyi Li. All rights reserved
    * @version 10.2.13 Release
    */
-  define('DEFINITION_FILENAME', 'words.txt');
+  define("DEFINITION_FILENAME", "words.txt");
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
   /**
@@ -138,6 +138,9 @@
       <label for="new_word"> What's the word? </label>
       <input type='text' id='new_word' name='new_word' required />
     </p>
+    <!--
+    TODO: Allowing the user to create a new part of speech to be used henceforth
+    -->
     <p>
       <label for="speech"> What's the part of speech of the word? </label>
       <select name="speech" id="speech">
@@ -155,6 +158,10 @@
       <input type='submit' value='Submit Report' name='submit' />
     </p>
   </form>
+  <!--
+  TODO：allowing all printable characters in the definition
+  TODO: preventing any possibility of injection attack
+  -->
   <?php
     $paired_array = getPaired_array(DEFINITION_FILENAME);
     if ( isset($_POST) && isset($_POST['new_word'])
@@ -186,6 +193,10 @@
   ?>
   <hr />
   <br />
+  <!--
+  TODO: presenting a list of each word in the file for direct deleting
+  TODO: using checkboxes or a delete button attached to each word
+  -->
   <p class="sub-title"> Delete a word </p>
   <form method="post" action="managewords.php">
     <p>
@@ -197,10 +208,10 @@
         What's the part of speech of the word?
       </label>
       <select name="speech_del" id="speech_del">
-        <option value='noun'> noun</option>
-        <option value='adjective'> adjective</option>
-        <option value='adverb'> adverb</option>
-        <option value='verb'> verb</option>
+        <option value="noun"> noun</option>
+        <option value="adjective"> adjective</option>
+        <option value="adverb"> adverb</option>
+        <option value="verb"> verb</option>
       </select>
     </p>
     <p>
