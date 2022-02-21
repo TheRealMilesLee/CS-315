@@ -12,24 +12,6 @@
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
 
-  function display_entry(array $paired_array) : void
-  {
-    array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
-    for ($index = 0; $index < count($paired_array); $index++)
-    {
-      if (!array_key_exists($index, $paired_array))
-      {
-        $index++;
-      }
-      $words_total = $paired_array[$index]['word'];
-      $part_of_speech_total = $paired_array[$index]['part'];
-      $definition_total = $paired_array[$index]['definition'];
-      $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
-?>
-      <?= $index, " : ", $result , "<br />"?>
-<?php
-    }
-  }
   /**
    * This function is to output the contents to the file
    * @param array $paired_array is the array to output
@@ -220,6 +202,22 @@
   <form method="post" action="managewords.php">
 
   <?php
+    array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
+    for ($index = 0; $index < count($paired_array); $index++)
+    {
+      if (!array_key_exists($index, $paired_array))
+      {
+        $index++;
+      }
+      $words_total = $paired_array[$index]['word'];
+      $part_of_speech_total = $paired_array[$index]['part'];
+      $definition_total = $paired_array[$index]['definition'];
+      $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
+?>
+
+      <?= $index, " : ", $result , "<br />"?>
+<?php
+    }
     if (isset($_POST) && isset($_POST['del_word']))
     {
       $deleted_word = $_POST["del_word"];
@@ -230,9 +228,5 @@
     }
   ?>
   </form>
-
-  <?php
-    display_entry($paired_array);
-  ?>
   </body>
 </html>
