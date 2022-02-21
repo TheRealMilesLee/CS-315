@@ -9,7 +9,7 @@
    * @version 10.2.13 Release
    */
 
-  define("DEFINITION_FILENAME", "words.txt");
+  define("DEFINITION_FILENAME", "test1.txt");
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
 
@@ -201,7 +201,9 @@
   -->
   <p class="sub-title"> Delete a word </p>
   <form method="post" action="managewords.php">
-
+    <p>
+      <input type='submit' value='Confirm to delete' name='delete' />
+    </p>
   <?php
     array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
     for ($index = 0; $index < count($paired_array); $index++)
@@ -215,25 +217,27 @@
       $definition_total = $paired_array[$index]['definition'];
       $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
 ?>
-    <p class="selection_to_delete_style">
-      <?= $index, " : ", $result , "<br />"?>
-      <input type="checkbox", name="choice_to_delete[]", values="<?= $index ?>" />
-    </p>
 
+    <p class="selection_to_delete_style">
+      <input type="checkbox", id="choice_to_delete" name="choice_to_delete[]", values="<?= $index ?> " />
+      <label for="choice_to_delete"> <?= $index ?> </label>
+      <?= " : ", $result , "<br />"?>
+    </p>
 <?php
     }
-    if (isset($_POST) && isset($_POST['del_word']))
+    if (isset($_POST) && isset($_POST['choice_to_delete']))
     {
-      $deleted_word = $_POST["del_word"];
-      var_dump($deleted_word);
-      $part_speech = $_POST["speech_del"];
-      var_dump($part_speech);
-      delete_word(DEFINITION_FILENAME, $deleted_word, $part_speech);
+      $deleted_word_list = $_POST["choice_to_delete"];
+      var_dump($deleted_word_list);
+    /*  for ($index = 0; $index < count($deleted_word_list); $index++)
+      {
+        $word_to_be_delete = $paired_array[$deleted_word_list[$index]]['word'];
+        $part_of_speech_to_delete =$paired_array[$deleted_word_list[$index]]['part'];
+        delete_word(DEFINITION_FILENAME, $word_to_be_delete, $part_of_speech_to_delete);
+      }
+      */
     }
   ?>
-      <p>
-      <input type='submit' value='Submit Report' name='submit' />
-    </p>
   </form>
   </body>
 </html>
