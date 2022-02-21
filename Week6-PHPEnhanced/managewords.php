@@ -140,9 +140,6 @@
       <label for="new_word"> What's the word? </label>
       <input type='text' id='new_word' name='new_word' required />
     </p>
-    <!--
-    TODO: Allowing the user to create a new part of speech to be used henceforth
-    -->
     <p>
       <label for="speech"> What's the part of speech of the word? </label>
       <select name="speech" id="speech">
@@ -167,9 +164,9 @@
   <?php
     $paired_array = getPaired_array(DEFINITION_FILENAME);
     if ( isset($_POST) && isset($_POST['new_word'])
-      && preg_match('|^[A-Za-z]+$|', $_POST['new_word'])
+      && preg_match('|^[A-Za-z^<>]+$|', $_POST['new_word'])
       && isset($_POST['def_new_word'])
-      && preg_match('|^[A-Za-z;( -]+|', $_POST['def_new_word']))
+      && preg_match('|^[A-Za-z;( -^<>]+|', $_POST['def_new_word']))
     {
       $word_new = $_POST['new_word'];
       $part_speech = $_POST['speech'];
@@ -204,7 +201,17 @@
     <p>
       <input type='submit' value='Confirm to delete' name='delete' />
     </p>
-  <?php
+    <?php
+      if (isset($_POST) && isset($_POST['choice_to_delete']))
+      {
+        $deleted_word_list = $_POST["choice_to_delete"];
+        for ($index = 0; $index < count($deleted_word_list); $index++)
+        {
+          $word_to_be_delete = $paired_array[$deleted_word_list[$index][0]]['word'];
+          $part_of_speech_to_delete =$paired_array[$deleted_word_list[$index][0]]['part'];
+          delete_word(DEFINITION_FILENAME, $word_to_be_delete, $part_of_speech_to_delete);
+        }
+      }
     array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
     for ($index = 0; $index < count($paired_array); $index++)
     {
@@ -216,26 +223,13 @@
       $part_of_speech_total = $paired_array[$index]['part'];
       $definition_total = $paired_array[$index]['definition'];
       $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
-?>
-
+    ?>
     <p class="selection_to_delete_style">
-      <input type="checkbox", id="choice_to_delete" name="choice_to_delete[]", values="<?= $index ?> " />
+      <input type="checkbox" name="choice_to_delete[]" value="<?= $index ?>" />
       <label for="choice_to_delete"> <?= $index ?> </label>
-      <?= " : ", $result , "<br />"?>
+      <?= " : ", $result, "<br />"  ?>
     </p>
 <?php
-    }
-    if (isset($_POST) && isset($_POST['choice_to_delete']))
-    {
-      $deleted_word_list = $_POST["choice_to_delete"];
-      var_dump($deleted_word_list);
-    /*  for ($index = 0; $index < count($deleted_word_list); $index++)
-      {
-        $word_to_be_delete = $paired_array[$deleted_word_list[$index]]['word'];
-        $part_of_speech_to_delete =$paired_array[$deleted_word_list[$index]]['part'];
-        delete_word(DEFINITION_FILENAME, $word_to_be_delete, $part_of_speech_to_delete);
-      }
-      */
     }
   ?>
   </form>
