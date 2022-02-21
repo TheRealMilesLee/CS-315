@@ -215,8 +215,11 @@
       $definition_total = $paired_array[$index]['definition'];
       $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
 ?>
-
+    <p class="selection_to_delete_style">
       <?= $index, " : ", $result , "<br />"?>
+      <input type="checkbox", name="choice_to_delete[]", values="<?= $index ?>" />
+    </p>
+
 <?php
     }
     if (isset($_POST) && isset($_POST['del_word']))
@@ -228,6 +231,9 @@
       delete_word(DEFINITION_FILENAME, $deleted_word, $part_speech);
     }
   ?>
+      <p>
+      <input type='submit' value='Submit Report' name='submit' />
+    </p>
   </form>
   </body>
 </html>
