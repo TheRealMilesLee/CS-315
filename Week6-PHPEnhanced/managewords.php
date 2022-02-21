@@ -8,6 +8,7 @@
    * @copyright Copyright (c). 2022 Hengyi Li. All rights reserved
    * @version 10.2.13 Release
    */
+
   define("DEFINITION_FILENAME", "words.txt");
   error_reporting(E_ALL);
   ini_set('display_errors', '1');
@@ -160,7 +161,7 @@
     </p>
   </form>
   <!--
-  TODO:allowing all printable characters in the definition
+  TODO: allowing all printable characters in the definition
   TODO: preventing any possibility of injection attack
   -->
   <?php
@@ -196,7 +197,7 @@
   <br />
   <!--
   TODO: presenting a list of each word in the file for direct deleting
-  TODO: using checkboxes or a delete button attached to each word
+  TODO: using checkboxes  attached to each word
   -->
   <p class="sub-title"> Delete a word </p>
   <form method="post" action="managewords.php">
