@@ -41,6 +41,34 @@
     unset($paired_array[$index]);
   }
 
+
+/**
+ * This function is to display the currently entry
+ * @param string $file_to_load is the file name from  the file
+ */
+function display ( string $file_to_load)
+{
+  $paired_array = getPaired_array($file_to_load);
+    array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
+    for ($index = 0; $index < count($paired_array); $index++)
+    {
+      if (!array_key_exists($index, $paired_array))
+      {
+        $index++;
+      }
+      $words_total = $paired_array[$index]['word'];
+      $part_of_speech_total = $paired_array[$index]['part'];
+      $definition_total = $paired_array[$index]['definition'];
+      $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
+    ?>
+    <p class="selection_to_delete_style">
+      <input type="checkbox" name="choice_to_delete[]" value="<?= $index ?>" />
+      <label for="choice_to_delete"> <?= $index ?> </label>
+      <?= " : ", $result, "<br />"  ?>
+    </p>
+    <?php
+  }
+}
   /**
    * @param array $array is the array to sort
    * @param string $word_to_search is the word that search in the array
@@ -192,47 +220,24 @@
   ?>
   <hr />
   <br />
-  <!--
-  TODO: presenting a list of each word in the file for direct deleting
-  TODO: using checkboxes  attached to each word
-  -->
   <p class="sub-title"> Delete a word </p>
   <form method="post" action="managewords.php">
     <p>
       <input type='submit' value='Confirm to delete' name='delete' />
     </p>
     <?php
-
-    array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
-    for ($index = 0; $index < count($paired_array); $index++)
-    {
-      if (!array_key_exists($index, $paired_array))
+      if (isset($_POST) && isset($_POST['choice_to_delete']))
       {
-        $index++;
-      }
-      $words_total = $paired_array[$index]['word'];
-      $part_of_speech_total = $paired_array[$index]['part'];
-      $definition_total = $paired_array[$index]['definition'];
-      $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
+        $deleted_word_list = $_POST["choice_to_delete"];
+        for ($index = 0; $index < count($deleted_word_list); $index++)
+        {
+          $word_to_be_delete = $paired_array[$deleted_word_list[$index][0]]['word'];
+          $part_of_speech_to_delete = $paired_array[$deleted_word_list[$index][0]]['part'];
+          delete_word(DEFINITION_FILENAME, $word_to_be_delete, $part_of_speech_to_delete);
+        }
+    }
+    display(DEFINITION_FILENAME);
     ?>
-    <p class="selection_to_delete_style">
-      <input type="checkbox" name="choice_to_delete[]" value="<?= $index ?>" />
-      <label for="choice_to_delete"> <?= $index ?> </label>
-      <?= " : ", $result, "<br />"  ?>
-    </p>
-<?php
-    }
-    if (isset($_POST) && isset($_POST['choice_to_delete']))
-    {
-      $deleted_word_list = $_POST["choice_to_delete"];
-      for ($index = 0; $index < count($deleted_word_list); $index++)
-      {
-        $word_to_be_delete = $paired_array[$deleted_word_list[$index][0]]['word'];
-        $part_of_speech_to_delete = $paired_array[$deleted_word_list[$index][0]]['part'];
-        delete_word(DEFINITION_FILENAME, $word_to_be_delete, $part_of_speech_to_delete);
-      }
-    }
-?>
   </form>
   </body>
 </html>
