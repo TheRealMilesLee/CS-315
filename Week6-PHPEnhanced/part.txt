@@ -2,4 +2,3 @@ adjective
 adverb
 verb
 noun
-prep

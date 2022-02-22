@@ -185,17 +185,17 @@ function delete_word(
     <p>
       <label for="speech"> What's the part of speech of the word? </label>
       <select name="speech" id="speech">
-        <option value=" "> Make a choice </option>
+        <option value="MAC"> Make a choice </option>
         <?php
           $part_of_speech_list = file(PART_OF_SPEECH, FILE_IGNORE_NEW_LINES);
           $index = 0;
           while ($index < count($part_of_speech_list))
           {
-            ?>
+          ?>
             <option value="<?= $part_of_speech_list[$index] ?>">
               <?= $part_of_speech_list[$index] ?>
             </option>
-            <?php
+          <?php
             $index++;
           }
         ?>
@@ -225,11 +225,16 @@ function delete_word(
     && preg_match('|^[A-Za-z.]|',  $_POST['new_part_speech'])
     && isset($_POST['def_new_word'])
     && preg_match('|^[A-Za-z;( -]+|', $_POST['def_new_word'])
+    && ($_POST['speech'] != "MAC")
   )
   {
     $word_new = htmlspecialchars($_POST['new_word']);
     $part_speech = $_POST['speech'];
     $new_part_speech = htmlspecialchars($_POST['new_part_speech']) . PHP_EOL;
+    if (is_string($new_part_name))
+    {
+      $part_speech = $new_part_speech;
+    }
     $definition = htmlspecialchars($_POST['def_new_word']);
     $lowercase_word = strtolower($word_new);
     file_put_contents(PART_OF_SPEECH, $new_part_speech, LOCK_EX | FILE_APPEND);
@@ -241,7 +246,7 @@ function delete_word(
       <p>
         <?= 'The entry has already exists'; ?>
       </p>
-  <?php
+    <?php
     }
     else
     {
@@ -277,4 +282,5 @@ function delete_word(
     ?>
   </form>
 </body>
+
 </html>
