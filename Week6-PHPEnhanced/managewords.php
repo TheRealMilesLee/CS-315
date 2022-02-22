@@ -185,10 +185,6 @@ function display ( string $file_to_load)
       <input type='submit' value='Submit Report' name='submit' />
     </p>
   </form>
-  <!--
-  TODO: allowing all printable characters in the definition
-  TODO: preventing any possibility of injection attack
-  -->
   <?php
     $paired_array = getPaired_array(DEFINITION_FILENAME);
     if ( isset($_POST) && isset($_POST['new_word'])
