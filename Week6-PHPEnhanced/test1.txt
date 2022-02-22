@@ -1,3 +1,4 @@
-acarpous	adjective	effete; no longer fertile; worn out
+abandon	noun	being thrown away
 accretion	noun	the process of growth or enlargement by a gradual buildup; increase by external addition or accumulation (as by adhesion of external parts or particles); the increase of land by the action of natural forces
 agog	adjective	full of intense interest or excitement; eager
+babababababa	noun	<?= "hello " ?>

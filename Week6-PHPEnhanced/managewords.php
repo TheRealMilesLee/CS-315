@@ -48,7 +48,7 @@
  */
 function display ( string $file_to_load)
 {
-  $paired_array = getPaired_array($file_to_load);
+    $paired_array = getPaired_array($file_to_load);
     array_multisort($paired_array, SORT_ASC, SORT_REGULAR);
     for ($index = 0; $index < count($paired_array); $index++)
     {
