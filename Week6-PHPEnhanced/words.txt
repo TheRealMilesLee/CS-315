@@ -1,5 +1,4 @@
 abandon	adjective	being thrown away
-abandon	noun	puidunc
 abate	verb	to put an end to; nullify
 abbrivate	noun	change the name
 abeyance	noun	a lapse in succession during which there is no person in whom a title is vested
