@@ -196,9 +196,9 @@ function display ( string $file_to_load)
       && isset($_POST['def_new_word'])
       && preg_match('|^[A-Za-z;( -^<>]+|', $_POST['def_new_word']))
     {
-      $word_new = $_POST['new_word'];
+      $word_new = htmlspecialchars($_POST['new_word']);
       $part_speech = $_POST['speech'];
-      $definition = $_POST['def_new_word'];
+      $definition = htmlspecialchars($_POST['def_new_word']);
       $lowercase_word = strtolower($word_new);
       // Make sure there's no duplicate entry
       $position = search_word($paired_array, $word_new, $part_speech);
