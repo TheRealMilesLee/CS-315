@@ -1,1 +1,1 @@
-http://sand.truman.edu/~hl3265/phpWordManager/managewords.php
+http://sand.truman.edu/~hl3265/betterPHPWordManager/managewords.php
