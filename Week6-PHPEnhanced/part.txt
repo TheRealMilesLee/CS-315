@@ -1,6 +1,6 @@
 adjective
 adverb
 article
-conjunction 
+conjunction
 noun
 verb

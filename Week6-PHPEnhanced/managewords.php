@@ -259,12 +259,6 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       </select>
     </p>
     <p>
-      <label for="new_part_speech">
-        Not found you want? Fill your own part of speech below!
-      </label>
-      <input type="text" id="new_part_speech" name="new_part_speech" />
-    </p>
-    <p>
       <label for="def_new_word"> What's the definition of the word? </label>
       <input type='text' id="def_new_word" name="def_new_word" required />
     </p>
@@ -272,16 +266,26 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       <input type="submit" value="Submit Report" name="submit" />
     </p>
   </form>
+  <hr />
+  <form method="post" action="managewords.php">
+    <p>
+      <label for="new_part_speech">
+        Not found you want? Fill your own part of speech below!
+      </label>
+      <input type="text" id="new_part_speech" name="new_part_speech" />
+    </p>
+    <p>
+      <input type="submit" value="add" name="add" />
+    </p>
+  </form>
   <?php
   $paired_array = getPaired_array(DEFINITION_FILENAME);
   if (
-    isset($_POST)
-    && isset($_POST['new_word'])
+    isset($_POST) && isset($_POST['new_word'])
     && preg_match('|^[A-Za-z]+$|', $_POST['new_word'])
     && isset($_POST['new_part_speech'])
-    && preg_match('|^[A-Za-z]+|',  $_POST['new_part_speech'])
+    && preg_match('|^[A-Za-z]+$|', $_POST['new_part_speech'])
     && isset($_POST['def_new_word'])
-    && preg_match('|^[A-Za-z;( -]+|', $_POST['def_new_word'])
   )
   {
     $word_new = htmlspecialchars($_POST['new_word']);
@@ -316,7 +320,6 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
   }
   ?>
   <hr />
-  <br />
   <p class="sub-title"> Delete a word </p>
   <form method="post" action="managewords.php">
     <p>
