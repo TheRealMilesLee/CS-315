@@ -1,3 +1,4 @@
+abase	article	To lower in rank, prestige, or esteem
 abate	verb	to put an end to; nullify
 abeyance	noun	a lapse in succession during which there is no person in whom a title is vested
 abjure	verb	to renounce upon oath; to reject solemnly
@@ -8,6 +9,7 @@ accretion	noun	the process of growth or enlargement by a gradual buildup; increa
 agog	adjective	full of intense interest or excitement; eager
 alloy	noun	the mixture of disparate elements
 amortize	verb	to pay off (as a mortgage) gradually, usually by periodic payments of principal and interest or by payments to a sinking fund
+and	conjunction 	connect words
 aplomb	noun	complete and confident composure or self-assurance; poise
 apostasy	noun	renunciation of a religious faith
 apostate	noun	one who abandons long-held religious or political convictions

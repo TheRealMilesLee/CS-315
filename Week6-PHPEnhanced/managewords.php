@@ -42,7 +42,63 @@ function output_to_file(array $paired_array): void
   unset($paired_array[$index]);
 }
 
+/**
+ * This function is to insert a new part of speech
+ * @param string $file_to_load is the part of speech file load from file
+ * @param string $new_part_speech is the part of speech to be added
+ */
+function insert_new_part_speech(string $file_to_load, string $new_part_speech)
+{
+  $part_of_speech_array = file($file_to_load, FILE_IGNORE_NEW_LINES);
+  $position = check_if_duplicate($part_of_speech_array, $new_part_speech);
+  if ($position < count($part_of_speech_array))
+  {
+    ?>
+    <?= "The part of speech has already exist!"; ?>
+  <?php
+  }
+  else
+  {
+    $part_of_speech_array[] = $new_part_speech;
+    array_multisort($part_of_speech_array, SORT_ASC, SORT_REGULAR);
+    file_put_contents(PART_OF_SPEECH, "");
+    $index = 0;
+    while ($index < count($part_of_speech_array))
+    {
+      $output = "$part_of_speech_array[$index]\n";
+      file_put_contents(PART_OF_SPEECH, $output, LOCK_EX | FILE_APPEND);
+      $index++;
+    }
+  }
+}
 
+/**
+ * This function is to search if there's a duplicate part of speech
+ * @param array $array is the part of speech array to search
+ * @param string $word_to_search is the part of speech word to search in array
+ * @return integer found return the index, not found return the size of the array.
+ */
+function check_if_duplicate(array &$array, string $word_to_search) : int
+{
+  $found = false;
+  $index = 0;
+  while ($index < count($array) && !$found)
+  {
+    if (strcmp($array[$index], $word_to_search) == 0)
+    {
+      $found = true;
+    }
+    else
+    {
+      $index++;
+    }
+  }
+  if ($found)
+  {
+    unset($array[$index]);
+  }
+  return $index;
+}
 /**
  * This function is to display the currently entry
  * @param string $file_to_load is the file name from  the file
@@ -72,22 +128,20 @@ function display(string $file_to_load)
 }
 
 /**
- * @param array $array is the array to sort
- * @param string $word_to_search is the word that search in the array
- * @return int is the index of the word
+ * This function is to search the index in the current array
+ * @param array $array is the array to search
+ * @param string $word_to_search is the  word that search for
+ * @param string $part_of_speech is the speech of the word to search
+ * @return integer is the index of the word position
  */
-function search_word(
-  array &$array,
-  string $word_to_search,
-  $part_of_speech
-): int
+function search_word(array &$array, string $word_to_search,
+string $part_of_speech): int
 {
   $found = false;
   $index = 0;
   while ($index < count($array) && !$found)
   {
-    if (
-      strcmp($array[$index]['word'], $word_to_search) == 0
+    if (strcmp($array[$index]['word'], $word_to_search) == 0
       && strcmp($array[$index]['part'], $part_of_speech) == 0
     )
     {
@@ -129,15 +183,12 @@ function getPaired_array(string $file_to_load): array
 }
 
 /**
- * This function is to delete the word
- * @param string $file_to_load is the file that load from disk
- * @param string $delete_word is the word that user want to delete
+ * This function is to deleted the word depends on the part of speech and the word itself
+ * @param string $file_to_load is the word file
+ * @param string $delete_word is the word to delete
+ * @param string $part_of_speech is the part of the speech to be deleted
  */
-function delete_word(
-  string $file_to_load,
-  string $delete_word,
-  $part_of_speech
-)
+function delete_word(string $file_to_load, string $delete_word, string $part_of_speech)
 {
   $paired_array = getPaired_array($file_to_load);
   // Locate the word to be deleted
@@ -185,9 +236,10 @@ function delete_word(
     <p>
       <label for="speech"> What's the part of speech of the word? </label>
       <select name="speech" id="speech">
-        <option value="MAC"> Make a choice </option>
+        <option value=""> Make a choice </option>
         <?php
           $part_of_speech_list = file(PART_OF_SPEECH, FILE_IGNORE_NEW_LINES);
+          array_multisort($part_of_speech_list, SORT_ASC, SORT_REGULAR);
           $index = 0;
           while ($index < count($part_of_speech_list))
           {
@@ -222,22 +274,20 @@ function delete_word(
     && isset($_POST['new_word'])
     && preg_match('|^[A-Za-z]+$|', $_POST['new_word'])
     && isset($_POST['new_part_speech'])
-    && preg_match('|^[A-Za-z.]|',  $_POST['new_part_speech'])
+    && preg_match('|^[A-Za-z]+|',  $_POST['new_part_speech'])
     && isset($_POST['def_new_word'])
-    && preg_match('|^[A-Za-z;( -]+|', $_POST['def_new_word'])
-    && ($_POST['speech'] != "MAC")
-  )
+    && preg_match('|^[A-Za-z;( -]+|', $_POST['def_new_word']))
   {
     $word_new = htmlspecialchars($_POST['new_word']);
     $part_speech = $_POST['speech'];
-    $new_part_speech = htmlspecialchars($_POST['new_part_speech']) . PHP_EOL;
-    if (is_string($new_part_name))
+    $new_part_speech = htmlspecialchars($_POST['new_part_speech']);
+    if (!empty($new_part_speech))
     {
       $part_speech = $new_part_speech;
     }
     $definition = htmlspecialchars($_POST['def_new_word']);
     $lowercase_word = strtolower($word_new);
-    file_put_contents(PART_OF_SPEECH, $new_part_speech, LOCK_EX | FILE_APPEND);
+    insert_new_part_speech(PART_OF_SPEECH, $new_part_speech);
     // Make sure there's no duplicate entry
     $position = search_word($paired_array, $word_new, $part_speech);
     if ($position < count($paired_array))
@@ -246,12 +296,14 @@ function delete_word(
       <p>
         <?= 'The entry has already exists'; ?>
       </p>
-    <?php
+  <?php
     }
     else
     {
-      $paired_array[] = array(
-        'word' => $lowercase_word, 'part' => $part_speech,
+      $paired_array[] = array
+      (
+        'word' => $lowercase_word,
+        'part' => $part_speech,
         'definition' => $definition
       );
       output_to_file($paired_array);

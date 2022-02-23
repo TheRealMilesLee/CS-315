@@ -1,4 +1,6 @@
 adjective
 adverb
-verb
+article
+conjunction
 noun
+verb
