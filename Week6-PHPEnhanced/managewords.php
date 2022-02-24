@@ -149,9 +149,8 @@ function search_word(array  &$array, string $word_to_search,
   $index = 0;
   while ($index < count($array) && !$found)
   {
-    if (
-      strcmp($array[$index]['word'], $word_to_search) == 0 && strcmp($array[$index]['part'], $part_of_speech) == 0
-    )
+    if (strcmp($array[$index]['word'], $word_to_search) == 0
+    && strcmp($array[$index]['part'], $part_of_speech) == 0)
     {
       $found = true;
     }
@@ -234,9 +233,9 @@ function delete_word(string $file_to_load, string $delete_word,
 <?php
 
 $paired_array = getPaired_array(DEFINITION_FILENAME);
-if (
-  isset($_POST) && isset($_POST['new_word']) && isset($_POST['new_part_speech']) && isset($_POST['def_new_word'])
-)
+if (isset($_POST) && isset($_POST['new_word'])
+  && isset($_POST['new_part_speech'])
+  && isset($_POST['def_new_word']))
 {
   $word_new = htmlspecialchars(trim($_POST['new_word']));
   $part_speech = $_POST['speech'];
@@ -260,7 +259,9 @@ if (
   }
   else
   {
-    $paired_array[] = array('word' => $lowercase_word, 'part' => $part_speech,
+    $paired_array[] = array(
+      'word' => $lowercase_word,
+      'part' => $part_speech,
       'definition' => $definition);
     output_to_file($paired_array);
   }
@@ -321,12 +322,11 @@ if (
   <?php
   if (isset($_POST) && isset($_POST['choice_to_delete']))
   {
-    $deleted_word_list = $_POST["choice_to_delete"];
-    for ($index = 0; $index < count($deleted_word_list); $index++)
+    $deleted_list = $_POST["choice_to_delete"];
+    for ($index = 0; $index < count($deleted_list); $index++)
     {
-      $word_to_be_delete =
-        $paired_array[$deleted_word_list[$index][0]]['word'];
-      $delete_part = $paired_array[$deleted_word_list[$index][0]]['part'];
+      $word_to_be_delete = $paired_array[$deleted_list[$index][0]]['word'];
+      $delete_part = $paired_array[$deleted_list[$index][0]]['part'];
       delete_word(DEFINITION_FILENAME, $word_to_be_delete, $delete_part);
     }
   }
