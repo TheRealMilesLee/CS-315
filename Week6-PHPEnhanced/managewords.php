@@ -41,7 +41,6 @@ function output_to_file(array $paired_array): void
   unset($paired_array[$index]);
 }
 
-
 /**
  * This function is to insert a new part of speech
  * @param array $part_of_speech_list is the array of the part of speech
@@ -330,5 +329,4 @@ if (
   ?>
 </form>
 </body>
-
 </html>
