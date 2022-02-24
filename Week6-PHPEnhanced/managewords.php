@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @description A program to manage the word list for the GRE quiz
  * This program has two functions
@@ -42,12 +41,6 @@ function output_to_file(array $paired_array): void
   unset($paired_array[$index]);
 }
 
-function read_from_file(): array
-{
-  $part_of_speech_list = file(PART_OF_SPEECH, FILE_IGNORE_NEW_LINES);
-  array_multisort($part_of_speech_list, SORT_ASC, SORT_REGULAR);
-  return $part_of_speech_list;
-}
 
 /**
  * This function is to insert a new part of speech
@@ -58,7 +51,7 @@ function insert_new_part_speech(array  &$part_of_speech_list,
                                 string $new_part_speech)
 {
   $position = check_if_duplicate($part_of_speech_list, $new_part_speech);
-  if ($position < count($part_of_speech_list))
+  if ($position < count($part_of_speech_list) - 1)
   {
     ?>
     <p>
@@ -224,7 +217,8 @@ function delete_word(string $file_to_load, string $delete_word,
   output_to_file($paired_array);
 }
 
-$part_of_speech_list = read_from_file();
+$part_of_speech_list = file(PART_OF_SPEECH, FILE_IGNORE_NEW_LINES);
+array_multisort($part_of_speech_list, SORT_ASC, SORT_REGULAR);
 $paired_array = getPaired_array(DEFINITION_FILENAME);
 if (
   isset($_POST) && isset($_POST['new_word']) && preg_match('|^[A-Za-z]+$|', $_POST['new_word']) && isset($_POST['new_part_speech']) && preg_match('|^[A-Za-z]+$|', $_POST['new_part_speech']) && isset($_POST['def_new_word'])
