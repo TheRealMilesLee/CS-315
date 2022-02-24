@@ -125,7 +125,7 @@ function display(string $file_to_load)
   ?>
     <p class="selection_to_delete_style">
       <input type="checkbox" id="choice_to_delete[]" name=" choice_to_delete[]" value="<?= $index ?>" />
-      <label id="choice_to_delete[]" name=" choice_to_delete[]"  for="choice_to_delete"> <?= $index ?> </label>
+      <label  for="choice_to_delete"> <?= $index ?> </label>
       <?= " : ", $result, "<br />" ?>
     </p>
   <?php
