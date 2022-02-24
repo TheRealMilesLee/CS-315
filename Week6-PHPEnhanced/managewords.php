@@ -124,7 +124,7 @@ function display(string $file_to_load)
     $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
   ?>
     <p class="selection_to_delete_style">
-      <input type="checkbox" id="choice_to_delete[]" name=" choice_to_delete[]" value="<?= $index ?>" />
+      <input type="checkbox" id="<?= $index ?>" name=" choice_to_delete[]" value="<?= $index ?>" />
       <label  for="choice_to_delete"> <?= $index ?> </label>
       <?= " : ", $result, "<br />" ?>
     </p>
