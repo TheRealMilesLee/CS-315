@@ -243,14 +243,14 @@ function delete_word(
     && isset($_POST['def_new_word'])
   )
   {
-    $word_new = htmlspecialchars(trim($_POST['new_word']));
+    $word_new = (trim($_POST['new_word']));
     $part_speech = $_POST['speech'];
-    $new_part_speech = htmlspecialchars(trim($_POST['new_part_speech']));
+    $new_part_speech = (trim($_POST['new_part_speech']));
     if (!empty($new_part_speech))
     {
       $part_speech = $new_part_speech;
     }
-    $definition = htmlspecialchars(trim($_POST['def_new_word']));
+    $definition = (trim($_POST['def_new_word']));
     $lowercase_word = strtolower($word_new);
     insert_new_part_speech( $new_part_speech);
     // Make sure there's no duplicate entry
