@@ -1,0 +1,40 @@
+/**
+ * Hengyi Li
+ */
+body
+{
+  font-family: sans-serif, monospace, serif;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+.header_topic
+{
+  font-family: sans-serif, serif;
+  font-size: 30px;
+  font-style: oblique;
+  font-weight: bold;
+  text-align: center;
+}
+
+p
+{
+  font-family: sans-serif, serif;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+}
+
+.selection_to_delete_style
+{
+  font-family: sans-serif, serif;
+  font-size: 15px;
+  font-weight: normal;
+  text-align: left;
+}
+.sub-title
+{
+  font-weight: bold;
+}
