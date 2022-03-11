@@ -226,8 +226,7 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
   <body>
     <?php
     $paired_array = getPaired_array(DEFINITION_FILENAME);
-    if (
-      isset($_POST) && isset($_POST['new_word'])
+    if (isset($_POST) && isset($_POST['new_word'])
       && isset($_POST['new_part_speech'])
       && isset($_POST['def_new_word'])
     )
@@ -246,11 +245,11 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       $position = search_word($paired_array, $word_new, $part_speech);
       if ($position < count($paired_array))
       {
-    ?>
-        <p>
-          <?= 'The entry has already exists'; ?>
-        </p>
-    <?php
+        ?>
+          <p>
+            <?= 'The entry has already exists'; ?>
+          </p>
+        <?php
       }
       else
       {
@@ -260,6 +259,16 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
           'definition' => $definition
         );
         output_to_file($paired_array);
+      }
+    }
+    elseif (isset($_POST) && isset($_POST['choice_to_delete']))
+    {
+      $deleted_list = $_POST['choice_to_delete'];
+      for ($index = 0; $index < count($deleted_list); $index++)
+      {
+        $word_to_be_delete = $paired_array[$deleted_list[$index][0]]['word'];
+        $delete_part = $paired_array[$deleted_list[$index][0]]['part'];
+        delete_word(DEFINITION_FILENAME, $word_to_be_delete, $delete_part);
       }
     }
     ?>
@@ -314,16 +323,6 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
         <input type='submit' value='Confirm to delete' name='delete' />
       </p>
       <?php
-      if (isset($_POST) && isset($_POST['choice_to_delete']))
-      {
-        $deleted_list = $_POST['choice_to_delete'];
-        for ($index = 0; $index < count($deleted_list); $index++)
-        {
-          $word_to_be_delete = $paired_array[$deleted_list[$index][0]]['word'];
-          $delete_part = $paired_array[$deleted_list[$index][0]]['part'];
-          delete_word(DEFINITION_FILENAME, $word_to_be_delete, $delete_part);
-        }
-      }
       display(DEFINITION_FILENAME);
       ?>
     </form>
