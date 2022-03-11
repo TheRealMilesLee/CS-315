@@ -19,3 +19,8 @@ function form_validation(form)
     return false;
   }
 }
+
+function find_duplicate()
+{
+  
+}
