@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @description A program to manage the word list for the GRE quiz
  * This program has two functions
@@ -237,7 +238,6 @@ function delete_word(
 
 <body>
   <?php
-
   $paired_array = getPaired_array(DEFINITION_FILENAME);
   if (
     isset($_POST) && isset($_POST['new_word'])
@@ -283,10 +283,10 @@ function delete_word(
   <hr />
   <br />
   <p class="sub-title"> Add a new word </p>
-  <form method="post" action="managewords.php">
+  <form method="post" action="managewords.php" id="new_words_form">
     <p>
       <label for="new_word"> What's the word? </label>
-      <input type="text" id="new_word" name="new_word" required />
+      <input type="text" id="new_word" name="new_word" />
     </p>
     <p>
       <label for="speech"> What's the part of speech of the word? </label>
@@ -316,10 +316,10 @@ function delete_word(
     </p>
     <p>
       <label for="def_new_word"> What's the definition of the word? </label>
-      <input type='text' id="def_new_word" name="def_new_word" required />
+      <input type='text' id="def_new_word" name="def_new_word"/>
     </p>
-    <p>
-      <input type="submit" value="Submit Report" name="submit" />
+    <p id="add_submit">
+      <input type="submit" id="new_submit_button" value="Add word" name="submit" />
     </p>
   </form>
   <hr />
@@ -331,7 +331,7 @@ function delete_word(
     <?php
     if (isset($_POST) && isset($_POST['choice_to_delete']))
     {
-      $deleted_list = $_POST["choice_to_delete"];
+      $deleted_list = $_POST['choice_to_delete'];
       for ($index = 0; $index < count($deleted_list); $index++)
       {
         $word_to_be_delete = $paired_array[$deleted_list[$index][0]]['word'];
@@ -344,4 +344,5 @@ function delete_word(
   </form>
   <script src="managewords.js"></script>
 </body>
+
 </html>

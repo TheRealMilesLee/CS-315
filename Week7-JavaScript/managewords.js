@@ -1,30 +1,21 @@
 "use strict";
-
-function $(id)
+var add_submit_button = document.getElementById("new_submit_button");
+add_submit_button.onclick = function ()
 {
-  return document.getElementById(id);
+  return form_validation(this);
 }
-
-window.onload = function ()
+function form_validation(form)
 {
-  $("add-cb").onclick = click_add;
-  $("del-cb").onclick = click_del;
-};
-
-function click_add()
-{
-  $("del-cb").checked = false;
-  $("add-wrapper").classList.remove("invisible");
-  $("add-wrapper").classList.add("visible");
-  $("del-wrapper").classList.remove("visible");
-  $("del-wrapper").classList.add("invisible");
-}
-
-function click_del()
-{
-  $("add-cb").checked = false;
-  $("del-wrapper").classList.remove("invisible");
-  $("del-wrapper").classList.add("visible");
-  $("add-wrapper").classList.remove("visible");
-  $("add-wrapper").classList.add("invisible");
+  if (document.getElementById("new_word").value === "")
+  {
+    window.alert("Please input  the word you want add");
+    form.new_word.focus();
+    return false;
+  }
+  else if (document.getElementById("def_new_word").value === "")
+  {
+    window.alert("Please input  the definition you want add");
+    form.definition.focus();
+    return false;
+  }
 }
