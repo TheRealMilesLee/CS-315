@@ -318,8 +318,8 @@ function delete_word(
       <label for="def_new_word"> What's the definition of the word? </label>
       <input type='text' id="def_new_word" name="def_new_word"/>
     </p>
-    <p id="add_submit">
-      <input type="submit" id="new_submit_button" value="Add word" name="submit" />
+    <p>
+      <input type="submit" id="new_submit_button" value="Add word" name="submit" disabled/>
     </p>
   </form>
   <hr />
