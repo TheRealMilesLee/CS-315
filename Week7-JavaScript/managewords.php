@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @description A program to manage the word list for the GRE quiz
  * This program has two functions
@@ -217,31 +218,39 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title> Manage Words </title>
-    <meta name="author" content="Hengyi Li" />
-    <link rel="stylesheet" href="managewords.css" />
-  </head>
-  <body>
-    <?php
-    $paired_array = getPaired_array(DEFINITION_FILENAME);
-    if (isset($_POST) && isset($_POST['new_word'])
-      && isset($_POST['new_part_speech'])
-      && isset($_POST['def_new_word'])
-    )
+
+<head>
+  <meta charset="utf-8" />
+  <title> Manage Words </title>
+  <meta name="author" content="Hengyi Li" />
+  <link rel="stylesheet" href="managewords.css" />
+</head>
+
+<body>
+  <?php
+  $paired_array = getPaired_array(DEFINITION_FILENAME);
+  if (
+    isset($_POST) && isset($_POST['new_word'])
+    && isset($_POST['new_part_speech'])
+    && isset($_POST['def_new_word'])
+  )
+  {
+    $word_new
+      = strtolower(htmlspecialchars(trim($_POST['new_word'])));
+    $part_speech
+      = strtolower(htmlspecialchars(trim($_POST['speech'])));
+    $new_part_speech
+      = strtolower(htmlspecialchars(trim($_POST['new_part_speech'])));
+    $definition
+      = strtolower(htmlspecialchars(trim($_POST['def_new_word'])));
+    if (strcmp($new_part_speech, "") != 0)
     {
-      $word_new = htmlspecialchars(trim($_POST['new_word']));
-      $part_speech = $_POST['speech'];
-      $new_part_speech = htmlspecialchars(trim($_POST['new_part_speech']));
-      if (strcmp($new_part_speech, "") != 0)
-      {
-        $part_speech = $new_part_speech;
-      }
-      $definition = htmlspecialchars(trim($_POST['def_new_word']));
-      $lowercase_word = strtolower($word_new);
+      $part_speech = $new_part_speech;
       insert_new_part_speech($new_part_speech);
-      // Make sure there's no duplicate entry
+    }
+    // Make sure there's no duplicate entry
+    if ((strcmp($word_new, "") != 0) && (strcmp($definition, "") != 0))
+    {
       $position = search_word($paired_array, $word_new, $part_speech);
       if ($position < count($paired_array))
       {
@@ -254,78 +263,81 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       else
       {
         $paired_array[] = array(
-          'word' => $lowercase_word,
+          'word' => $word_new,
           'part' => $part_speech,
           'definition' => $definition
         );
         output_to_file($paired_array);
       }
     }
-    elseif (isset($_POST) && isset($_POST['choice_to_delete']))
+  }
+
+  if (isset($_POST) && isset($_POST['choice_to_delete']))
+  {
+    $deleted_list = $_POST['choice_to_delete'];
+    for ($index = 0; $index < count($deleted_list); $index++)
     {
-      $deleted_list = $_POST['choice_to_delete'];
-      for ($index = 0; $index < count($deleted_list); $index++)
-      {
-        $word_to_be_delete = $paired_array[$deleted_list[$index][0]]['word'];
-        $delete_part = $paired_array[$deleted_list[$index][0]]['part'];
-        delete_word(DEFINITION_FILENAME, $word_to_be_delete, $delete_part);
-      }
+      $word_to_be_delete = $paired_array[$deleted_list[$index][0]]['word'];
+      $delete_part = $paired_array[$deleted_list[$index][0]]['part'];
+      delete_word(DEFINITION_FILENAME, $word_to_be_delete, $delete_part);
     }
-    ?>
-    <h1 class="header_topic"> Word Manager </h1>
+  }
+  ?>
+  <h1 class="header_topic"> Word Manager </h1>
+  <p>
+    This is the Zelda' s GRE vocabulary manager, choose to add a new word or
+    delete a word. </p>
+  <hr />
+  <br />
+  <p class="sub-title"> Add a new word </p>
+  <form method="post" action="managewords.php" id="new_words_form">
     <p>
-      This is the Zelda' s GRE vocabulary manager, choose to add a new word or
-      delete a word. </p>
+      <label for="new_word"> What's the word? </label>
+      <input type="text" id="new_word" name="new_word" />
+    </p>
+    <p>
+      <label for="speech"> What's the part of speech of the word? </label>
+      <select name="speech" id="speech">
+        <option value=""> Make a choice</option>
+        <?php
+        $part_of_speech_list = file(PART_OF_SPEECH, FILE_IGNORE_NEW_LINES);
+        array_multisort($part_of_speech_list, SORT_ASC, SORT_REGULAR);
+        $index = 0;
+        while ($index < count($part_of_speech_list))
+        {
+        ?>
+          <option value="<?= $part_of_speech_list[$index] ?>">
+            <?= $part_of_speech_list[$index] ?>
+          </option>
+        <?php
+          $index++;
+        }
+        ?>
+      </select>
+    </p>
+    <p>
+      <label for="new_part_speech">
+        Not found you want? Fill your own part of speech!
+      </label>
+      <input type="text" id="new_part_speech" name="new_part_speech" />
+    </p>
+    <p>
+      <label for="def_new_word"> What's the definition of the word? </label>
+      <input type='text' id="def_new_word" name="def_new_word" />
+    </p>
+    <p>
+      <input type="submit" id="new_submit_button" value="Add word" name="submit" disabled />
+    </p>
     <hr />
-    <br />
-    <p class="sub-title"> Add a new word </p>
-    <form method="post" action="managewords.php" id="new_words_form">
-      <p>
-        <label for="new_word"> What's the word? </label>
-        <input type="text" id="new_word" name="new_word" />
-      </p>
-      <p>
-        <label for="speech"> What's the part of speech of the word? </label>
-        <select name="speech" id="speech">
-          <option value=""> Make a choice</option>
-          <?php
-          $part_of_speech_list = file(PART_OF_SPEECH, FILE_IGNORE_NEW_LINES);
-          array_multisort($part_of_speech_list, SORT_ASC, SORT_REGULAR);
-          $index = 0;
-          while ($index < count($part_of_speech_list))
-          {
-          ?>
-            <option value="<?= $part_of_speech_list[$index] ?>">
-              <?= $part_of_speech_list[$index] ?>
-            </option>
-          <?php
-            $index++;
-          }
-          ?>
-        </select>
-      </p>
-      <p>
-        <label for="new_part_speech">
-          Not found you want? Fill your own part of speech!
-        </label>
-        <input type="text" id="new_part_speech" name="new_part_speech" />
-      </p>
-      <p>
-        <label for="def_new_word"> What's the definition of the word? </label>
-        <input type='text' id="def_new_word" name="def_new_word" />
-      </p>
-      <p>
-        <input type="submit" id="new_submit_button" value="Add word" name="submit" disabled />
-      </p>
-      <hr />
-      <p class="sub-title"> Delete a word </p>
-      <p>
-        <input type='submit' value='Confirm to delete' name='delete' />
-      </p>
-      <?php
-      display(DEFINITION_FILENAME);
-      ?>
-    </form>
-    <script src="managewords.js"></script>
-  </body>
+    <p class="sub-title"> Delete a word </p>
+    <p>
+      <input type='submit' value='Confirm to delete' name='delete' />
+    </p>
+    <?php
+    display(DEFINITION_FILENAME);
+    ?>
+  </form>
+  <script src="managewords.js"></script>
+</body>
+
 </html>
