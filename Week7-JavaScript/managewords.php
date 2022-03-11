@@ -234,7 +234,7 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       $word_new = htmlspecialchars(trim($_POST['new_word']));
       $part_speech = $_POST['speech'];
       $new_part_speech = htmlspecialchars(trim($_POST['new_part_speech']));
-      if (!empty($new_part_speech))
+      if (strcmp($new_part_speech, "") != 0)
       {
         $part_speech = $new_part_speech;
       }
