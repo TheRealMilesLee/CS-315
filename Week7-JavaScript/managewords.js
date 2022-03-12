@@ -12,6 +12,10 @@ input_speech.onchange = function ()
 {
   add_submit_button.disabled = form_validation(this);
 }
+input_speech.onchange = function ()
+{
+  add_submit_button.disabled = form_validation(this);
+}
 input_new_speech.onchange = function ()
 {
   add_submit_button.disabled = form_validation(this);
@@ -28,16 +32,14 @@ function form_validation(form)
     form.new_word.focus();
     return true;
   }
-  else if (input_speech.value === " " && input_new_speech === "")
+  else if (input_speech.value === "" && input_new_speech.value === "")
   {
-    window.alert("Please select the speech or input your new part of speech");
-    form.speech.focus();
+    window.alert("Have you check your butthole?");
     return true;
   }
   else if (input_definition.value === "")
   {
     window.alert("Please input  the definition you want add");
-    form.def_new_word.focus();
     return true;
   }
   else

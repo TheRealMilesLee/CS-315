@@ -243,6 +243,7 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       = strtolower(htmlspecialchars(trim($_POST['new_part_speech'])));
     $definition
       = strtolower(htmlspecialchars(trim($_POST['def_new_word'])));
+      var_dump($new_part_speech);
     if (strcmp($new_part_speech, "") != 0)
     {
       $part_speech = $new_part_speech;
@@ -290,7 +291,7 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
   <hr />
   <br />
   <p class="sub-title"> Add a new word </p>
-  <form method="post" action="managewords.php" id="new_words_form">
+  <form method="post" action="managewords.php">
     <p>
       <label for="new_word"> What's the word? </label>
       <input type="text" id="new_word" name="new_word" />
