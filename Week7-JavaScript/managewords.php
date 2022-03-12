@@ -243,7 +243,6 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       = strtolower(htmlspecialchars(trim($_POST['new_part_speech'])));
     $definition
       = strtolower(htmlspecialchars(trim($_POST['def_new_word'])));
-      var_dump($new_part_speech);
     if (strcmp($new_part_speech, "") != 0)
     {
       $part_speech = $new_part_speech;

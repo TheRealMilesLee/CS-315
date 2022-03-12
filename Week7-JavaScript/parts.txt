@@ -2,6 +2,5 @@ adjective
 adverb
 article
 conjunction
-design.
 noun
 verb
