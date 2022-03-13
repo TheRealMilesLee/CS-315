@@ -326,12 +326,13 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       <input type='text' id="def_new_word" name="def_new_word" />
     </p>
     <p>
-      <input type="submit" id="new_submit_button" value="Add word" name="submit" disabled />
+      <input type="submit" id="new_submit_button" value="Add word" name="submit"
+      disabled />
     </p>
     <hr />
     <p class="sub-title"> Delete a word </p>
     <p>
-      <input type='submit' value='Confirm to delete' name='delete' />
+      <input type='submit' id="del_submit" value='Confirm to delete' name='delete' disabled/>
     </p>
     <?php
     display(DEFINITION_FILENAME);
@@ -339,5 +340,4 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
   </form>
   <script src="managewords.js"></script>
 </body>
-
 </html>
