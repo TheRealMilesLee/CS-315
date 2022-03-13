@@ -24,24 +24,24 @@ del_word_section.onchange = function ()
 {
   del_submit_button.disabled = form_validation_delete(this);
 }
-function form_validation_add(form)
+function form_validation_add()
 {
   if (input_words.value === "")
   {
     window.alert("Please input  the word you want add");
-    form.new_word.focus();
+    input_words.focus();
     return true;
   }
   else if (input_speech.value === "" && input_new_speech.value === "")
   {
     window.alert("Please input the speech either by select the current or input a new one");
-    form.speech.focus();
+    input_speech.focus();
     return true;
   }
   else if (input_definition.value === "")
   {
     window.alert("Please input  the definition you want add");
-    form.def_new_word.focus();
+    input_definition.focus();
     return true;
   }
   else
@@ -50,7 +50,7 @@ function form_validation_add(form)
   }
 }
 
-function form_validation_delete(form)
+function form_validation_delete()
 {
   if (del_select_choice.value === "")
   {
