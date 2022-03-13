@@ -38,3 +38,13 @@ p
 {
   font-weight: bold;
 }
+
+#add_word
+{
+  display: block;
+}
+
+#del_word
+{
+  display: block;
+}
