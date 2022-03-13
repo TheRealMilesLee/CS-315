@@ -125,7 +125,8 @@ function display(string $file_to_load)
     $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
   ?>
     <p class="selection_to_delete_style">
-      <input type="checkbox" id="<?= $index ?>" name=" choice_to_delete[]" value="<?= $index ?>" />
+      <input type="checkbox" id="<?= $index ?>" name=" choice_to_delete[]"
+      value="<?= $index ?>" />
       <label for="<?= $index ?>"> <?= $index ?> </label>
       <?= " : ", $result, "<br />" ?>
     </p>
@@ -337,7 +338,7 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       <input type='submit' id="del_submit" value='Confirm to delete' name='delete' disabled />
     </p>
     <?php
-    display(DEFINITION_FILENAME);
+      display(DEFINITION_FILENAME);
     ?>
   </div>
   </form>
