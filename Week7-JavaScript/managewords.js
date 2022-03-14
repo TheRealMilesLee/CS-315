@@ -6,16 +6,10 @@ var input_definition = document.getElementById("def_new_word");
 var input_speech = document.getElementById("speech");
 var input_new_speech = document.getElementById("new_part_speech");
 var del_word_section = document.getElementById("del_word");
-var del_submit_button = document.getElementById("del_submit")
-var del_select_choice = document.getElementsByName("choice_to_delete[]")
-window.onchange = function ()
-{
-  input_words.onchange = clear_delete;
-  input_definition.onchange = clear_delete;
-  input_speech.onchange = clear_delete;
-  input_new_speech.onchange = clear_delete;
-  del_select_choice.onchange = clear_add;
-}
+var del_submit_button = document.getElementById("del_submit");
+var del_select_choice = document.getElementsByName("choice_to_delete[]");
+var paired_array = document.getElementById("result").innerHTML;
+console.log(paired_array);
 add_word_section.onchange = function ()
 {
   add_submit_button.disabled = form_validation_add(this);
@@ -52,6 +46,7 @@ function form_validation_add()
 
 function form_validation_delete()
 {
+  console.log(del_select_choice);
   if (del_select_choice.value === "")
   {
     return true;
