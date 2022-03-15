@@ -23,7 +23,7 @@ window.onchange = function ()
 {
   if (input_words.value !== "" && input_speech.value !== "")
   {
-    let compare_string = " "+ input_words.value + input_speech.value;
+    let compare_string = " " + input_words.value + input_speech.value;
     find_duplicate(compare_string);
   }
   else if (input_words.value !== "" && input_new_speech.value !== "")
