@@ -48,3 +48,9 @@ p
 {
   display: block;
 }
+
+.delete_section_limit_window
+{
+  height: 350px;;
+  overflow-y: scroll;
+}

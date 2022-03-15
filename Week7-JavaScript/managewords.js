@@ -21,6 +21,7 @@ let paired_array = document.getElementsByTagName("span")
  */
 window.onchange = function ()
 {
+  add_submit_button.disabled = form_validation_add();
   if (input_words.value !== "" && input_speech.value !== "")
   {
     let compare_string = " " + input_words.value + input_speech.value;
@@ -41,6 +42,7 @@ window.onchange = function ()
   {
     console.log("Waiting for fill");
   }
+  del_submit_button.disabled = form_validation_delete();
 }
 
 /**
@@ -48,11 +50,25 @@ window.onchange = function ()
  */
 add_word_section.onchange = function ()
 {
-  input_words.value.replace("<", "&lt;");
-  input_new_speech.value.replace("<", "&lt;");
-  input_definition.value.replace("<", "&lt;");
   clear_delete();
-  add_submit_button.disabled = form_validation_add(this);
+  input_words.onkeydown = function ()
+  {
+    let regex_word = new RegExp("^[a-z]*");
+    if (!regex_word.test(input_words.value))
+    {
+      window.alert("Please only input the lowercase words");
+      clear_add();
+    }
+  }
+  input_new_speech.onkeydown = function ()
+  {
+    let regex_speech = new RegExp("^[a-z\.]*")
+    if (!regex_speech.test(input_new_speech.value))
+    {
+      window.alert("Please only input the lowercase speech");
+      clear_add();
+    }
+  }
 }
 
 /**
@@ -61,7 +77,6 @@ add_word_section.onchange = function ()
 del_word_section.onchange = function ()
 {
   clear_add();
-  del_submit_button.disabled = form_validation_delete(this);
 }
 
 /**
@@ -70,7 +85,14 @@ del_word_section.onchange = function ()
  */
 function form_validation_add()
 {
-  if (input_words.value === "")
+  if (input_words.value === ""
+    && input_speech.value === ""
+    && input_new_speech.value === ""
+    && input_definition.value === "")
+  {
+    return true;
+  }
+  else if (input_words.value === "")
   {
     window.confirm("Please input  the word you want add");
     input_words.focus();
@@ -100,14 +122,17 @@ function form_validation_add()
  */
 function form_validation_delete()
 {
-  if (del_select_choice.value === "")
+  let index = 0;
+  let empty = true;
+  while (index < del_select_choice.length)
   {
-    return true;
+    if (del_select_choice[index].checked === true)
+    {
+      empty = false;
+    }
+    index++;
   }
-  else
-  {
-    return false;
-  }
+  return empty;
 }
 
 /**
@@ -130,7 +155,6 @@ function clear_delete()
   while (index < del_select_choice.length)
   {
     del_select_choice[index].checked = false;
-    del_select_choice[index].value = "";
     index++;
   }
 }
@@ -154,11 +178,9 @@ function find_duplicate(compare_string)
     let temp_array = word_array[index].split("\t");
     split_array.push(temp_array);
   }
-  console.log(compare_string);
     for (let index = 0; index < split_array.length; index++)
     {
       let compare_dict = split_array[index][0] + split_array[index][1];
-      console.log(compare_dict);
       if (compare_dict === compare_string)
       {
         window.alert(" The entry you entered is already exists!");

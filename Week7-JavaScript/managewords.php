@@ -125,9 +125,10 @@ function display(string $file_to_load)
     $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
   ?>
     <p class="selection_to_delete_style">
-      <input type="checkbox" id="<?= $index ?>" name="choice_to_delete[]" value="<?= $index ?>" />
+      <input type="checkbox" id="<?= $index ?>" name="choice_to_delete[]"
+      value="<?= $index ?>" />
       <label for="<?= $index ?>"> <?= $index, " " ?>
-        <span> <?= $result?></span> <?= "<br />" ?>
+        <span> <?= $result ?></span> <?= "<br />" ?>
       </label>
     </p>
   <?php
@@ -337,13 +338,17 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
     <p>
       <input type='submit' id="del_submit" value='Confirm to delete' name='delete' disabled />
     </p>
-    <?php
-    display(DEFINITION_FILENAME);
-    ?>
+    <div class="delete_section_limit_window">
+      <?php
+      display(DEFINITION_FILENAME);
+      ?>
+    </div>
+
   </div>
   </form>
 
-  <script src="managewords.js"></script>
+  <script src=" managewords.js">
+  </script>
 </body>
 
 </html>
