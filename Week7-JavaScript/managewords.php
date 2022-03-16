@@ -218,7 +218,7 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
 }
 ?>
 <!DOCTYPE html>
-<html lang=" en">
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -365,7 +365,6 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
     </p>
   </div>
   </form>
-
   <script src=" managewords.js">
   </script>
 </body>
