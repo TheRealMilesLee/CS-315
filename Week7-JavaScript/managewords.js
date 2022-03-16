@@ -12,32 +12,34 @@
 window.onchange = function ()
 {
   get_element_id("new_submit_button").disabled = form_validation_add();
-  if (get_element_id("new_word").value !== "" && get_element_id("speech").value !== "")
-  {
-    let compare_string = " " + get_element_id("new_word").value + get_element_id("speech").value;
-    find_duplicate(compare_string);
-  }
-  else if (get_element_id("new_word").value !== "" && get_element_id("new_part_speech").value !== "")
-  {
-    let compare_string = " " + get_element_id("new_word").value + get_element_id("new_part_speech").value;
-    find_duplicate(compare_string);
-  }
-  else if (get_element_id("new_word").value !== "" && get_element_id("new_part_speech").value !== ""
+  let word_and_part = " " + get_element_id("new_word").value +
+    get_element_id("speech").value;
+  let word_new_part = " " + get_element_id("new_word").value +
+    get_element_id("new_part_speech").value;
+  if (get_element_id("new_word").value !== ""
     && get_element_id("speech").value !== "")
   {
-    let compare_string = " " + get_element_id("new_word").value + get_element_id("new_part_speech").value;
-    find_duplicate(compare_string);
+    find_duplicate(word_and_part);
   }
-  else
+  else if (get_element_id("new_word").value !== ""
+    && get_element_id("new_part_speech").value !== "")
   {
-    console.log("Waiting for fill");
+      find_duplicate(word_new_part);
+  }
+  else if (get_element_id("new_word").value !== ""
+    && get_element_id("new_part_speech").value !== ""
+    && get_element_id("speech").value !== "")
+  {
+    find_duplicate(word_new_part);
   }
   get_element_id("del_submit").disabled = form_validation_delete();
-  get_element_id("speech").onchange = function ()
+  let speech = get_element_id("speech");
+  speech.onchange = function ()
   {
     get_element_id("new_part_speech").value = "";
-  }
-  get_element_id("new_part_speech").onchange = function ()
+  };
+  let new_part_speech = get_element_id("new_part_speech");
+  new_part_speech.onchange = function ()
   {
     get_element_id("speech").value = "";
     let regex_speech = new RegExp("^[a-z]+$");
@@ -46,8 +48,8 @@ window.onchange = function ()
       window.alert("Please only input the lowercase speech");
       clear_add();
     }
-  }
-}
+  };
+};
 
 /**
  * This is control the add section for validation
@@ -55,7 +57,7 @@ window.onchange = function ()
 get_element_id("add_word").onchange = function ()
 {
   clear_delete();
-}
+};
 get_element_id("new_word").onchange = function ()
 {
   let regex_word = new RegExp("^[a-z]+$");
@@ -64,7 +66,7 @@ get_element_id("new_word").onchange = function ()
     window.alert("Please only input the lowercase words");
     clear_add();
   }
-}
+};
 get_element_id("new_part_speech").onchange = function ()
 {
   let regex_speech = new RegExp("^[a-z]+$");
@@ -73,14 +75,14 @@ get_element_id("new_part_speech").onchange = function ()
     window.alert("Please only input the lowercase speech");
     clear_add();
   }
-}
+};
 /**
  * This is control the delete section for validation
  */
 get_element_id("del_word").onchange = function ()
 {
   clear_add();
-}
+};
 
 function get_element_id(id)
 {
@@ -88,11 +90,11 @@ function get_element_id(id)
 }
 function get_element_name(name)
 {
-  return document.getElementsByName(name)
+  return document.getElementsByName(name);
 }
 function get_element_tag(tag)
 {
-  return document.getElementsByTagName(tag)
+  return document.getElementsByTagName(tag);
 }
 
 /**
@@ -117,7 +119,7 @@ function form_validation_add()
   else if (get_element_id("speech").value === ""
     && get_element_id("new_part_speech").value === "")
   {
-    window.confirm("Please input the speech either by select the current or input a new one");
+    window.confirm("Please input the speech");
     get_element_id("speech").focus();
     return true;
   }
@@ -127,15 +129,15 @@ function form_validation_add()
     get_element_id("def_new_word").focus();
     return true;
   }
-  else
-  {
+  else {
     return false;
   }
 }
 
 /**
  * This function is to determine whether the checkbox is checked or not
- * @returns true if the delete check box is empty, return false if the checkbox is not empty
+ * @returns true if the delete check box is empty,
+ * return false if the checkbox is not empty
  */
 function form_validation_delete()
 {
@@ -179,30 +181,34 @@ function clear_delete()
 
 /**
  * This function is to find the duplication
- * @param {string} compare_string is the string that user input. Contains word and speech
+ * @param {string} compare_string is the string that user input.
  */
 function find_duplicate(compare_string)
 {
-  let word_array = new Array();
+  let word_array = [];
   let index = 0;
   while (index < get_element_tag("span").length)
   {
     word_array.push(get_element_tag("span")[index].innerHTML);
     index++;
   }
-  let split_array = new Array();
-  for (let index = 0; index < word_array.length; index++)
+  let split_array = [];
+  let loop = 0;
+  while (loop < word_array.length)
   {
-    let temp_array = word_array[index].split("\t");
+    let temp_array = word_array[loop].split("\t");
     split_array.push(temp_array);
+    loop++;
   }
-    for (let index = 0; index < split_array.length; index++)
+  let looptimes = 0;
+  while (looptimes < split_array.length)
+  {
+    let compare_dict = split_array[looptimes][0] + split_array[looptimes][1];
+    if (compare_dict === compare_string)
     {
-      let compare_dict = split_array[index][0] + split_array[index][1];
-      if (compare_dict === compare_string)
-      {
-        window.alert(" The entry you entered is already exists!");
-        clear_add()
-      }
+      window.alert(" The entry you entered is already exists!");
+      clear_add();
     }
+    looptimes++;
+  }
 }

@@ -229,32 +229,32 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
 
 <body>
   <?php
-  $paired_array = getPaired_array(DEFINITION_FILENAME);
-  if (
-    isset($_POST) && isset($_POST['new_word'])
-    && isset($_POST['new_part_speech'])
-    && isset($_POST['def_new_word'])
-  )
-  {
-    $word_new
-      = strtolower(htmlspecialchars(trim($_POST['new_word'])));
-    $part_speech
-      = strtolower(htmlspecialchars(trim($_POST['speech'])));
-    $new_part_speech
-      = strtolower(htmlspecialchars(trim($_POST['new_part_speech'])));
-    $definition
-      = strtolower(htmlspecialchars(trim($_POST['def_new_word'])));
-    if (strcmp($new_part_speech, "") != 0)
+    $paired_array = getPaired_array(DEFINITION_FILENAME);
+    if (
+      isset($_POST) && isset($_POST['new_word'])
+      && isset($_POST['new_part_speech'])
+      && isset($_POST['def_new_word'])
+    )
     {
-      $part_speech = $new_part_speech;
-      insert_new_part_speech($new_part_speech);
-    }
-    // Make sure there's no duplicate entry
-    if ((strcmp($word_new, "") != 0) && (strcmp($definition, "") != 0))
-    {
-      $position = search_word($paired_array, $word_new, $part_speech);
-      if ($position < count($paired_array))
+      $word_new
+        = strtolower(htmlspecialchars(trim($_POST['new_word'])));
+      $part_speech
+        = strtolower(htmlspecialchars(trim($_POST['speech'])));
+      $new_part_speech
+        = strtolower(htmlspecialchars(trim($_POST['new_part_speech'])));
+      $definition
+        = strtolower(htmlspecialchars(trim($_POST['def_new_word'])));
+      if (strcmp($new_part_speech, "") != 0)
       {
+        $part_speech = $new_part_speech;
+        insert_new_part_speech($new_part_speech);
+      }
+      // Make sure there's no duplicate entry
+      if ((strcmp($word_new, "") != 0) && (strcmp($definition, "") != 0))
+      {
+        $position = search_word($paired_array, $word_new, $part_speech);
+        if ($position < count($paired_array))
+        {
   ?>
         <p>
           <?= 'The entry has already exists'; ?>
