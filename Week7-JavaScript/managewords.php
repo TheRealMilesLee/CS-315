@@ -227,7 +227,6 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
   <meta name="author" content="Hengyi Li" />
   <link rel="stylesheet" href="managewords.css" />
 </head>
-
 <body>
   <?php
   $paired_array = getPaired_array(DEFINITION_FILENAME);

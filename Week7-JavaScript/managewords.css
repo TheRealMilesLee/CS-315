@@ -14,6 +14,8 @@ body
 
 .header_topic
 {
+  grid-column: 0/2;
+  grid-row: 0/0;
   font-family: sans-serif, serif;
   font-size: 30px;
   font-style: oblique;

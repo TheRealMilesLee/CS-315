@@ -5,69 +5,57 @@
  * @version 18.20.13 Release
  */
 "use strict";
-let add_word_section = document.getElementById("add_word");
-let input_words = document.getElementById("new_word");
-let input_definition = document.getElementById("def_new_word");
-let input_speech = document.getElementById("speech");
-let input_new_speech = document.getElementById("new_part_speech");
-let add_submit_button = document.getElementById("new_submit_button");
-let del_word_section = document.getElementById("del_word");
-let del_submit_button = document.getElementById("del_submit");
-let del_select_choice = document.getElementsByName("choice_to_delete[]");
-let paired_array = document.getElementsByTagName("span");
-let regex_word = new RegExp("^[a-z]+$");
-let regex_speech = new RegExp("^[a-z]+$");
+
 /**
  * This is to find the duplicate in the entry
  */
 window.onchange = function ()
 {
-  add_submit_button.disabled = form_validation_add();
-
-  if (input_words.value !== "" && input_speech.value !== "")
+  get_element_id("new_submit_button").disabled = form_validation_add();
+  if (get_element_id("new_word").value !== "" && get_element_id("speech").value !== "")
   {
-    let compare_string = " " + input_words.value + input_speech.value;
+    let compare_string = " " + get_element_id("new_word").value + get_element_id("speech").value;
     find_duplicate(compare_string);
   }
-  else if (input_words.value !== "" && input_new_speech.value !== "")
+  else if (get_element_id("new_word").value !== "" && get_element_id("new_part_speech").value !== "")
   {
-    let compare_string = " " +  input_words.value + input_new_speech.value;
+    let compare_string = " " + get_element_id("new_word").value + get_element_id("new_part_speech").value;
     find_duplicate(compare_string);
   }
-  else if (input_words.value !== "" && input_new_speech.value !== ""
-    && input_speech.value !== "")
+  else if (get_element_id("new_word").value !== "" && get_element_id("new_part_speech").value !== ""
+    && get_element_id("speech").value !== "")
   {
-    let compare_string = " " +  input_words.value + input_new_speech.value;
+    let compare_string = " " + get_element_id("new_word").value + get_element_id("new_part_speech").value;
     find_duplicate(compare_string);
   }
   else
   {
     console.log("Waiting for fill");
   }
-  del_submit_button.disabled = form_validation_delete();
+  get_element_id("del_submit").disabled = form_validation_delete();
 }
 
 /**
  * This is control the add section for validation
  */
-add_word_section.onchange = function ()
+get_element_id("add_word").onchange = function ()
 {
   clear_delete();
 }
-input_words.onchange = function ()
+get_element_id("new_word").onchange = function ()
 {
-  if (!regex_word.test(input_words.value))
+  let regex_word = new RegExp("^[a-z]+$");
+  if (!regex_word.test(get_element_id("new_word").value))
   {
-    console.log("Here");
     window.alert("Please only input the lowercase words");
     clear_add();
   }
 }
-input_new_speech.onchange = function ()
+get_element_id("new_part_speech").onchange = function ()
 {
-  if (!regex_speech.test(input_new_speech.value))
+  let regex_speech = new RegExp("^[a-z]+$");
+  if (!regex_speech.test(get_element_id("new_part_speech").value))
   {
-    console.log("bruh");
     window.alert("Please only input the lowercase speech");
     clear_add();
   }
@@ -75,9 +63,22 @@ input_new_speech.onchange = function ()
 /**
  * This is control the delete section for validation
  */
-del_word_section.onchange = function ()
+get_element_id("del_word").onchange = function ()
 {
   clear_add();
+}
+
+function get_element_id(id)
+{
+  return document.getElementById(id);
+}
+function get_element_name(name)
+{
+  return document.getElementsByName(name)
+}
+function get_element_tag(tag)
+{
+  return document.getElementsByTagName(tag)
 }
 
 /**
@@ -86,29 +87,29 @@ del_word_section.onchange = function ()
  */
 function form_validation_add()
 {
-  if (input_words.value === ""
-    && input_speech.value === ""
-    && input_new_speech.value === ""
-    && input_definition.value === "")
+  if (get_element_id("new_word").value === ""
+    && get_element_id("speech").value === ""
+    && get_element_id("new_part_speech").value === ""
+    && get_element_id("def_new_word").value === "")
   {
     return true;
   }
-  else if (input_words.value === "")
+  else if (get_element_id("new_word").value === "")
   {
     window.confirm("Please input  the word you want add");
-    input_words.focus();
+    get_element_id("new_word").focus();
     return true;
   }
-  else if (input_speech.value === "" && input_new_speech.value === "")
+  else if (get_element_id("speech").value === "" && get_element_id("new_part_speech").value === "")
   {
     window.confirm("Please input the speech either by select the current or input a new one");
-    input_speech.focus();
+    get_element_id("speech").focus();
     return true;
   }
-  else if (input_definition.value === "")
+  else if (get_element_id("def_new_word").value === "")
   {
     window.alert("Please input  the definition you want add");
-    input_definition.focus();
+    get_element_id("def_new_word").focus();
     return true;
   }
   else
@@ -125,9 +126,10 @@ function form_validation_delete()
 {
   let index = 0;
   let empty = true;
-  while (index < del_select_choice.length)
+  let paired_array = get_element_name("choice_to_delete[]");
+  while (index < paired_array.length)
   {
-    if (del_select_choice[index].checked === true)
+    if (paired_array[index].checked === true)
     {
       empty = false;
     }
@@ -141,10 +143,10 @@ function form_validation_delete()
  */
 function clear_add()
 {
-  input_words.value = "";
-  input_definition.value = "";
-  input_speech.value = "";
-  input_new_speech.value = "";
+  get_element_id("new_word").value = "";
+  get_element_id("def_new_word").value = "";
+  get_element_id("speech").value = "";
+  get_element_id("new_part_speech").value = "";
 }
 
 /**
@@ -153,9 +155,9 @@ function clear_add()
 function clear_delete()
 {
   let index = 0;
-  while (index < del_select_choice.length)
+  while (index < get_element_name("choice_to_delete[]").length)
   {
-    del_select_choice[index].checked = false;
+    get_element_name("choice_to_delete[]")[index].checked = false;
     index++;
   }
 }
@@ -168,9 +170,9 @@ function find_duplicate(compare_string)
 {
   let word_array = new Array();
   let index = 0;
-  while (index < paired_array.length)
+  while (index < get_element_tag("span").length)
   {
-    word_array.push(paired_array[index].innerHTML);
+    word_array.push(get_element_tag("span")[index].innerHTML);
     index++;
   }
   let split_array = new Array();
