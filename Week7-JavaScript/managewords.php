@@ -272,7 +272,6 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       }
     }
   }
-
   if (isset($_POST) && isset($_POST['choice_to_delete']))
   {
     $deleted_list = $_POST['choice_to_delete'];
@@ -295,9 +294,9 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       Have fun.
     </p>
   </div>
-  <div id="add_word">
-    <p class="sub-title"> Add a new word </p>
-    <form method="post" action="managewords.php">
+  <form method="post" action="managewords.php">
+    <div id="add_word">
+      <p class="sub-title"> Add a new word </p>
       <p>
         <label for="new_word"> What's the word? </label>
         <input type="text" id="new_word" name="new_word" />
@@ -335,35 +334,35 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       <p>
         <input type="submit" id="new_submit_button" value="Add word" name="submit" disabled />
       </p>
-  </div>
-  <div id="del_word">
-    <p class="sub-title"> Delete a word </p>
-    <p>
-      <input type='submit' id="del_submit" value='Confirm to delete' name='delete' disabled />
-    </p>
-    <div class="delete_section_limit_window">
-      <?php
-      display(DEFINITION_FILENAME);
-      ?>
     </div>
-  </div>
-  <div>
-    <br />
-    <br />
-    <br />
-    <h2 class="header_topic"> Something for you know...</h2>
-    <p class="chatty_talking">
-      Yes, you deleted the word. But with what cost?
+    <div id="del_word">
+      <p class="sub-title"> Delete a word </p>
+      <p>
+        <input type='submit' id="del_submit" value='Confirm to delete' name='delete' disabled />
+      </p>
+      <div class="delete_section_limit_window">
+        <?php
+        display(DEFINITION_FILENAME);
+        ?>
+      </div>
+    </div>
+    <div>
       <br />
-      Did you know that you wasted few seconds in your life just
-      doing the meaningless word manager?
       <br />
-      Go, looking at outside, there has plenty things to do.
       <br />
-      Don't waste your time, grab your life and become a man
-      who has better things to do.
-    </p>
-  </div>
+      <h2 class="header_topic"> Something for you know...</h2>
+      <p class="chatty_talking">
+        Yes, you deleted the word. But with what cost?
+        <br />
+        Did you know that you wasted few seconds in your life just
+        doing the meaningless word manager?
+        <br />
+        Go, looking at outside, there has plenty things to do.
+        <br />
+        Don't waste your time, grab your life and become a man
+        who has better things to do.
+      </p>
+    </div>
   </form>
   <script src=" managewords.js">
   </script>
