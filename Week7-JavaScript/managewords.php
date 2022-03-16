@@ -229,32 +229,32 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
 
 <body>
   <?php
-    $paired_array = getPaired_array(DEFINITION_FILENAME);
-    if (
-      isset($_POST) && isset($_POST['new_word'])
-      && isset($_POST['new_part_speech'])
-      && isset($_POST['def_new_word'])
-    )
+  $paired_array = getPaired_array(DEFINITION_FILENAME);
+  if (
+    isset($_POST) && isset($_POST['new_word'])
+    && isset($_POST['new_part_speech'])
+    && isset($_POST['def_new_word'])
+  )
+  {
+    $word_new
+      = strtolower(htmlspecialchars(trim($_POST['new_word'])));
+    $part_speech
+      = strtolower(htmlspecialchars(trim($_POST['speech'])));
+    $new_part_speech
+      = strtolower(htmlspecialchars(trim($_POST['new_part_speech'])));
+    $definition
+      = strtolower(htmlspecialchars(trim($_POST['def_new_word'])));
+    if (strcmp($new_part_speech, "") != 0)
     {
-      $word_new
-        = strtolower(htmlspecialchars(trim($_POST['new_word'])));
-      $part_speech
-        = strtolower(htmlspecialchars(trim($_POST['speech'])));
-      $new_part_speech
-        = strtolower(htmlspecialchars(trim($_POST['new_part_speech'])));
-      $definition
-        = strtolower(htmlspecialchars(trim($_POST['def_new_word'])));
-      if (strcmp($new_part_speech, "") != 0)
+      $part_speech = $new_part_speech;
+      insert_new_part_speech($new_part_speech);
+    }
+    // Make sure there's no duplicate entry
+    if ((strcmp($word_new, "") != 0) && (strcmp($definition, "") != 0))
+    {
+      $position = search_word($paired_array, $word_new, $part_speech);
+      if ($position < count($paired_array))
       {
-        $part_speech = $new_part_speech;
-        insert_new_part_speech($new_part_speech);
-      }
-      // Make sure there's no duplicate entry
-      if ((strcmp($word_new, "") != 0) && (strcmp($definition, "") != 0))
-      {
-        $position = search_word($paired_array, $word_new, $part_speech);
-        if ($position < count($paired_array))
-        {
   ?>
         <p>
           <?= 'The entry has already exists'; ?>
@@ -294,8 +294,9 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       Have fun.
     </p>
   </div>
-  <form method="post" action="managewords.php">
-    <div id="add_word">
+
+  <div id="add_word">
+    <form method="post" action="managewords.php">
       <p class="sub-title"> Add a new word </p>
       <p>
         <label for="new_word"> What's the word? </label>
@@ -334,35 +335,38 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       <p>
         <input type="submit" id="new_submit_button" value="Add word" name="submit" disabled />
       </p>
+  </div>
+  <div id="del_word">
+    <p class="sub-title"> Delete a word </p>
+    <div class="delete_section_limit_window">
+      <?php
+      display(DEFINITION_FILENAME);
+      ?>
     </div>
-    <div id="del_word">
-      <p class="sub-title"> Delete a word </p>
-      <p>
-        <input type='submit' id="del_submit" value='Confirm to delete' name='delete' disabled />
-      </p>
-      <div class="delete_section_limit_window">
-        <?php
-        display(DEFINITION_FILENAME);
-        ?>
-      </div>
-    </div>
-    <div>
+    <p>
+      <input type='submit' id="del_submit" value='Confirm to delete' name='delete' disabled />
+    </p>
+  </div>
+  <div class="waste_time_talking_right">
+    <br />
+    <br />
+    <br />
+    <h2 class="header_topic"> Something for you know...</h2>
+    <p class="chatty_talking">
+      Yes, you deleted the word. But with what cost?
       <br />
+      Did you know that you just wasted few seconds in your life
       <br />
+      by doing the meaningless word manager?
       <br />
-      <h2 class="header_topic"> Something for you know...</h2>
-      <p class="chatty_talking">
-        Yes, you deleted the word. But with what cost?
-        <br />
-        Did you know that you wasted few seconds in your life just
-        doing the meaningless word manager?
-        <br />
-        Go, looking at outside, there has plenty things to do.
-        <br />
-        Don't waste your time, grab your life and become a man
-        who has better things to do.
-      </p>
-    </div>
+      Go, looking at outside, there has plenty things to do.
+      <br />
+      Don't waste your time.
+      <br />
+      Grab your life and become a man
+      who has better things to do.
+    </p>
+  </div>
   </form>
   <script src=" managewords.js">
   </script>
