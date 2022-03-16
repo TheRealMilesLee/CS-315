@@ -125,8 +125,7 @@ function display(string $file_to_load)
     $result = "$words_total\t$part_of_speech_total\t$definition_total\n";
   ?>
     <p class="selection_to_delete_style">
-      <input type="checkbox" id="<?= $index ?>" name="choice_to_delete[]"
-      value="<?= $index ?>" />
+      <input type="checkbox" id="<?= $index ?>" name="choice_to_delete[]" value="<?= $index ?>" />
       <label for="<?= $index ?>"> <?= $index, " " ?>
         <span> <?= $result ?></span> <?= "<br />" ?>
       </label>
@@ -227,6 +226,7 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
   <meta name="author" content="Hengyi Li" />
   <link rel="stylesheet" href="managewords.css" />
 </head>
+
 <body>
   <?php
   $paired_array = getPaired_array(DEFINITION_FILENAME);
@@ -284,15 +284,17 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
     }
   }
   ?>
-  <h1 class="header_topic"> Word Manager </h1>
-  <p>
-    This is the Zelda' s GRE vocabulary manager, welcome.
-    <br />
-    Go to the top and fill in the blank to add the word, go down below and
-    select your choice to delete the words.
-    <br />
-    Have fun.
-  </p>
+  <div>
+    <h1 class="header_topic"> Word Manager </h1>
+    <p class="chatty_talking">
+      This is the Zelda' s GRE vocabulary manager, welcome.
+      <br />
+      Go to the left and fill in the blank to add the word, go down below and
+      select your choice to delete the words.
+      <br />
+      Have fun.
+    </p>
+  </div>
   <div id="add_word">
     <p class="sub-title"> Add a new word </p>
     <form method="post" action="managewords.php">
@@ -344,7 +346,23 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       display(DEFINITION_FILENAME);
       ?>
     </div>
-
+  </div>
+  <div>
+    <br />
+    <br />
+    <br />
+    <h2 class="header_topic"> Something for you know...</h2>
+    <p class="chatty_talking">
+      Yes, you deleted the word. But with what cost?
+      <br />
+      Did you know that you wasted few seconds in your life just
+      doing the meaningless word manager?
+      <br />
+      Go, looking at outside, there has plenty things to do.
+      <br />
+      Don't waste your time, grab your life and become a man
+      who has better things to do.
+    </p>
   </div>
   </form>
 

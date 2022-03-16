@@ -33,6 +33,20 @@ window.onchange = function ()
     console.log("Waiting for fill");
   }
   get_element_id("del_submit").disabled = form_validation_delete();
+  get_element_id("speech").onchange = function ()
+  {
+    get_element_id("new_part_speech").value = "";
+  }
+  get_element_id("new_part_speech").onchange = function ()
+  {
+    get_element_id("speech").value = "";
+    let regex_speech = new RegExp("^[a-z]+$");
+    if (!regex_speech.test(get_element_id("new_part_speech").value))
+    {
+      window.alert("Please only input the lowercase speech");
+      clear_add();
+    }
+  }
 }
 
 /**
@@ -100,7 +114,8 @@ function form_validation_add()
     get_element_id("new_word").focus();
     return true;
   }
-  else if (get_element_id("speech").value === "" && get_element_id("new_part_speech").value === "")
+  else if (get_element_id("speech").value === ""
+    && get_element_id("new_part_speech").value === "")
   {
     window.confirm("Please input the speech either by select the current or input a new one");
     get_element_id("speech").focus();
