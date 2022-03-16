@@ -283,20 +283,19 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
     }
   }
   ?>
-  <div>
-    <h1 class="header_topic"> Word Manager </h1>
-    <p class="chatty_talking">
-      This is the Zelda' s GRE vocabulary manager, welcome.
-      <br />
-      Go to the left and fill in the blank to add the word, go down below and
-      select your choice to delete the words.
-      <br />
-      Have fun.
-    </p>
-  </div>
-
-  <div id="add_word">
-    <form method="post" action="managewords.php">
+  <form method="post" action="managewords.php">
+    <div class="header_topic_left">
+      <h1 class="header_topic"> Word Manager </h1>
+      <p class="chatty_talking">
+        This is the Zelda' s GRE vocabulary manager, welcome.
+        <br />
+        Go to the left and fill in the blank to add the word, go down below and
+        select your choice to delete the words.
+        <br />
+        Have fun.
+      </p>
+    </div>
+    <div id="add_word">
       <p class="sub-title"> Add a new word </p>
       <p>
         <label for="new_word"> What's the word? </label>
@@ -335,38 +334,38 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
       <p>
         <input type="submit" id="new_submit_button" value="Add word" name="submit" disabled />
       </p>
-  </div>
-  <div id="del_word">
-    <p class="sub-title"> Delete a word </p>
-    <div class="delete_section_limit_window">
-      <?php
-      display(DEFINITION_FILENAME);
-      ?>
     </div>
-    <p>
-      <input type='submit' id="del_submit" value='Confirm to delete' name='delete' disabled />
-    </p>
-  </div>
-  <div class="waste_time_talking_right">
-    <br />
-    <br />
-    <br />
-    <h2 class="header_topic"> Something for you know...</h2>
-    <p class="chatty_talking">
-      Yes, you deleted the word. But with what cost?
+    <div id="del_word">
+      <p class="sub-title"> Delete a word </p>
+      <div class="delete_section_limit_window">
+        <?php
+        display(DEFINITION_FILENAME);
+        ?>
+      </div>
+      <p>
+        <input type='submit' id="del_submit" value='Confirm to delete' name='delete' disabled />
+      </p>
+    </div>
+    <div class="waste_time_talking_right">
       <br />
-      Did you know that you just wasted few seconds in your life
       <br />
-      by doing the meaningless word manager?
       <br />
-      Go, looking at outside, there has plenty things to do.
-      <br />
-      Don't waste your time.
-      <br />
-      Grab your life and become a man
-      who has better things to do.
-    </p>
-  </div>
+      <h2 class="header_topic"> Something for you know...</h2>
+      <p class="chatty_talking">
+        Yes, you deleted the word. But with what cost?
+        <br />
+        Did you know that you just wasted few seconds in your life
+        <br />
+        by doing the meaningless word manager?
+        <br />
+        Go, looking at outside, there has plenty things to do.
+        <br />
+        Don't waste your time.
+        <br />
+        Grab your life and become a man
+        who has better things to do.
+      </p>
+    </div>
   </form>
   <script src=" managewords.js">
   </script>
