@@ -287,10 +287,13 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
   ?>
   <h1 class="header_topic"> Word Manager </h1>
   <p>
-    This is the Zelda' s GRE vocabulary manager, choose to add a new word or
-    delete a word. </p>
-  <hr />
-  <br />
+    This is the Zelda' s GRE vocabulary manager, welcome.
+    <br />
+    Go to the top and fill in the blank to add the word, go down below and
+    select your choice to delete the words.
+    <br />
+    Have fun.
+  </p>
   <div id="add_word">
     <p class="sub-title"> Add a new word </p>
     <form method="post" action="managewords.php">
@@ -332,7 +335,6 @@ function delete_word(string $file_to_load, string $delete_word, string $part_of_
         <input type="submit" id="new_submit_button" value="Add word" name="submit" disabled />
       </p>
   </div>
-  <hr />
   <div id="del_word">
     <p class="sub-title"> Delete a word </p>
     <p>

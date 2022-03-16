@@ -15,6 +15,8 @@ let del_word_section = document.getElementById("del_word");
 let del_submit_button = document.getElementById("del_submit");
 let del_select_choice = document.getElementsByName("choice_to_delete[]");
 let paired_array = document.getElementsByTagName("span");
+let regex_word = new RegExp("^[a-z]+$");
+let regex_speech = new RegExp("^[a-z]+$");
 /**
  * This is to find the duplicate in the entry
  */
@@ -51,28 +53,25 @@ window.onchange = function ()
 add_word_section.onchange = function ()
 {
   clear_delete();
-  input_words.onkeydown = function ()
+}
+input_words.onchange = function ()
+{
+  if (!regex_word.test(input_words.value))
   {
-    let regex_word = new RegExp("^[a-z]*");
-    if (regex_word.test(input_words.value))
-    {
-      console.log("Here");
-      window.alert("Please only input the lowercase words");
-      clear_add();
-    }
-  }
-  input_new_speech.onkeydown = function ()
-  {
-    let regex_speech = new RegExp("^[a-z\.]*");
-    if (regex_speech.test(input_new_speech.value))
-    {
-      console.log("bruh");
-      window.alert("Please only input the lowercase speech");
-      clear_add();
-    }
+    console.log("Here");
+    window.alert("Please only input the lowercase words");
+    clear_add();
   }
 }
-
+input_new_speech.onchange = function ()
+{
+  if (!regex_speech.test(input_new_speech.value))
+  {
+    console.log("bruh");
+    window.alert("Please only input the lowercase speech");
+    clear_add();
+  }
+}
 /**
  * This is control the delete section for validation
  */

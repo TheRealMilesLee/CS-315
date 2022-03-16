@@ -7,6 +7,9 @@ body
   margin-left: auto;
   margin-right: auto;
   width: 90%;
+  display: grid;
+  grid-template-columns: repeat(1px, 2);
+  grid-template-rows: repeat(1px, 2);
 }
 
 .header_topic
@@ -41,16 +44,21 @@ p
 
 #add_word
 {
-  display: block;
+  border: 4px solid black;
+  grid-column: 1/2;
+  grid-row: 1/1;
 }
 
 #del_word
 {
-  display: block;
+  grid-column: 1/2;
+  grid-row: 0/1;
 }
 
 .delete_section_limit_window
 {
-  height: 350px;;
+  border: 4px solid black;
+  border-radius: 5px;
+  height: 350px;
   overflow-y: scroll;
 }
