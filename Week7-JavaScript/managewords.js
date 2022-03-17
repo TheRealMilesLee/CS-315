@@ -193,15 +193,13 @@ function find_duplicate(compare_string)
     index++;
   }
   let split_array = [];
-  let loop = 0;
-  while (loop < word_array.length)
+  for (let loop = 0; loop < word_array.length; loop++)
   {
     let temp_array = word_array[loop].split("\t");
     split_array.push(temp_array);
     loop++;
   }
-  let looptimes = 0;
-  while (looptimes < split_array.length)
+  for (let looptimes = 0; looptimes < split_array.length; looptimes++)
   {
     let compare_dict = split_array[looptimes][0] + split_array[looptimes][1];
     if (compare_dict === compare_string)
