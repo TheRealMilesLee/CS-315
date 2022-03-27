@@ -47,10 +47,10 @@
           </select>
         </p>
         <p>
-          <label for="new_part_speech">
+          <label for="new_speech">
             Not found you want? Fill your own part of speech!
           </label>
-          <input type="text" id="new_part_speech" name="new_part_speech" />
+          <input type="text" id="new_speech" name="new_speech" />
         </p>
         <p>
           <label for="def_new_word">What's the definition of the word?</label>

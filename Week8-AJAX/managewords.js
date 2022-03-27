@@ -16,39 +16,40 @@ const get_element_tag = (tag) => document.getElementsByTagName(tag);
  */
 window.onchange = function ()
 {
+  let word_with_part
+    = " " + get_element_id("new_word").value + get_element_id("speech").value;
+  let word_with_new_part
+    = " " + get_element_id("new_word").value + get_element_id("new_speech").value;
   get_element_id("new_submit_button").disabled = form_validation_add();
-  let word_and_part = " " + get_element_id("new_word").value +
-    get_element_id("speech").value;
-  let word_new_part = " " + get_element_id("new_word").value +
-    get_element_id("new_part_speech").value;
+
   if (get_element_id("new_word").value !== ""
     && get_element_id("speech").value !== "")
   {
-    find_duplicate(word_and_part);
+    find_duplicate(word_with_part);
   }
   else if (get_element_id("new_word").value !== ""
-    && get_element_id("new_part_speech").value !== "")
+              && get_element_id("new_speech").value !== "")
   {
-      find_duplicate(word_new_part);
+      find_duplicate(word_with_new_part);
   }
   else if (get_element_id("new_word").value !== ""
-    && get_element_id("new_part_speech").value !== ""
+    && get_element_id("new_speech").value !== ""
     && get_element_id("speech").value !== "")
   {
-    find_duplicate(word_new_part);
+    find_duplicate(word_with_new_part);
   }
   get_element_id("del_submit").disabled = form_validation_delete();
   let speech = get_element_id("speech");
   speech.onchange = function ()
   {
-    get_element_id("new_part_speech").value = "";
+    get_element_id("new_speech").value = "";
   };
-  let new_part_speech = get_element_id("new_part_speech");
-  new_part_speech.onchange = function ()
+  let new_speech = get_element_id("new_speech");
+  new_speech.onchange = function ()
   {
     get_element_id("speech").value = "";
     let regex_speech = new RegExp("^[a-z]+$");
-    if (!regex_speech.test(get_element_id("new_part_speech").value))
+    if (!regex_speech.test(get_element_id("new_speech").value))
     {
       window.alert("Please only input the lowercase speech");
       clear_add();
@@ -72,10 +73,10 @@ get_element_id("new_word").onchange = function ()
     clear_add();
   }
 };
-get_element_id("new_part_speech").onchange = function ()
+get_element_id("new_speech").onchange = function ()
 {
   let regex_speech = new RegExp("^[a-z]+$");
-  if (!regex_speech.test(get_element_id("new_part_speech").value))
+  if (!regex_speech.test(get_element_id("new_speech").value))
   {
     window.alert("Please only input the lowercase speech");
     clear_add();
@@ -99,7 +100,7 @@ function form_validation_add()
 {
   if (get_element_id("new_word").value === ""
     && get_element_id("speech").value === ""
-    && get_element_id("new_part_speech").value === ""
+    && get_element_id("new_speech").value === ""
     && get_element_id("def_new_word").value === "")
   {
     return true;
@@ -111,7 +112,7 @@ function form_validation_add()
     return true;
   }
   else if (get_element_id("speech").value === ""
-    && get_element_id("new_part_speech").value === "")
+    && get_element_id("new_speech").value === "")
   {
     window.confirm("Please input the speech");
     get_element_id("speech").focus();
@@ -157,7 +158,7 @@ function clear_add()
   get_element_id("new_word").value = "";
   get_element_id("def_new_word").value = "";
   get_element_id("speech").value = "";
-  get_element_id("new_part_speech").value = "";
+  get_element_id("new_speech").value = "";
 }
 
 /**
