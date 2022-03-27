@@ -5,7 +5,12 @@
  * @version 18.20.13 Release
  */
 "use strict";
-
+// Get the element by using the id
+const get_element_id = (id) => document.getElementById(id);
+// Get the element by using the name
+const get_element_name = (name) => document.getElementsByName(name);
+// Get the element by using the tag name
+const get_element_tag = (tag) => document.getElementsByTagName(tag);
 /**
  * This is to find the duplicate in the entry
  */
@@ -84,18 +89,7 @@ get_element_id("del_word").onchange = function ()
   clear_add();
 };
 
-function get_element_id(id)
-{
-  return document.getElementById(id);
-}
-function get_element_name(name)
-{
-  return document.getElementsByName(name);
-}
-function get_element_tag(tag)
-{
-  return document.getElementsByTagName(tag);
-}
+
 
 /**
  * This function is to determine the add section is empty or not
