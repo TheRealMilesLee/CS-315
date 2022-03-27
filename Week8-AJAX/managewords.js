@@ -159,8 +159,8 @@ function form_validation_delete()
 function clear_add()
 {
   get_by_id("new_word").value = "";
-  get_by_id("def_new_word").value = "";
   get_by_id("speech").value = "";
+  get_by_id("def_new_word").value = "";
 }
 
 /**
@@ -176,37 +176,37 @@ function clear_delete()
   }
 }
 
-// /**
-//  * This function is to find the duplication
-//  * @param {string} compare_string is the string that user input.
-//  */
-// function find_duplicate(compare_string)
-// {
-//   let word_array = [];
-//   let index = 0;
-//   while (index < get_by_tag("span").length)
-//   {
-//     word_array.push(get_by_tag("span")[index].innerHTML);
-//     index++;
-//   }
-//   let split_array = [];
-//   for (let loop = 0; loop < word_array.length; loop++)
-//   {
-//     let temp_array = word_array[loop].split("\t");
-//     split_array.push(temp_array);
-//     loop++;
-//   }
-//   for (let looptimes = 0; looptimes < split_array.length; looptimes++)
-//   {
-//     let compare_dict = split_array[looptimes][0] + split_array[looptimes][1];
-//     if (compare_dict === compare_string)
-//     {
-//       window.alert(" The entry you entered is already exists!");
-//       clear_add();
-//     }
-//     looptimes++;
-//   }
-// }
+/**
+ * This function is to find the duplication
+ * @param {string} compare_string is the string that user input.
+ */
+function find_duplicate(compare_string)
+{
+  let word_array = [];
+  let index = 0;
+  while (index < get_by_tag("span").length)
+  {
+    word_array.push(get_by_tag("span")[index].innerHTML);
+    index++;
+  }
+  let split_array = [];
+  for (let loop = 0; loop < word_array.length; loop++)
+  {
+    let temp_array = word_array[loop].split("\t");
+    split_array.push(temp_array);
+    loop++;
+  }
+  for (let looptimes = 0; looptimes < split_array.length; looptimes++)
+  {
+    let compare_dict = split_array[looptimes][0] + split_array[looptimes][1];
+    if (compare_dict === compare_string)
+    {
+      window.alert(" The entry you entered is already exists!");
+      clear_add();
+    }
+    looptimes++;
+  }
+}
 
 // function load_with_promise()
 // {
