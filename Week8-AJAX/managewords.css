@@ -11,50 +11,6 @@ body
   grid-template-columns: repeat(1fr, 2);
   grid-template-rows: repeat(1fr, 2);
 }
-#intro_header
-{
-  padding: 15px;
-  margin: 5px;
-  text-align:center;
-  grid-column: 0/0;
-  grid-row: 0/0;
-}
-#add_word
-{
-  border: 4px solid black;
-  padding: 15px;
-  margin: 5px;
-  grid-column: 2/4;
-  grid-row: 1/1;
-}
-#del_word
-{
-  border: 4px solid black;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 5px;
-  grid-column: 1/2;
-  grid-row: 2/2;
-}
-
-
-#word_manager_head
-{
-  font-family: sans-serif, serif;
-  font-size: 30px;
-  font-style: italic;
-  font-weight: bold;
-  text-align: center;
-}
-
-.chatty_talking
-{
-  font-family: fantasy, cursive;
-  font-size: 16px;
-  font-style: italic;
-  font-weight: normal;
-  text-align: center;
-}
 
 p
 {
@@ -65,21 +21,59 @@ p
   text-align: center;
 }
 
-.selection_to_delete_style
+#intro_header
 {
-  font-family: sans-serif, serif;
-  font-size: 15px;
-  font-weight: normal;
-  text-align: left;
+  padding: 15px;
+  margin: 5px;
+  text-align:center;
+  grid-column: 0/0;
+  grid-row: 0/0;
 }
 
-.sub-title
+#word_manager_h1
+{
+  font-family: sans-serif, serif;
+  font-size: 30px;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+}
+
+#welcome_prompt
+{
+  font-family: fantasy, cursive;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+}
+
+#add_word
+{
+  border: 4px solid black;
+  padding: 15px;
+  margin: 5px;
+  grid-column: 2/4;
+  grid-row: 1/1;
+}
+
+.subtitle
 {
   font-family: cursive, serif;
   font-style: italic;
   font-size: 20px;
   text-align: center;
   font-weight: bold;
+}
+
+#del_word
+{
+  border: 4px solid black;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 5px;
+  grid-column: 1/2;
+  grid-row: 2/2;
 }
 
 #delete_section_limit_window
