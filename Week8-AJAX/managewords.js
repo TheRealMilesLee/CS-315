@@ -81,16 +81,17 @@ function speech_validate()
   }
 }
 
-
-
 /**
  * This is to find the duplicate in the entry
  */
-function duplicate_validation(word_with_part) {
-  if (get_by_id("new_word").value !== "" && get_by_id("speech").value !== "") {
+function duplicate_validation(word_with_part)
+{
+  if (get_by_id("new_word").value !== "" && get_by_id("speech").value !== "")
+  {
     find_duplicate(word_with_part);
   }
 }
+
 /**
  * This function is to determine the add section is empty or not
  * @returns true if is empty
@@ -105,19 +106,16 @@ function form_validation_add()
   }
   else if (get_by_id("new_word").value === "")
   {
-    window.confirm("Please input  the word you want add");
     get_by_id("new_word").focus();
     return true;
   }
   else if (get_by_id("speech").value === "")
   {
-    window.confirm("Please input the speech");
     get_by_id("speech").focus();
     return true;
   }
   else if (get_by_id("def_new_word").value === "")
   {
-    window.alert("Please input  the definition you want add");
     get_by_id("def_new_word").focus();
     return true;
   }
