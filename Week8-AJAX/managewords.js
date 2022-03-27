@@ -64,6 +64,9 @@ function new_word_validate()
   }
 };
 
+/**
+ * This function validate the new definition
+ */
 function new_definition_validate()
 {
   if (get_by_id("def_new_word").value !== "")
@@ -72,6 +75,10 @@ function new_definition_validate()
     get_by_id("prompt_user_validate_def").innerHTML = "&check;";
   }
 }
+
+/**
+ * This function validate the speech
+ */
 function speech_validate()
 {
   if (get_by_id("speech").value !== "")
@@ -119,7 +126,8 @@ function form_validation_add()
     get_by_id("def_new_word").focus();
     return true;
   }
-  else {
+  else
+  {
     return false;
   }
 }
