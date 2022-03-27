@@ -69,25 +69,28 @@ p
 #prompt_user_validate_word
 {
   font-family: sans-serif, serif;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: normal;
   text-align:end;
+  color: red;
 }
 
 #prompt_user_validate_speech
 {
   font-family: sans-serif, serif;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: normal;
   text-align:end;
+  color: red;
 }
 
 #prompt_user_validate_def
 {
   font-family: sans-serif, serif;
-  font-size: 15px;
+  font-size: 20px;
   font-weight: normal;
   text-align:end;
+  color: red;
 }
 
 #del_word
