@@ -124,26 +124,26 @@ function form_validation_add()
   }
 }
 
-// /**
-//  * This function is to determine whether the checkbox is checked or not
-//  * @returns true if the delete check box is empty,
-//  * return false if the checkbox is not empty
-//  */
-// function form_validation_delete()
-// {
-//   let index = 0;
-//   let empty = true;
-//   let paired_array = get_by_name("choice_to_delete[]");
-//   while (index < paired_array.length)
-//   {
-//     if (paired_array[index].checked === true)
-//     {
-//       empty = false;
-//     }
-//     index++;
-//   }
-//   return empty;
-// }
+/**
+ * This function is to determine whether the checkbox is checked or not
+ * @returns true if the delete check box is empty,
+ * return false if the checkbox is not empty
+ */
+function form_validation_delete()
+{
+  let index = 0;
+  let empty = true;
+  let paired_array = get_by_name("choice_to_delete[]");
+  while (index < paired_array.length)
+  {
+    if (paired_array[index].checked === true)
+    {
+      empty = false;
+    }
+    index++;
+  }
+  return empty;
+}
 
 /**
  * This function is to clean the addition
