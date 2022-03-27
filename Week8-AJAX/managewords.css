@@ -66,6 +66,30 @@ p
   font-weight: bold;
 }
 
+#prompt_user_validate_word
+{
+  font-family: sans-serif, serif;
+  font-size: 15px;
+  font-weight: normal;
+  text-align:end;
+}
+
+#prompt_user_validate_speech
+{
+  font-family: sans-serif, serif;
+  font-size: 15px;
+  font-weight: normal;
+  text-align:end;
+}
+
+#prompt_user_validate_def
+{
+  font-family: sans-serif, serif;
+  font-size: 15px;
+  font-weight: normal;
+  text-align:end;
+}
+
 #del_word
 {
   border: 4px solid black;

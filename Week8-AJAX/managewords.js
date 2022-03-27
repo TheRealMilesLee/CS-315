@@ -30,73 +30,70 @@ window.onchange = function ()
 {
   let word_with_part = get_by_id("new_word").value + get_by_id("speech").value;
   get_by_id("add_button").disabled = form_validation_add();
-  // if (get_by_id("new_word").value !== ""
-  //   && get_by_id("speech").value !== "")
-  // {
-  //   find_duplicate(word_with_part);
-  // }
-  // else if (get_by_id("new_word").value !== ""
-  //             && get_by_id("new_speech").value !== "")
-  // {
-  //     find_duplicate(word_with_new_part);
-  // }
-  // else if (get_by_id("new_word").value !== ""
-  //   && get_by_id("new_speech").value !== ""
-  //   && get_by_id("speech").value !== "")
-  // {
-  //   find_duplicate(word_with_new_part);
-  // }
-  // get_by_id("del_button").disabled = form_validation_delete();
-  // let speech = get_by_id("speech");
-  // speech.onchange = function ()
-  // {
-  //   get_by_id("new_speech").value = "";
-  // };
-  // let new_speech = get_by_id("new_speech");
-  // new_speech.onchange = function ()
-  // {
-  //   get_by_id("speech").value = "";
-  //   let regex_speech = new RegExp("^[a-z]+$");
-  //   if (!regex_speech.test(get_by_id("new_speech").value))
-  //   {
-  //     window.alert("Please only input the lowercase speech");
-  //     clear_add();
-  //   }
-  // };
+  if (get_by_id("new_word").value !== "" && get_by_id("speech").value !== "")
+  {
+    find_duplicate(word_with_part);
+  }
+  else if (get_by_id("new_word").value !== ""
+    && get_by_id("new_speech").value !== "")
+  {
+      find_duplicate(word_with_new_part);
+  }
+  else if (get_by_id("new_word").value !== ""
+    && get_by_id("new_speech").value !== ""
+    && get_by_id("speech").value !== "")
+  {
+    find_duplicate(word_with_new_part);
+  }
+  get_by_id("del_button").disabled = form_validation_delete();
+  get_by_id("speech").onchange = function ()
+  {
+    get_by_id("new_speech").value = "";
+  };
+  get_by_id("new_speech").onchange = function ()
+  {
+    get_by_id("speech").value = "";
+    let regex_speech = new RegExp("^[a-z]+$");
+    if (!regex_speech.test(get_by_id("new_speech").value))
+    {
+      window.alert("Please only input the lowercase speech");
+      clear_add();
+    }
+  };
 };
 
-// /**
-//  * This is control the add section for validation
-//  */
-// get_by_id("add_word").onchange = function ()
-// {
-//   clear_delete();
-// };
-// get_by_id("new_word").onchange = function ()
-// {
-//   let regex_word = new RegExp("^[a-z]+$");
-//   if (!regex_word.test(get_by_id("new_word").value))
-//   {
-//     window.alert("Please only input the lowercase words");
-//     clear_add();
-//   }
-// };
-// get_by_id("new_speech").onchange = function ()
-// {
-//   let regex_speech = new RegExp("^[a-z]+$");
-//   if (!regex_speech.test(get_by_id("new_speech").value))
-//   {
-//     window.alert("Please only input the lowercase speech");
-//     clear_add();
-//   }
-// };
-// /**
-//  * This is control the delete section for validation
-//  */
-// get_by_id("del_word").onchange = function ()
-// {
-//   clear_add();
-// };
+/**
+ * This is control the add section for validation
+ */
+get_by_id("add_word").onchange = function ()
+{
+  clear_delete();
+};
+get_by_id("new_word").onchange = function ()
+{
+  let regex_word = new RegExp("^[a-z]+$");
+  if (!regex_word.test(get_by_id("new_word").value))
+  {
+    window.alert("Please only input the lowercase words");
+    clear_add();
+  }
+};
+get_by_id("new_speech").onchange = function ()
+{
+  let regex_speech = new RegExp("^[a-z]+$");
+  if (!regex_speech.test(get_by_id("new_speech").value))
+  {
+    window.alert("Please only input the lowercase speech");
+    clear_add();
+  }
+};
+/**
+ * This is control the delete section for validation
+ */
+get_by_id("del_word").onchange = function ()
+{
+  clear_add();
+};
 
 
 

@@ -26,7 +26,9 @@
       <p>
         <label for="new_word"> What's the word? </label>
         <input type="text" id="new_word" name="new_word" />
+        <b id="prompt_user_validate_word">&excl;</b>
       </p>
+
     </div>
     <!-- Add the part of speech -->
     <div>
@@ -39,14 +41,18 @@
           <option value="adverb"> adverb </option>
           <option value="verb"> verb </option>
         </select>
+        <b id="prompt_user_validate_speech">&excl;</b>
       </p>
+
     </div>
     <!-- Add the definition -->
     <div>
       <p>
         <label for="def_new_word">What's the definition of the word?</label>
         <input type='text' id="def_new_word" name="def_new_word" />
+        <b id="prompt_user_validate_def">&excl;</b>
       </p>
+
     </div>
     <!-- Add word submit button -->
     <div>
