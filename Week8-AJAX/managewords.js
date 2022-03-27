@@ -205,3 +205,13 @@ function find_duplicate(compare_string)
     looptimes++;
   }
 }
+
+function load_with_promise()
+{
+  fetch("words.txt")
+    .then((payload) => payload.text())
+    .then(function (response)
+    {
+      get_element_id("delete_section_limit_window").innerHTML = response;
+    });
+}

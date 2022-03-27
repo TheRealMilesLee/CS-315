@@ -7,14 +7,11 @@ body
   margin-left: auto;
   margin-right: auto;
   width: 90%;
-}
-form
-{
   display:grid;
   grid-template-columns: repeat(1fr, 2);
   grid-template-rows: repeat(1fr, 2);
 }
-.header_topic_left
+#intro_header
 {
   padding: 15px;
   margin: 5px;
@@ -30,7 +27,6 @@ form
   grid-column: 2/4;
   grid-row: 1/1;
 }
-
 #del_word
 {
   border: 4px solid black;
@@ -41,16 +37,8 @@ form
   grid-row: 2/2;
 }
 
-.waste_time_talking_right
-{
-  padding: 15px;
-  margin: 5px;
-  text-align:center;
-  grid-column: 2/2;
-  grid-row: 2/2;
-}
 
-.header_topic
+#word_manager_head
 {
   font-family: sans-serif, serif;
   font-size: 30px;
@@ -94,7 +82,7 @@ p
   font-weight: bold;
 }
 
-.delete_section_limit_window
+#delete_section_limit_window
 {
   height: 400px;
   overflow-y: scroll;
