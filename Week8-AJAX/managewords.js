@@ -6,21 +6,15 @@
  */
 "use strict";
 // Get the element by using the id
-function get_by_id(id)
-{
-  return document.getElementById(id);
-}
+function get_by_id(id) { return document.getElementById(id); }
 // Get the element by using the name
-function get_by_name(name)
-{
-  return document.getElementsByName(name);
-}
+function get_by_name(name) { return document.getElementsByName(name); }
 // Get the element by using the tag name
-function get_by_tag(tag)
+function get_by_tag(tag) { return document.getElementsByTagName(tag); }
+window.onload = function ()
 {
-  return document.getElementsByTagName(tag);
-}
-
+  load_words_from_disk();
+};
 /**
  * This is control the add section for validation
  */
@@ -29,11 +23,12 @@ get_by_id("add_word").onchange = function ()
   clear_delete();
   new_word_validate();
   speech_validate();
-  new_definition_validate()
-  let word_with_part = get_by_id("new_word").value + get_by_id("speech").value;
+  new_definition_validate();
+  let word_with_part =
+      get_by_id("new_word").value + get_by_id("speech").value;
   get_by_id("add_button").disabled = form_validation_add();
   duplicate_validation(word_with_part);
-}
+};
 
 /**
  * This is control the delete section for validation
@@ -53,8 +48,9 @@ function new_word_validate()
   if (!regex_word.test(get_by_id("new_word").value))
   {
     get_by_id("prompt_user_validate_word").style["font-size"] = "10px";
-    get_by_id("prompt_user_validate_word").style["font-style"] ="italic";
-    get_by_id("prompt_user_validate_word").innerHTML = "Word should only contain a-z";
+    get_by_id("prompt_user_validate_word").style["font-style"] = "italic";
+    get_by_id("prompt_user_validate_word").innerHTML =
+        "Word should only contain a-z";
     clear_add();
   }
   else
@@ -105,9 +101,9 @@ function duplicate_validation(word_with_part)
  */
 function form_validation_add()
 {
-  if (get_by_id("new_word").value === ""
-    && get_by_id("speech").value === ""
-    && get_by_id("def_new_word").value === "")
+  if (get_by_id("new_word").value === "" &&
+      get_by_id("speech").value === "" &&
+      get_by_id("def_new_word").value === "")
   {
     return true;
   }
@@ -208,13 +204,23 @@ function find_duplicate(compare_string)
   }
 }
 
-// function load_with_promise()
-// {
-//   fetch("words.txt")
-//     .then((payload) => payload.text())
-//     .then(function (response)
-//     {
-//       get_by_id("delete_section_limit_window").innerHTML = response;
-//     });
-// }
+/**
+ * This function is to get the file from the disk
+ * @returns {array} is the array of words speech and definitions
+ */
+function load_words_from_disk()
+{
+  fetch("words.txt")
+    .then((payload) => payload.text())
+    .then(function (response)
+    {
+      let line = JSON.parse(JSON.stringify(response));
+      for (let index = 0; index < line.length; index++)
+      {
+        let word_line = document.createElement("p");
+        word_line.classList.add("word_lines");
+        get_by_id("word_lines").innerHTML = line;
+      }
 
+    });
+}
