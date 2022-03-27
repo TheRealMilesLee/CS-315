@@ -22,7 +22,7 @@
     <!-- Add word section -->
     <p class="subtitle"> Add a new word </p>
     <!-- Add the new word -->
-    <div>
+    <div id="add_new_word">
       <p>
         <label for="new_word"> What's the word? </label>
         <input type="text" id="new_word" name="new_word" />
@@ -62,11 +62,11 @@
     <!-- Delete word button -->
     <div id="del_submit">
       <p>
-        <input type='submit' id="del_submit" value='Confirm to delete' name='delete' disabled />
+        <input type='submit' id="del_button" value='Confirm to delete' name='delete' disabled />
       </p>
     </div>
   </div>
-  <script src=" managewords.js"></script>
+  <script src="managewords.js"></script>
 </body>
 
 </html>
