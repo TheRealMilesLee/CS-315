@@ -214,16 +214,23 @@ function load_words_from_disk()
     .then((payload) => payload.text())
     .then(function (response)
     {
-      let line = JSON.parse(JSON.stringify(response));
-      for (let index = 0; index < line.length; index++)
+      let lines = response.split("\n");
+      for (let index = 0; index < lines.length; index++)
       {
-        let word_p = document.createElement("p");
-        let word_line = document.createTextNode(line);
-        word_p.appendChild(word_line);
-        let current_p
-          = document.getElementById("delete_section_limit_window");
-        document.body.appendChild(word_p, current_p);
+        let checkbox = document.createElement("input");
+        checkbox.setAttribute("type", "checkbox");
+        checkbox.setAttribute("id", index);
+        checkbox.setAttribute("name", "choice_to_delete[]");
+        checkbox.setAttribute("value", index);
+        let new_word_line = document.createElement("span");
+        let word = document.createTextNode(index + " : " + lines[index]);
+        new_word_line.appendChild(word);
+        new_word_line.classList.add("word_list");
+        let newline = document.createElement("p");
+        let original_div = get_by_id("delete_section_limit_window");
+        original_div.appendChild(checkbox);
+        original_div.appendChild(new_word_line);
+        original_div.appendChild(newline);
       }
-
     });
 }

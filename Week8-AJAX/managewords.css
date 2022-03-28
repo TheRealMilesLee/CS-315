@@ -106,5 +106,15 @@ p
 #delete_section_limit_window
 {
   height: 400px;
+  width: 100%;
   overflow-y: scroll;
+}
+
+.word_list
+{
+  font-family: sans-serif, serif;
+  font-size: 15px;
+  font-weight: normal;
+  color:dimgrey;
+  text-align:left;
 }
