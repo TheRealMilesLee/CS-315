@@ -5,16 +5,25 @@
  * @version 18.20.13 Release
  */
 "use strict";
+
+
 // Get the element by using the id
 function get_by_id(id) { return document.getElementById(id); }
 // Get the element by using the name
 function get_by_name(name) { return document.getElementsByName(name); }
 // Get the element by using the tag name
 function get_by_tag(tag) { return document.getElementsByTagName(tag); }
+
 window.onload = function ()
 {
   load_words_from_disk();
-};
+}
+get_by_id("add_button").onclick = function ()
+{
+  console.log("bababab");
+  load_words_from_disk();
+}
+
 /**
  * This is control the add section for validation
  */
@@ -210,27 +219,7 @@ function find_duplicate(compare_string)
  */
 function load_words_from_disk()
 {
-  fetch("words.txt")
+  fetch("roses.txt")
     .then((payload) => payload.text())
-    .then(function (response)
-    {
-      let lines = response.split("\n");
-      for (let index = 0; index < lines.length; index++)
-      {
-        let checkbox = document.createElement("input");
-        checkbox.setAttribute("type", "checkbox");
-        checkbox.setAttribute("id", index);
-        checkbox.setAttribute("name", "choice_to_delete[]");
-        checkbox.setAttribute("value", index);
-        let new_word_line = document.createElement("span");
-        let word = document.createTextNode(index + " : " + lines[index]);
-        new_word_line.appendChild(word);
-        new_word_line.classList.add("word_list");
-        let newline = document.createElement("p");
-        let original_div = get_by_id("delete_section_limit_window");
-        original_div.appendChild(checkbox);
-        original_div.appendChild(new_word_line);
-        original_div.appendChild(newline);
-      }
-    });
+    .then(function (response) { $("poembox").innerHTML = response; });
 }

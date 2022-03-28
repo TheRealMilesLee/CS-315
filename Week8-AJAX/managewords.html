@@ -10,12 +10,11 @@
 
 <body>
   <div id="intro_header">
-    <h1 id="word_manager_h1"> Word Manager </h1>
+    <h1 class="word_manager"> Word Manager </h1>
     <p id="welcome_prompt">
       This is the Zelda's GRE vocabulary manager, welcome. <br />
       Go to the left and fill in the blank to add the word, go down below
-      and select your choice to delete the words. <br />
-      Have fun.
+      and select your choice to delete the words. Have fun.
     </p>
   </div>
   <div id="add_word">
@@ -61,18 +60,23 @@
       </p>
     </div>
   </div>
-  <!-- Delete word section -->
+  <!-- Display word section -->
   <div id="del_word">
-    <p class="subtitle"> Delete a word </p>
+    <p class="subtitle"> Display a word </p>
     <div id="delete_section_limit_window"></div>
     <!-- Delete word button -->
-    <div id="del_submit">
-      <p>
-        <input type='submit' id="del_button" value='Confirm to delete' name='delete' disabled />
-      </p>
-    </div>
+  </div>
+  <div>
+    <h2 class="word_manager">Something for you to know </h2>
+    <p id="rick">
+      I will never give you up <br />
+      I will never let you down <br />
+      I will never run around and desert you <br />
+      I will never make you cry <br />
+      I will never say goodbye <br />
+      I will never tell a lie and hurt you
+    </p>
   </div>
   <script src="managewords.js"></script>
 </body>
-
 </html>

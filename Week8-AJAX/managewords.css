@@ -30,7 +30,7 @@ p
   grid-row: 0/0;
 }
 
-#word_manager_h1
+.word_manager
 {
   font-family: sans-serif, serif;
   font-size: 30px;
@@ -108,6 +108,12 @@ p
   height: 400px;
   width: 100%;
   overflow-y: scroll;
+}
+
+#rick
+{
+  font-family: cursive, fantasy;
+  font-size: 16px;
 }
 
 .word_list
