@@ -217,9 +217,12 @@ function load_words_from_disk()
       let line = JSON.parse(JSON.stringify(response));
       for (let index = 0; index < line.length; index++)
       {
-        let word_line = document.createElement("p");
-        word_line.classList.add("word_lines");
-        get_by_id("word_lines").innerHTML = line;
+        let word_p = document.createElement("p");
+        let word_line = document.createTextNode(line);
+        word_p.appendChild(word_line);
+        let current_p
+          = document.getElementById("delete_section_limit_window");
+        document.body.appendChild(word_p, current_p);
       }
 
     });
