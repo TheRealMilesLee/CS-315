@@ -213,10 +213,7 @@ function load_words_from_disk()
 
 function display(response)
 {
-  let display_section = document.createElement("div");
-  display_section.setAttribute("id", "display");
-  let father_div = get_by_id("display_word");
-  father_div.appendChild(display_section);
+  create_new_div_entry();
   for (let index = 0; index < response.length; index++)
   {
     let new_word_line = document.createElement("span");
@@ -248,4 +245,12 @@ function clean_previous_entry()
 {
   let original_text = get_by_id("display");
   original_text.remove();
+}
+
+function create_new_div_entry()
+{
+  let display_section = document.createElement("div");
+  display_section.setAttribute("id", "display");
+  let father_div = get_by_id("display_word");
+  father_div.appendChild(display_section);
 }
