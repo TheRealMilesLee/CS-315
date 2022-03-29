@@ -242,7 +242,7 @@ function display(response)
   for (let index = 0; index < response.length; index++)
   {
     let new_word_line = document.createElement("p");
-    let word = document.createTextNode(index + " : " + response[index][0] + response[index][1] + response[index][2]);
+    let word = document.createTextNode(index + " : " + response[index][0] + "\t" + response[index][1] + "\t" + response[index][2] + "\n");
     console.log(word);
     new_word_line.appendChild(word);
     new_word_line.classList.add("word_list");
