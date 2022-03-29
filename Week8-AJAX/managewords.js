@@ -44,13 +44,20 @@ get_by_id("add_word").onchange = function ()
 function new_word_validate()
 {
   let regex_word = new RegExp("^[a-z]+$");
-  if (!regex_word.test(get_by_id("new_word").value))
+  if (get_by_id("new_word").value == "")
+  {
+    get_by_id("prompt_user_validate_word").style["color"] = "red";
+    get_by_id("prompt_user_validate_word").style["font-size"] = "20px";
+    get_by_id("prompt_user_validate_word").style["font-style"] = "italic";
+    get_by_id("prompt_user_validate_word").innerHTML = "&excl;";
+  }
+  else if (!regex_word.test(get_by_id("new_word").value))
   {
     get_by_id("prompt_user_validate_word").style["color"] = "red";
     get_by_id("prompt_user_validate_word").style["font-size"] = "10px";
     get_by_id("prompt_user_validate_word").style["font-style"] = "italic";
     get_by_id("prompt_user_validate_word").innerHTML =
-        "Word should only contain a-z";
+        "Only lowercase alphabet letters is accepted";
     clear_add();
   }
   else
@@ -172,8 +179,10 @@ function find_duplicate(compare_string)
     {
       window.alert(" The entry you entered is already exists!");
       clear_add();
+      new_word_validate();
+      speech_validate();
+      new_definition_validate();
     }
-    looptimes++;
   }
 }
 
