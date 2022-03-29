@@ -57,6 +57,7 @@ function new_word_validate()
   let regex_word = new RegExp("^[a-z]+$");
   if (!regex_word.test(get_by_id("new_word").value))
   {
+    get_by_id("prompt_user_validate_word").style["color"] = "red";
     get_by_id("prompt_user_validate_word").style["font-size"] = "10px";
     get_by_id("prompt_user_validate_word").style["font-style"] = "italic";
     get_by_id("prompt_user_validate_word").innerHTML =
