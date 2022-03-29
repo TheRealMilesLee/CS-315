@@ -26,6 +26,10 @@ get_by_id("add_button").onclick = function ()
   add_new_entry(new_word, new_speech, new_definition);
   clean_previous_entry();
   load_words_from_disk();
+  clear_add();
+  new_word_validate();
+  speech_validate();
+  new_definition_validate();
 }
 
 
@@ -251,6 +255,6 @@ function create_new_div_entry()
 {
   let display_section = document.createElement("div");
   display_section.setAttribute("id", "display");
-  let father_div = get_by_id("display_word");
-  father_div.appendChild(display_section);
+  let father_node = get_by_id("display_word");
+  father_node.appendChild(display_section);
 }

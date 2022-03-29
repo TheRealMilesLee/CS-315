@@ -8,8 +8,8 @@ body
   margin-right: auto;
   width: 90%;
   display:grid;
-  grid-template-columns: repeat(1fr, 2);
-  grid-template-rows: repeat(1fr, 2);
+  grid-template-columns: repeat(1fr, 4);
+  grid-template-rows: repeat(1fr, 4);
 }
 
 p
@@ -105,10 +105,11 @@ p
 
 #display
 {
-  height: 400px;
+    height: 400px;
   width: 100%;
   overflow-y: scroll;
 }
+
 
 #rick
 {
