@@ -14,10 +14,12 @@ define('FILE', 'words.txt');
 if (isset($_POST) && isset($_POST['payload']))
 {
   $json_data = json_decode($_POST['payload']);
+
   $file = fopen(FILE, 'a');
   foreach ($json_data as $key => $value)
   {
-    fwrite($file, "$value\t");
+    $result = htmlspecialchars($value);
+    fwrite($file, "$result\t");
   }
   fwrite($file, "\n");
   fclose($file);
