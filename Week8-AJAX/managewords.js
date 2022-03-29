@@ -6,7 +6,6 @@
  */
 "use strict";
 let xhr = null; // a global variable to prevent race
-
 // Get the element by using the id
 function get_by_id(id) { return document.getElementById(id); }
 // Get the element by using the name
@@ -21,6 +20,11 @@ window.onload = function ()
 
 get_by_id("add_button").onclick = function ()
 {
+  let new_word = get_by_id("new_word").value;
+  let new_speech = get_by_id("speech").value;
+  let new_definition = get_by_id("def_new_word").value;
+  add_new_entry(new_word, new_speech, new_definition);
+  clean_previous_entry();
   load_words_from_disk();
 }
 
@@ -33,9 +37,12 @@ get_by_id("add_word").onchange = function ()
   new_word_validate();
   speech_validate();
   new_definition_validate();
-  let word_with_part = get_by_id("new_word").value + get_by_id("speech").value;
+  let new_word = get_by_id("new_word").value;
+  let new_speech = get_by_id("speech").value;
+  let word_with_part = new_word + new_speech ;
   get_by_id("add_button").disabled = form_validation_add();
   duplicate_validation(word_with_part);
+
 };
 
 /**
@@ -206,6 +213,10 @@ function load_words_from_disk()
 
 function display(response)
 {
+  let display_section = document.createElement("div");
+  display_section.setAttribute("id", "display");
+  let father_div = get_by_id("display_word");
+  father_div.appendChild(display_section);
   for (let index = 0; index < response.length; index++)
   {
     let new_word_line = document.createElement("span");
@@ -217,4 +228,24 @@ function display(response)
     original_div.appendChild(new_word_line);
     original_div.appendChild(newline);
   }
+}
+
+function add_new_entry(new_word, new_speech, new_definition)
+{
+  const xhr = new XMLHttpRequest();
+  const url = "put_word.php";
+
+  const data_array = [new_word, new_speech, new_definition];
+  const json_string = `payload=${ JSON.stringify(data_array) }`;
+
+  xhr.open("POST", url);
+  xhr.setRequestHeader
+    ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+  xhr.send(json_string);
+}
+
+function clean_previous_entry()
+{
+  let original_text = get_by_id("display");
+  original_text.remove();
 }
