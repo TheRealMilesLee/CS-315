@@ -5,7 +5,7 @@
  * @version 18.20.13 Release
  */
 "use strict";
-
+let xhr = null; // a global variable to prevent race
 
 // Get the element by using the id
 function get_by_id(id) { return document.getElementById(id); }
@@ -18,11 +18,12 @@ window.onload = function ()
 {
   load_words_from_disk();
 }
+
 get_by_id("add_button").onclick = function ()
 {
-  console.log("bababab");
   load_words_from_disk();
 }
+
 
 /**
  * This is control the add section for validation
@@ -42,7 +43,7 @@ get_by_id("add_word").onchange = function ()
 /**
  * This is control the delete section for validation
  */
-get_by_id("del_word").onchange = function ()
+get_by_id("display_word").onchange = function ()
 {
   clear_add();
   get_by_id("del_button").disabled = form_validation_delete();
@@ -219,7 +220,33 @@ function find_duplicate(compare_string)
  */
 function load_words_from_disk()
 {
-  fetch("roses.txt")
-    .then((payload) => payload.text())
-    .then(function (response) { $("poembox").innerHTML = response; });
+  let response = [];
+  xhr = new XMLHttpRequest();
+  const url = `get_words.php`;
+  xhr.open("GET", url, true);
+  xhr.onload = function ()
+  {
+    const results = JSON.parse(xhr.responseText);
+    results.forEach(element => response.push(element));
+    display(response);
+  };
+  xhr.send();
+
+  return response.length;
+}
+
+function display(response)
+{
+  let temp = response.length;
+  console.log(temp);
+  for (let index = 0; index < response.length; index++)
+  {
+    let new_word_line = document.createElement("p");
+    let word = document.createTextNode(index + " : " + response[index][0] + response[index][1] + response[index][2]);
+    console.log(word);
+    new_word_line.appendChild(word);
+    new_word_line.classList.add("word_list");
+    let original_div = get_by_id("display");
+    original_div.appendChild(new_word_line);
+  }
 }

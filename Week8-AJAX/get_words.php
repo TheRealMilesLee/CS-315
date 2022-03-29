@@ -25,6 +25,7 @@ function read_file_into_array($filename)
   {
     $array[] = explode("\t", rtrim($line));
   }
+  fclose($file);
   return $array;
 }
 
@@ -32,4 +33,4 @@ $word_list = read_file_into_array(DEFINITION_FILENAME);
 
 ?>
 
-<?= json_encode($result) ?>
+<?= json_encode($word_list) ?>
