@@ -231,6 +231,13 @@ function display(response)
   for (let index = 0; index < response.length; index++)
   {
     let new_word_line = document.createElement("span");
+    for (let loop = 0; loop < response[index][2].length; loop++)
+    {
+      if (response[index][2][loop] === "&amp;")
+      {
+        response[index][2][loop] = response[index][2][loop].replace("&amp;", "&");
+      }
+    }
     let word = document.createTextNode(response[index][0] + "\t" + response[index][1] + "\t" + response[index][2]);
     new_word_line.appendChild(word);
     new_word_line.classList.add("word_list");
