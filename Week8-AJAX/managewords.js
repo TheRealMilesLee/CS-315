@@ -31,8 +31,6 @@ get_by_id("add_button").onclick = function ()
       new_definition = new_definition.replace("&", "AND");
     }
   }
-
-  console.log(new_definition);
   add_new_entry(new_word, new_speech, new_definition);
   clean_previous_entry();
   load_words_from_disk();
@@ -55,8 +53,7 @@ get_by_id("add_word").onchange = function ()
   let new_speech = get_by_id("speech").value;
   let word_with_part = new_word + new_speech ;
   get_by_id("add_button").disabled = form_validation_add();
-  duplicate_validation(word_with_part);
-
+  // duplicate_validation(word_with_part);
 };
 
 /**
@@ -231,14 +228,7 @@ function display(response)
   for (let index = 0; index < response.length; index++)
   {
     let new_word_line = document.createElement("span");
-    for (let loop = 0; loop < response[index][2].length; loop++)
-    {
-      if (response[index][2][loop] === "&amp;")
-      {
-        response[index][2][loop] = response[index][2][loop].replace("&amp;", "&");
-      }
-    }
-    let word = document.createTextNode(response[index][0] + "\t" + response[index][1] + "\t" + response[index][2]);
+    let word = document.createTextNode (response[index][0] + "\t" + response[index][1] + "\t" + response[index][2]);
     new_word_line.appendChild(word);
     new_word_line.classList.add("word_list");
     let original_div = get_by_id("display");
