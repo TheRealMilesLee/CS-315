@@ -14,7 +14,7 @@ define('FILE', 'words.txt');
 if (isset($_POST) && isset($_POST['payload']))
 {
   $json_data = json_decode($_POST['payload']);
-
+  $json_data[2] = str_replace("AND", "&", $json_data[2]);
   $file = fopen(FILE, 'a');
   foreach ($json_data as $key => $value)
   {

@@ -23,6 +23,16 @@ get_by_id("add_button").onclick = function ()
   let new_word = get_by_id("new_word").value;
   let new_speech = get_by_id("speech").value;
   let new_definition = get_by_id("def_new_word").value;
+  new_definition = new_definition.toLowerCase();
+  for (let index = 0; index < new_definition.length; index++)
+  {
+    if (new_definition[index] === "&")
+    {
+      new_definition = new_definition.replace("&", "AND");
+    }
+  }
+
+  console.log(new_definition);
   add_new_entry(new_word, new_speech, new_definition);
   clean_previous_entry();
   load_words_from_disk();
@@ -238,7 +248,7 @@ function add_new_entry(new_word, new_speech, new_definition)
 
   const data_array = [new_word, new_speech, new_definition];
   const json_string = `payload=${ JSON.stringify(data_array) }`;
-
+  console.log(json_string);
   xhr.open("POST", url);
   xhr.setRequestHeader
     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
