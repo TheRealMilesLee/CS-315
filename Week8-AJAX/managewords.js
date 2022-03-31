@@ -7,26 +7,28 @@
 "use strict";
 let xhr = null; // a global variable to prevent race
 // Get the element by using the id
-function get_by_id(id) { return document.getElementById(id); }
-// Get the element by using the name
-function get_by_name(name) { return document.getElementsByName(name); }
+function get_by_id(id)
+{
+  return document.getElementById(id);
+}
 // Get the element by using the tag name
-function get_by_tag(tag) { return document.getElementsByTagName(tag); }
+function get_by_tag(tag)
+{
+  return document.getElementsByTagName(tag);
+}
 
 window.onload = function ()
 {
   load_words_from_disk();
-}
+};
 
 get_by_id("add_button").onclick = function ()
 {
   let new_word = get_by_id("new_word").value;
   let new_speech = get_by_id("speech").value;
   let new_definition = get_by_id("def_new_word").value;
-  for (let index = 0; index < new_definition.length; index++)
-  {
-    if (new_definition[index] === "&")
-    {
+  for (let index = 0; index < new_definition.length; index++) {
+    if (new_definition[index] === "&") {
       new_definition = new_definition.replace("&", "π");
     }
   }
@@ -37,7 +39,7 @@ get_by_id("add_button").onclick = function ()
   new_word_validate();
   speech_validate();
   new_definition_validate();
-}
+};
 
 
 /**
@@ -227,7 +229,10 @@ function display(response)
   for (let index = 0; index < response.length; index++)
   {
     let new_word_line = document.createElement("span");
-    new_word_line.innerHTML = response[index][0] + "\t" + response[index][1] + "\t" + response[index][2];
+    new_word_line.innerHTML =
+      response[index][0] + "\t" +
+      response[index][1] + "\t" +
+      response[index][2];
     new_word_line.classList.add("word_list");
     let original_div = get_by_id("display");
     let newline = document.createElement("p");
