@@ -1,21 +1,18 @@
 <?php
-
 /**
- * a program to supply a list of words based on a search criterion
- * in JSON format
- * @author Jon Beck
- * @version 14 March 2022
+ * @brief This file is to get words from the file
+ * @author Dr.Beck and Hengyi Li
+ * @copyright 2022 Truman State University. All rights reserved
+ * @version 1.0.0
  */
-
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-
 define('DEFINITION_FILENAME', 'words.txt');
 
 /**
- * read a file of tab-separated lines into an array of arrays
- * @param $filename the name of the file to read
- * @return an array of arrays with the contents of the file
+ * @brief This function read a file of tab-separated lines into an array of arrays
+ * @param string $filename the name of the file to read
+ * @return array is the array of arrays with the contents of the file
  */
 function read_file_into_array($filename)
 {
@@ -28,9 +25,7 @@ function read_file_into_array($filename)
   fclose($file);
   return $array;
 }
-
 $word_list = read_file_into_array(DEFINITION_FILENAME);
-
 ?>
 
 <?= json_encode($word_list) ?>
