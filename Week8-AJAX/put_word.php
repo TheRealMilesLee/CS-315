@@ -22,26 +22,19 @@ if (isset($_POST) && isset($_POST['payload']))
   $definition =  $json_data[2];
   $new_file = getPaired_array(FILE);
   $result = search_word($new_file, $word, $speech);
-  if ($result == count($new_file) - 1)
-  {
-    ?>
-      <p>
-        <?= 'This is duplicate'; ?>
-      </p>
-    <?php
-  }
-  else
+  if ($result === count($new_file) )
   {
     $file = fopen(FILE, 'a');
     foreach ($json_data as $key => $value)
     {
-    $result = htmlspecialchars($value);
-    fwrite($file, "$result\t");
+      $result = htmlspecialchars($value);
+      fwrite($file, "$result\t");
     }
     fwrite($file, "\n");
     fclose($file);
+    $reorder = getPaired_array(FILE);
+    output_to_file($reorder);
   }
-  output_to_file($new_file);
 }
 
 /**
@@ -103,19 +96,15 @@ function getPaired_array(string $file_to_load): array
  * @param string $part_of_speech is the speech of the word to search
  * @return integer is the index of the word position
  */
-function search_word(
-  array &$array,
-  string $word_to_search,
-  string $part_of_speech
-): int
+function search_word(array &$array, string $word_to_search,
+  string $part_of_speech): int
 {
   $found = false;
-  $index = 0;
+  $index = -1;
   while ($index < count($array) && !$found)
   {
-    if (
-      strcmp($array[$index]['word'], $word_to_search) == 0
-      && strcmp($array[$index]['part'], $part_of_speech) == 0
+    if (strcmp($array[$index]['word'], $word_to_search) == 0 &&
+        strcmp($array[$index]['part'], $part_of_speech) == 0
     )
     {
       $found = true;
