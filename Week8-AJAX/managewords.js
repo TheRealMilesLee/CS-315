@@ -228,8 +228,7 @@ function display(response)
   for (let index = 0; index < response.length; index++)
   {
     let new_word_line = document.createElement("span");
-    let word = document.createTextNode (response[index][0] + "\t" + response[index][1] + "\t" + response[index][2]);
-    new_word_line.appendChild(word);
+    new_word_line.innerHTML = response[index][0] + "\t" + response[index][1] + "\t" + response[index][2];
     new_word_line.classList.add("word_list");
     let original_div = get_by_id("display");
     let newline = document.createElement("p");

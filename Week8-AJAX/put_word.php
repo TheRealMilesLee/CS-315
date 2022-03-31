@@ -16,12 +16,13 @@ if (isset($_POST) && isset($_POST['payload']))
 {
   $json_data = json_decode($_POST['payload']);
   $json_data[2] = str_replace("AND", "&", $json_data[2]);
+  $new_file = getPaired_array(FILE);
   $word = $json_data[0];
   $speech = $json_data[1];
   $definition =  $json_data[2];
   $new_file = getPaired_array(FILE);
   $result = search_word($new_file, $word, $speech);
-  if ($result == count($new_file))
+  if ($result == count($new_file) - 1)
   {
     ?>
       <p>
@@ -39,8 +40,8 @@ if (isset($_POST) && isset($_POST['payload']))
     }
     fwrite($file, "\n");
     fclose($file);
-    output_to_file($new_file);
   }
+  output_to_file($new_file);
 }
 
 /**
@@ -94,8 +95,6 @@ function getPaired_array(string $file_to_load): array
   unset($total_lines[$loop]);
   return $paired_array;
 }
-
-
 
 /**
  * This function is to search the index in the current array
