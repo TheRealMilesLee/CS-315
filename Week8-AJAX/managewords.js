@@ -23,12 +23,11 @@ get_by_id("add_button").onclick = function ()
   let new_word = get_by_id("new_word").value;
   let new_speech = get_by_id("speech").value;
   let new_definition = get_by_id("def_new_word").value;
-  new_definition = new_definition.toLowerCase();
   for (let index = 0; index < new_definition.length; index++)
   {
     if (new_definition[index] === "&")
     {
-      new_definition = new_definition.replace("&", "AND");
+      new_definition = new_definition.replace("&", "∑");
     }
   }
   add_new_entry(new_word, new_speech, new_definition);
@@ -53,7 +52,7 @@ get_by_id("add_word").onchange = function ()
   let new_speech = get_by_id("speech").value;
   let word_with_part = new_word + new_speech ;
   get_by_id("add_button").disabled = form_validation_add();
-  // duplicate_validation(word_with_part);
+  duplicate_validation(word_with_part);
 };
 
 /**
