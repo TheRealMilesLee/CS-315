@@ -27,7 +27,7 @@ get_by_id("add_button").onclick = function ()
   {
     if (new_definition[index] === "&")
     {
-      new_definition = new_definition.replace("&", "∑");
+      new_definition = new_definition.replace("&", "π");
     }
   }
   add_new_entry(new_word, new_speech, new_definition);
