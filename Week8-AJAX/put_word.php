@@ -1,4 +1,5 @@
 <?php
+
 /**
  * a program to accept POST data
  * in JSON format
@@ -15,18 +16,31 @@ if (isset($_POST) && isset($_POST['payload']))
 {
   $json_data = json_decode($_POST['payload']);
   $json_data[2] = str_replace("AND", "&", $json_data[2]);
-  $file = fopen(FILE, 'a');
-  foreach ($json_data as $key => $value)
+  $word = $json_data[0];
+  $speech = $json_data[1];
+  $definition =  $json_data[2];
+  $new_file = getPaired_array(FILE);
+  $result = search_word($new_file, $word, $speech);
+  if ($result == count($new_file))
   {
+    ?>
+      <p>
+        <?= 'This is duplicate'; ?>
+      </p>
+    <?php
+  }
+  else
+  {
+    $file = fopen(FILE, 'a');
+    foreach ($json_data as $key => $value)
+    {
     $result = htmlspecialchars($value);
     fwrite($file, "$result\t");
+    }
+    fwrite($file, "\n");
+    fclose($file);
+    output_to_file($new_file);
   }
-  fwrite($file, "\n");
-  fclose($file);
-
-  $new_file = getPaired_array(FILE);
-  output_to_file($new_file);
-
 }
 
 /**
@@ -82,3 +96,39 @@ function getPaired_array(string $file_to_load): array
 }
 
 
+
+/**
+ * This function is to search the index in the current array
+ * @param array $array is the array to search
+ * @param string $word_to_search is the  word that search for
+ * @param string $part_of_speech is the speech of the word to search
+ * @return integer is the index of the word position
+ */
+function search_word(
+  array &$array,
+  string $word_to_search,
+  string $part_of_speech
+): int
+{
+  $found = false;
+  $index = 0;
+  while ($index < count($array) && !$found)
+  {
+    if (
+      strcmp($array[$index]['word'], $word_to_search) == 0
+      && strcmp($array[$index]['part'], $part_of_speech) == 0
+    )
+    {
+      $found = true;
+    }
+    else
+    {
+      $index++;
+    }
+  }
+  if ($found)
+  {
+    unset($array[$index]);
+  }
+  return $index;
+}
