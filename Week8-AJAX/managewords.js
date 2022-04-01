@@ -27,9 +27,15 @@ get_by_id("add_button").onclick = function ()
   let new_word = get_by_id("new_word").value;
   let new_speech = get_by_id("speech").value;
   let new_definition = get_by_id("def_new_word").value;
-  for (let index = 0; index < new_definition.length; index++) {
-    if (new_definition[index] === "&") {
+  for (let index = 0; index < new_definition.length; index++)
+  {
+    if (new_definition[index] === "&")
+    {
       new_definition = new_definition.replace("&", "π");
+    }
+    else if (new_definition[index] === "+")
+    {
+      new_definition = new_definition.replace("+", "√");
     }
   }
   add_new_entry(new_word, new_speech, new_definition);
@@ -52,6 +58,21 @@ get_by_id("add_word").onchange = function ()
   new_definition_validate();
   let new_word = get_by_id("new_word").value;
   let new_speech = get_by_id("speech").value;
+  let new_definition = get_by_id("def_new_word").value;
+  for (let index = 0; index < new_definition.length; index++)
+  {
+    if (new_definition[index].charCodeAt() > 127)
+    {
+      get_by_id("prompt_user_validate_def").innerHTML =
+        "Only lowercase alphabet letters is accepted";
+      get_by_id("prompt_user_validate_def").style["color"] = "red";
+      get_by_id("prompt_user_validate_def").style["font-size"] = "10px";
+      clear_add();
+      new_word_validate();
+      speech_validate();
+    }
+  }
+
   let word_with_part = new_word + new_speech ;
   get_by_id("add_button").disabled = form_validation_add();
   duplicate_validation(word_with_part);

@@ -280,6 +280,7 @@ plaintive	adjective	expressive of suffering or woe; melancholy
 platitude	noun	the quality or state of being dull or insipid
 pliant	adjective	easily bent, shaped, or twisted
 plumb	noun	a lead weight attached to a line and used to indicate a vertical direction
+poi	noun	+++++&amp;&amp;&amp;&amp;&amp;
 poignant	adjective	pungently pervasive
 ponderous	adjective	of very great weight
 portent	noun	something that foreshadows a coming event; omen, sign
