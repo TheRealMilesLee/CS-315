@@ -16,6 +16,7 @@ if (isset($_POST) && isset($_POST['payload']))
 {
   $json_data = json_decode($_POST['payload']);
   $json_data[2] = str_replace("π", "&", $json_data[2]);
+  $json_data[2] = str_replace("√", "+", $json_data[2]);
   $new_file = getPaired_array(FILE);
   $word = $json_data[0];
   $speech = $json_data[1];
