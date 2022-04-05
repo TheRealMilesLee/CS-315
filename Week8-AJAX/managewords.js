@@ -229,7 +229,7 @@ function load_words_from_disk()
 {
   let response = [];
   xhr = new XMLHttpRequest();
-  const url = `get_words.php`;
+  const url = "get_words.php";
   xhr.open("GET", url, true);
   xhr.onload = function ()
   {
@@ -260,12 +260,10 @@ function display(response)
 
 function add_new_entry(new_word, new_speech, new_definition)
 {
-  const xhr = new XMLHttpRequest();
+  xhr = new XMLHttpRequest();
   const url = "put_word.php";
-
   const data_array = [new_word, new_speech, new_definition];
   const json_string = `payload=${ JSON.stringify(data_array) }`;
-  console.log(json_string);
   xhr.open("POST", url);
   xhr.setRequestHeader
     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
