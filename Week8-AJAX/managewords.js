@@ -7,15 +7,11 @@
 "use strict";
 let xhr = null; // a global variable to prevent race
 // Get the element by using the id
-function get_by_id(id)
-{
-  return document.getElementById(id);
-}
-// Get the element by using the tag name
-function get_by_tag(tag)
-{
-  return document.getElementsByTagName(tag);
-}
+const get_by_id = (id) => { return document.getElementById(id); };
+// Get the element by using the name
+let get_by_name = (name) => { return document.getElementsByName(name); };
+// Get the ele
+let get_by_tag = (tag) => { return document.getElementsByTagName(tag); };
 
 window.onload = function ()
 {
@@ -233,12 +229,12 @@ function load_words_from_disk()
 {
   let response = [];
   xhr = new XMLHttpRequest();
-  const url = `get_words.php`;
+  const url = "get_words.php";
   xhr.open("GET", url, true);
   xhr.onload = function ()
   {
     const results = JSON.parse(xhr.responseText);
-    results.forEach(element => response.push(element));
+    results.forEach((element) => response.push(element));
     display(response);
   };
   xhr.send();
@@ -264,12 +260,10 @@ function display(response)
 
 function add_new_entry(new_word, new_speech, new_definition)
 {
-  const xhr = new XMLHttpRequest();
+  xhr = new XMLHttpRequest();
   const url = "put_word.php";
-
   const data_array = [new_word, new_speech, new_definition];
   const json_string = `payload=${ JSON.stringify(data_array) }`;
-  console.log(json_string);
   xhr.open("POST", url);
   xhr.setRequestHeader
     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
