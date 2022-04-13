@@ -2,7 +2,7 @@ import csv
 
 part = {'adjective': 1, 'adverb': 2, 'noun': 3, 'verb': 4}
 
-print('use jbeck;')
+print('use hl3265;')
 
 with open('words.txt', 'r') as file:
   csvfile = csv.reader(file, delimiter='\t')
