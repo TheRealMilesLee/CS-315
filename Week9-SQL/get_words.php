@@ -17,7 +17,6 @@ ini_set('display_errors', '1');
 define('DEFINITION_FILENAME', 'words.txt');
 
 $word = $db->prepare('select word.word, part.part, word.definition from word join part on word.part_id = part.id');
-
 $word->execute();
 $db_word = $word->fetchAll();
 
