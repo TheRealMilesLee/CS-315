@@ -16,23 +16,32 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 define('DEFINITION_FILENAME', 'words.txt');
 
+$word = $db->prepare('select word.word, part.part, word.definition from word join part on word.part_id = part.id');
+
+$word->execute();
+$db_word = $word->fetchAll();
+
 /**
  * @brief This function read a file of tab-separated lines into an array of arrays
  * @param string $filename the name of the file to read
  * @return array is the array of arrays with the contents of the file
  */
-function read_file_into_array($filename)
+function read_file_into_array($db_word)
 {
-  $file = fopen($filename, 'r');
-  $array = array();
-  while (($line = fgets($file)) !== false)
-  {
-    $array[] = explode("\t", rtrim($line));
-  }
-  fclose($file);
-  return $array;
+	$index = 0;
+	$array = array();
+	while ($index < count($db_word))
+	{
+		$array[] = 
+			array('word' => $db_word[$index]["word"], 'part' => $db_word[$index]["part"], 'definition' => $db_word[$index]["definition"]);
+		$index++;
+	}
+	return $array;
 }
-$word_list = read_file_into_array(DEFINITION_FILENAME);
+var_dump(read_file_into_array($db_word));
+
+$word_list = read_file_into_array($db_word);
+var_dump($word_list);
 ?>
 
 <?= json_encode($word_list) ?>
