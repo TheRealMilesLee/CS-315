@@ -95,6 +95,11 @@ p
   color: red;
 }
 
+.warning_font_style
+{
+    color: red;
+}
+
 #display_word
 {
   border: 4px solid black;
