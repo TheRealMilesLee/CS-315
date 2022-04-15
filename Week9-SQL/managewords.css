@@ -68,36 +68,28 @@ p
   font-weight: bold;
 }
 
-#prompt_user_validate_word
+.prompt_user
 {
   font-family: sans-serif, serif;
-  font-size: 20px;
   font-weight: normal;
   text-align:end;
+}
+
+.warning_sign_style
+{
+  font-size: 10px;
   color: red;
 }
 
-#prompt_user_validate_speech
+.warning_prompt_style
 {
-  font-family: sans-serif, serif;
-  font-size: 20px;
-  font-weight: normal;
-  text-align:end;
-  color: red;
-}
-
-#prompt_user_validate_def
-{
-  font-family: sans-serif, serif;
-  font-size: 20px;
-  font-weight: normal;
-  text-align:end;
-  color: red;
-}
-
-.warning_font_style
-{
+    font-size: 10px;
     color: red;
+}
+.pass_sign_style
+{
+    font-size: 15px;
+    color: green;
 }
 
 #display_word
