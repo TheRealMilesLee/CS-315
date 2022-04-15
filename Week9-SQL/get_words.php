@@ -10,7 +10,6 @@
 require 'dblogin.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-define('DEFINITION_FILENAME', 'words.txt');
 /**
  * @brief This function read a file of tab-separated lines into an array of arrays
  * @param string $filename the name of the file to read

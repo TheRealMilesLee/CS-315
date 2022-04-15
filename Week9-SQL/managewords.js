@@ -84,7 +84,10 @@ get_by_id("delete_word").onchange = function ()
     get_by_id("delete_submit").disabled = form_validation_delete();
 }
 
-
+get_by_id("delete_submit").onclick = function ()
+{
+  delete_word();
+}
 /**
  * This function is to validate the input word
  */
@@ -267,7 +270,6 @@ function display(response)
   {
     let checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
-    checkbox.setAttribute("id", index);
     checkbox.setAttribute("name", "choice_to_delete[]");
     checkbox.setAttribute("value", index);
     let new_word_line = document.createElement("span");
@@ -276,6 +278,7 @@ function display(response)
       response[index]["part"] + "\t" +
       response[index]["definition"];
     new_word_line.classList.add("word_list");
+    new_word_line.setAttribute("id", index);
     let original_div = get_by_id("display");
     let newline = document.createElement("p");
     original_div.appendChild(checkbox);
@@ -284,17 +287,17 @@ function display(response)
   }
 }
 
-function add_new_entry(new_word, new_speech, new_definition)
-{
-  xhr = new XMLHttpRequest();
-  const url = "put_word.php";
-  const data_array = [new_word, new_speech, new_definition];
-  const json_string = `payload=${ JSON.stringify(data_array) }`;
-  xhr.open("POST", url);
-  xhr.setRequestHeader
-    ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-  xhr.send(json_string);
-}
+// function add_new_entry(new_word, new_speech, new_definition)
+// {
+//   xhr = new XMLHttpRequest();
+//   const url = "put_word.php";
+//   const data_array = [new_word, new_speech, new_definition];
+//   const json_string = `payload=${ JSON.stringify(data_array) }`;
+//   xhr.open("POST", url);
+//   xhr.setRequestHeader
+//     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+//   xhr.send(json_string);
+// }
 
 function clean_previous_entry()
 {
@@ -353,6 +356,38 @@ function form_validation_delete()
     }
     index++;
   }
-  console.log(empty);
   return empty;
+}
+
+
+function delete_word()
+{
+  let index = 0;
+  let lines_to_delete = [];
+  let words_to_delete = [];
+  let selected_word = get_by_name("choice_to_delete[]");
+  while (index < selected_word.length)
+  {
+    if (selected_word[index].checked === true)
+    {
+      lines_to_delete.push(get_by_id(index).innerHTML);
+    }
+    index++;
+  }
+  lines_to_delete.forEach((elements) =>
+  {
+    let split_array = elements.split("\t");
+    words_to_delete.push(split_array[0]);
+  })
+  xhr = new XMLHttpRequest();
+  const delete_url = "delete_word.php";
+  const delete_string = `delete_word=${JSON.stringify(words_to_delete)}`;
+  xhr.open("POST", delete_url);
+  xhr.setRequestHeader
+    ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+  xhr.onload = function ()
+  {
+    console.log(delete_url);
+  }
+  xhr.send(delete_string);
 }
