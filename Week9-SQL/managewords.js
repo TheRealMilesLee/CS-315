@@ -79,6 +79,15 @@ get_by_id("search_to_delete").onkeyup = function ()
   load_words_from_disk(search_string);
 }
 
+get_by_id("delete_word").onchange = function ()
+{
+  if (get_by_name("choice_to_delete[]").checked = true)
+  {
+    get_by_name("delete_submit").disabled = form_validation_delete();
+  }
+}
+
+
 /**
  * This function is to validate the input word
  */
@@ -260,6 +269,11 @@ function display(response)
 {
   for (let index = 0; index < response.length; index++)
   {
+    let checkbox = document.createElement("input");
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("id", index);
+    checkbox.setAttribute("name", "choice_to_delete[]");
+    checkbox.setAttribute("value", index);
     let new_word_line = document.createElement("span");
     new_word_line.innerHTML =
       response[index]["word"] + "\t" +
@@ -268,6 +282,7 @@ function display(response)
     new_word_line.classList.add("word_list");
     let original_div = get_by_id("display");
     let newline = document.createElement("p");
+    original_div.appendChild(checkbox);
     original_div.appendChild(new_word_line);
     original_div.appendChild(newline);
   }
@@ -297,4 +312,50 @@ function create_new_div_entry()
   display_section.setAttribute("id", "display");
   let father_node = get_by_id("delete_word");
   father_node.appendChild(display_section);
+}
+
+/**
+ * This function is to clear the delete section
+ */
+function clear_delete()
+{
+  let index = 0;
+  while (index < get_by_name("choice_to_delete[]").length)
+  {
+    get_by_name("choice_to_delete[]")[index].checked = false;
+    index++;
+  }
+}
+
+/**
+ * This function is to clean the addition
+ */
+function clear_add()
+{
+  get_by_id("new_word").value = "";
+  get_by_id("def_new_word").value = "";
+  get_by_id("speech").value = "";
+  get_by_id("new_part_speech").value = "";
+}
+
+/**
+ * This function is to determine whether the checkbox is checked or not
+ * @returns true if the delete check box is empty,
+ * return false if the checkbox is not empty
+ */
+function form_validation_delete()
+{
+  let index = 0;
+  let empty = true;
+  let delete_choice = get_by_name("choice_to_delete[]");
+  console.log(delete_choice);
+  while (index < delete_choice.length)
+  {
+    if (delete_choice[index].checked === true)
+    {
+      empty = false;
+    }
+    index++;
+  }
+  return empty;
 }
