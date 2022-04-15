@@ -8,13 +8,15 @@
  */
 
 require 'dblogin.php';
-
+error_reporting(E_ALL);
+ini_set('display_errors', '1');
+define('DEFINITION_FILENAME', 'words.txt');
 /**
  * @brief This function read a file of tab-separated lines into an array of arrays
  * @param string $filename the name of the file to read
  * @return array is the array of arrays with the contents of the file
  */
-function read_file_into_array($db_word)
+function read_database_into_array($db_word)
 {
 	$index = 0;
 	$array = array();
@@ -37,15 +39,10 @@ if (isset($_GET) && isset($_GET['search']) && preg_match('/^[a-z]+$/', $_GET['se
 		array( PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE =>
 		PDO::ERRMODE_EXCEPTION)
 	);
-	error_reporting(E_ALL);
-	ini_set('display_errors', '1');
-	define('DEFINITION_FILENAME', 'words.txt');
-
-	$word = $db->prepare('select word.word, part.part, word.definition from word join part on word.part_id = part.id where word like "$search%"' );
+	$word = $db->prepare("select word.word, part.part, word.definition from word join part on word.part_id = part.id where word like '$search%';" );
 	$word->execute();
 	$db_word = $word->fetchAll();
-	$word_list = read_file_into_array($db_word);
-	var_dump($word_list[0]);
+	$word_list = read_database_into_array($db_word);
 }
 ?>
 <?= json_encode($word_list) ?>

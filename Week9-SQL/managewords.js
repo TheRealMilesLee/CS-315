@@ -15,9 +15,8 @@ let get_by_tag = (tag) => { return document.getElementsByTagName(tag); };
 
 window.onload = function ()
 {
-  load_words_from_disk();
-};
-
+  create_new_div_entry();
+}
 get_by_id("add_button").onclick = function ()
 {
   let new_word = get_by_id("new_word").value;
@@ -36,7 +35,6 @@ get_by_id("add_button").onclick = function ()
   }
   add_new_entry(new_word, new_speech, new_definition);
   clean_previous_entry();
-  load_words_from_disk();
   clear_add();
   new_word_validate();
   speech_validate();
@@ -73,6 +71,13 @@ get_by_id("add_word").onchange = function ()
   get_by_id("add_button").disabled = form_validation_add();
   duplicate_validation(word_with_part);
 };
+
+get_by_id("search_to_delete").onkeyup = function ()
+{
+  clean_previous_entry();
+  let search_string = get_by_id("search_to_delete").value;
+  load_words_from_disk(search_string);
+}
 
 /**
  * This function is to validate the input word
@@ -232,16 +237,20 @@ function find_duplicate(compare_string)
 /**
  * This function is to get the file from the disk
  */
-function load_words_from_disk()
+function load_words_from_disk(search_string)
 {
   let response = [];
   xhr = new XMLHttpRequest();
-  const url = "get_words.php";
+  const url = "get_words.php?search=" + search_string;
   xhr.open("GET", url, true);
   xhr.onload = function ()
   {
     const results = JSON.parse(xhr.responseText);
-    results.forEach((element) => response.push(element));
+    for (let index = 0; index < results.length; index++)
+    {
+      response.push(results[index]);
+    }
+    console.log(response);
     display(response);
   };
   xhr.send();
@@ -249,14 +258,13 @@ function load_words_from_disk()
 
 function display(response)
 {
-  create_new_div_entry();
   for (let index = 0; index < response.length; index++)
   {
     let new_word_line = document.createElement("span");
     new_word_line.innerHTML =
-      response[index][0] + "\t" +
-      response[index][1] + "\t" +
-      response[index][2];
+      response[index]["word"] + "\t" +
+      response[index]["part"] + "\t" +
+      response[index]["definition"];
     new_word_line.classList.add("word_list");
     let original_div = get_by_id("display");
     let newline = document.createElement("p");
@@ -280,13 +288,13 @@ function add_new_entry(new_word, new_speech, new_definition)
 function clean_previous_entry()
 {
   let original_text = get_by_id("display");
-  original_text.remove();
+  original_text.innerHTML = "";
 }
 
 function create_new_div_entry()
 {
   let display_section = document.createElement("div");
   display_section.setAttribute("id", "display");
-  let father_node = get_by_id("display_word");
+  let father_node = get_by_id("delete_word");
   father_node.appendChild(display_section);
 }
