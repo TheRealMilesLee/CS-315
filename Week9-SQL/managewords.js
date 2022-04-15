@@ -81,10 +81,7 @@ get_by_id("search_to_delete").onkeyup = function ()
 
 get_by_id("delete_word").onchange = function ()
 {
-  if (get_by_name("choice_to_delete[]").checked = true)
-  {
-    get_by_name("delete_submit").disabled = form_validation_delete();
-  }
+    get_by_id("delete_submit").disabled = form_validation_delete();
 }
 
 
@@ -259,7 +256,6 @@ function load_words_from_disk(search_string)
     {
       response.push(results[index]);
     }
-    console.log(response);
     display(response);
   };
   xhr.send();
@@ -348,7 +344,7 @@ function form_validation_delete()
   let index = 0;
   let empty = true;
   let delete_choice = get_by_name("choice_to_delete[]");
-  console.log(delete_choice);
+
   while (index < delete_choice.length)
   {
     if (delete_choice[index].checked === true)
@@ -357,5 +353,6 @@ function form_validation_delete()
     }
     index++;
   }
+  console.log(empty);
   return empty;
 }
