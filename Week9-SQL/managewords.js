@@ -59,16 +59,16 @@ get_by_id("add_word").onchange = function ()
   {
     if (new_definition[index].charCodeAt() > 127)
     {
-      get_by_id("prompt_user_validate_def").innerHTML =
-        "Only lowercase alphabet letters is accepted";
-      get_by_id("prompt_user_validate_def").style["color"] = "red";
-      get_by_id("prompt_user_validate_def").style["font-size"] = "10px";
+      get_by_id("definition_prompt").classList.remove("warning_sign_style");
+      get_by_id("definition_prompt").classList.remove("pass_sign_style");
+      get_by_id("definition_prompt").classList.add("warning_prompt_style");
+      get_by_id("definition_prompt").innerHTML =
+        "Please only input English character and symbols";
       clear_add();
       new_word_validate();
       speech_validate();
     }
   }
-
   let word_with_part = new_word + new_speech ;
   get_by_id("add_button").disabled = form_validation_add();
   duplicate_validation(word_with_part);
@@ -82,26 +82,27 @@ function new_word_validate()
   let regex_word = new RegExp("^[a-z]+$");
   if (get_by_id("new_word").value == "")
   {
-    get_by_id("prompt_user_validate_word").style["color"] = "red";
-    get_by_id("prompt_user_validate_word").style["font-size"] = "20px";
-    get_by_id("prompt_user_validate_word").style["font-style"] = "italic";
-    get_by_id("prompt_user_validate_word").innerHTML = "&excl;";
+    get_by_id("word_prompt").classList.remove("pass_sign_style");
+    get_by_id("word_prompt").classList.add("warning_sign_style");
+    get_by_id("word_prompt").innerHTML = "&excl;";
   }
   else if (!regex_word.test(get_by_id("new_word").value))
   {
-    get_by_id("prompt_user_validate_word").style["color"] = "red";
-    get_by_id("prompt_user_validate_word").style["font-size"] = "10px";
-    get_by_id("prompt_user_validate_word").style["font-style"] = "italic";
-    get_by_id("prompt_user_validate_word").innerHTML =
-        "Only lowercase alphabet letters is accepted";
+    get_by_id("word_prompt").classList.remove("pass_sign_style");
+    get_by_id("word_prompt").classList.add("warning_prompt_style");
+    get_by_id("word_prompt").innerHTML =
+      "Only lowercase alphabet letters is accepted";
     clear_add();
   }
   else
   {
-    get_by_id("prompt_user_validate_word").style["color"] = "green";
-    get_by_id("prompt_user_validate_word").innerHTML = "&check;";
+    get_by_id("word_prompt").classList.remove("warning_sign_style");
+    get_by_id("word_prompt").classList.remove("warning_prompt_style");
+    get_by_id("word_prompt").classList.add("pass_sign_style");
+    get_by_id("word_prompt").innerHTML = "&check;";
   }
 };
+
 /**
  * This function validate the speech
  */
@@ -109,13 +110,15 @@ function speech_validate()
 {
   if (get_by_id("speech").value !== "")
   {
-    get_by_id("prompt_user_validate_speech").style["color"] = "green";
-    get_by_id("prompt_user_validate_speech").innerHTML = "&check;";
+    get_by_id("speech_prompt").classList.remove("warning_sign_style");
+    get_by_id("speech_prompt").classList.add("pass_sign_style");
+    get_by_id("speech_prompt").innerHTML = "&check;";
   }
   else
   {
-    get_by_id("prompt_user_validate_speech").style["color"] = "red";
-    get_by_id("prompt_user_validate_speech").innerHTML = "&excl;";
+    get_by_id("speech_prompt").classList.remove("pass_sign_style");
+    get_by_id("speech_prompt").classList.add("warning_sign_style");
+    get_by_id("speech_prompt").innerHTML = "&excl;";
   }
 }
 
@@ -127,13 +130,17 @@ function new_definition_validate()
 {
   if (get_by_id("def_new_word").value !== "")
   {
-    get_by_id("prompt_user_validate_def").style["color"] = "green";
-    get_by_id("prompt_user_validate_def").innerHTML = "&check;";
+    get_by_id("definition_prompt").classList.remove("warning_sign_style");
+    get_by_id("definition_prompt").classList.remove("warning_prompt_style");
+    get_by_id("definition_prompt").classList.add("pass_sign_style");
+    get_by_id("definition_prompt").innerHTML = "&check;";
   }
   else
   {
-    get_by_id("prompt_user_validate_def").style["color"] = "red";
-    get_by_id("prompt_user_validate_def").innerHTML = "&excl;";
+    get_by_id("definition_prompt").classList.remove("warning_sign_style");
+    get_by_id("definition_prompt").classList.remove("pass_sign_style");
+    get_by_id("definition_prompt").classList.add("warning_prompt_style");
+    get_by_id("definition_prompt").innerHTML = "&excl;";
    }
 }
 
