@@ -86,7 +86,7 @@ get_by_id("delete_word").onchange = function ()
 
 get_by_id("delete_submit").onclick = function ()
 {
-  delete_word();
+  delete_word_button();
 }
 /**
  * This function is to validate the input word
@@ -360,7 +360,7 @@ function form_validation_delete()
 }
 
 
-function delete_word()
+function delete_word_button()
 {
   let index = 0;
   let lines_to_delete = [];
@@ -380,14 +380,13 @@ function delete_word()
     words_to_delete.push(split_array[0]);
   })
   xhr = new XMLHttpRequest();
-  const delete_url = "delete_word.php";
   const delete_string = `delete_word=${JSON.stringify(words_to_delete)}`;
-  xhr.open("POST", delete_url);
+  xhr.open("POST", "delete_word.php");
   xhr.setRequestHeader
     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
   xhr.onload = function ()
   {
-    console.log(delete_url);
+    console.log(delete_string);
   }
   xhr.send(delete_string);
 }
