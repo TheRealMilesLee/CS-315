@@ -34,13 +34,11 @@ get_by_id("add_button").onclick = function ()
     }
   }
   add_new_entry(new_word, new_speech, new_definition);
-  clean_previous_entry();
   clear_add();
   new_word_validate();
   speech_validate();
   new_definition_validate();
 };
-
 
 /**
  * This is control the add section for validation
@@ -67,27 +65,29 @@ get_by_id("add_word").onchange = function ()
       speech_validate();
     }
   }
-  let word_with_part = new_word + new_speech ;
   get_by_id("add_button").disabled = form_validation_add();
-  duplicate_validation(word_with_part);
+  duplicate_validation(new_word, new_speech);
 };
 
-get_by_id("search_to_delete").onkeyup = function ()
+get_by_id("delete_checkbox").onkeyup = function ()
 {
   clean_previous_entry();
-  let search_string = get_by_id("search_to_delete").value;
+  let search_string = get_by_id("delete_checkbox").value;
   load_words_from_disk(search_string);
 }
 
 get_by_id("delete_word").onchange = function ()
 {
-    get_by_id("delete_submit").disabled = form_validation_delete();
+  get_by_id("delete_submit").disabled = form_validation_delete();
 }
 
 get_by_id("delete_submit").onclick = function ()
 {
   delete_word_button();
+  clean_previous_entry();
+  get_by_id("delete_checkbox").value = "";
 }
+
 /**
  * This function is to validate the input word
  */
@@ -162,11 +162,11 @@ function new_definition_validate()
 /**
  * This is to find the duplicate in the entry
  */
-function duplicate_validation(word_with_part)
+function duplicate_validation(new_word, new_speech)
 {
-  if (get_by_id("new_word").value !== "" && get_by_id("speech").value !== "")
+  if (new_word !== "" && new_speech !== "")
   {
-    find_duplicate(word_with_part);
+    find_duplicate(new_word, new_speech);
   }
 }
 
@@ -218,8 +218,19 @@ function clear_add()
  * This function is to find the duplication
  * @param {string} compare_string is the string that user input.
  */
-function find_duplicate(compare_string)
+function find_duplicate(words, definition)
 {
+  xhr = new XMLHttpRequest();
+  const search_string_array = [words, definition];
+  const duplicate_string = `duplicate=${ JSON.stringify(search_string_array)}`;
+  xhr.open("POST", "add_word.php");
+  xhr.setRequestHeader
+    ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+  xhr.send(duplicate_string);
+
+
+
+
   let word_array;
   let split_array = [];
   let index = 0;
@@ -287,17 +298,17 @@ function display(response)
   }
 }
 
-// function add_new_entry(new_word, new_speech, new_definition)
-// {
-//   xhr = new XMLHttpRequest();
-//   const url = "put_word.php";
-//   const data_array = [new_word, new_speech, new_definition];
-//   const json_string = `payload=${ JSON.stringify(data_array) }`;
-//   xhr.open("POST", url);
-//   xhr.setRequestHeader
-//     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-//   xhr.send(json_string);
-// }
+function add_new_entry(new_word, new_speech, new_definition)
+{
+  xhr = new XMLHttpRequest();
+  const url = "put_word.php";
+  const data_array = [new_word, new_speech, new_definition];
+  const json_string = `payload=${ JSON.stringify(data_array) }`;
+  xhr.open("POST", url);
+  xhr.setRequestHeader
+    ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+  xhr.send(json_string);
+}
 
 function clean_previous_entry()
 {
@@ -347,7 +358,6 @@ function form_validation_delete()
   let index = 0;
   let empty = true;
   let delete_choice = get_by_name("choice_to_delete[]");
-
   while (index < delete_choice.length)
   {
     if (delete_choice[index].checked === true)
@@ -359,13 +369,13 @@ function form_validation_delete()
   return empty;
 }
 
-
 function delete_word_button()
 {
   let index = 0;
   let lines_to_delete = [];
   let words_to_delete = [];
   let selected_word = get_by_name("choice_to_delete[]");
+  console.log(selected_word);
   while (index < selected_word.length)
   {
     if (selected_word[index].checked === true)
@@ -384,9 +394,5 @@ function delete_word_button()
   xhr.open("POST", "delete_word.php");
   xhr.setRequestHeader
     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-  xhr.onload = function ()
-  {
-    console.log(delete_string);
-  }
   xhr.send(delete_string);
 }

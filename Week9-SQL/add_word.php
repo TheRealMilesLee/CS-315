@@ -8,15 +8,47 @@
  */
 
 require 'dblogin.php';
-
-$db = new PDO("mysql:host=$db_host;dbname=hl3265;charset=utf8mb4",
-              $db_user, $db_pass,
-              array(PDO::ATTR_EMULATE_PREPARES => false,
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
+define("FILE", "1.txt");
+if (isset($_POST) && isset($_POST['duplicate']))
+{
+  $duplicate_array = json_decode($_POST['duplicate']);
+  $words_duplicate = $duplicate_array[0];
+  $speech_duplicate = $duplicate_array[1];
+  $db = new PDO(
+    "mysql:host=$db_host;dbname=hl3265;charset=utf8mb4",
+    $db_user,
+    $db_pass,
+    array(
+      PDO::ATTR_EMULATE_PREPARES => false,
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    )
+  );
+  $search = $db->prepare("select word.word, part.part from word
+                        join part on word.part_id = part_id
+                        where word.word = '$words_duplicate' and part.part ='$speech_duplicate';" );
+  $search->execute();
+  $search_results = $search->fetchAll();
+  if ($search_results === null)
+  {
+    ?>
+    <?= json_encode("False") ?>
+  <?php
+  }
+  else
+  {
+    ?>
+    <?= json_encode("True") ?>
+    <?php
+  }
+}
 
-define('FILE', 'words.txt');
+
+
+
+
+
 
 if (isset($_POST) && isset($_POST['payload']))
 {
