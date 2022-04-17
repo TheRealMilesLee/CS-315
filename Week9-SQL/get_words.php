@@ -38,7 +38,7 @@ if (isset($_GET) && isset($_GET['search']) && preg_match('/^[a-z]+$/', $_GET['se
 		array( PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE =>
 		PDO::ERRMODE_EXCEPTION)
 	);
-	$word = $db->prepare("select word.word, part.part, word.definition from word join part on word.part_id = part.id where word like '$search%';" );
+	$word = $db->prepare("select word.word, part.part, word.definition from word join part on word.part_id = part.id where word like '$search%' order by word asc;" );
 	$word->execute();
 	$db_word = $word->fetchAll();
 	$word_list = read_database_into_array($db_word);
