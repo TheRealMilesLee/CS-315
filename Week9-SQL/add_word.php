@@ -10,14 +10,6 @@
 require 'dblogin.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-
-function logger($s)
-{
-  $file = fopen("logger.txt", 'a');
-  fwrite($file, $s . PHP_EOL);
-  fclose($file);
-}
-
 $duplicate = true;
 if (isset($_POST) && isset($_POST['duplicate']))
 {
@@ -53,7 +45,7 @@ if (isset($_POST) && isset($_POST['duplicate']))
   }
 }
 
-if (isset($_POST) && isset($_POST['new_entry']) && !$duplicate)
+if (isset($_POST) && isset($_POST['new_entry']))
 {
   $db = new PDO(
     "mysql:host=$db_host;dbname=hl3265;charset=utf8mb4",

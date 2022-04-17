@@ -35,6 +35,9 @@ get_by_id("add_button").onclick = function ()
   }
   add_new_entry(new_word, new_speech, new_definition);
   clear_add();
+  clear_delete();
+  get_by_id("search_delete").value = "";
+  clean_previous_entry();
   new_word_validate();
   speech_validate();
   new_definition_validate();
@@ -45,7 +48,6 @@ get_by_id("add_button").onclick = function ()
  */
 get_by_id("add_word").onchange = function ()
 {
-  clear_delete();
   new_word_validate();
   speech_validate();
   new_definition_validate();
@@ -70,10 +72,10 @@ get_by_id("add_word").onchange = function ()
   duplicate_validation(new_word, new_speech);
 };
 
-get_by_id("delete_checkbox").onkeyup = function ()
+get_by_id("search_delete").onkeyup = function ()
 {
   clean_previous_entry();
-  let search_string = get_by_id("delete_checkbox").value;
+  let search_string = get_by_id("search_delete").value;
   load_words_from_disk(search_string);
 }
 
@@ -86,7 +88,7 @@ get_by_id("delete_submit").onclick = function ()
 {
   delete_word_button();
   clean_previous_entry();
-  get_by_id("delete_checkbox").value = "";
+  get_by_id("search_delete").value = "";
 }
 
 /**
@@ -324,7 +326,7 @@ function clear_delete()
     get_by_name("choice_to_delete[]")[index].checked = false;
     index++;
   }
-  get_by_id("delete_checkbox").value = "";
+  get_by_id()
 }
 
 /**
