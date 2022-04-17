@@ -45,6 +45,7 @@ get_by_id("add_button").onclick = function ()
  */
 get_by_id("add_word").onchange = function ()
 {
+  clear_delete();
   new_word_validate();
   speech_validate();
   new_definition_validate();
@@ -226,24 +227,11 @@ function find_duplicate(words, definition)
   xhr.open("POST", "add_word.php");
   xhr.setRequestHeader
     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-  xhr.send(duplicate_string);
-
-
-
-
-  let word_array;
-  let split_array = [];
-  let index = 0;
-  while (index < get_by_tag("span").length)
+  xhr.onload = function ()
   {
-    word_array = get_by_tag("span")[index].innerHTML.split("\t");
-    split_array.push(word_array);
-    index++;
-  }
-  for (let looptimes = 0; looptimes < split_array.length; looptimes++)
-  {
-    let compare_dict = split_array[looptimes][0] + split_array[looptimes][1];
-    if (compare_dict === compare_string)
+    let duplicate_result = JSON.parse(xhr.responseText);
+    console.log(duplicate_result);
+    if (duplicate_result === true)
     {
       window.alert(" The entry you entered is already exists!");
       clear_add();
@@ -252,6 +240,7 @@ function find_duplicate(words, definition)
       new_definition_validate();
     }
   }
+  xhr.send(duplicate_string);
 }
 
 /**
@@ -301,13 +290,13 @@ function display(response)
 function add_new_entry(new_word, new_speech, new_definition)
 {
   xhr = new XMLHttpRequest();
-  const url = "put_word.php";
   const data_array = [new_word, new_speech, new_definition];
-  const json_string = `payload=${ JSON.stringify(data_array) }`;
-  xhr.open("POST", url);
+  const new_entry = `new_entry=${ JSON.stringify(data_array) }`;
+  console.log(new_entry);
+  xhr.open("POST", "add_word.php");
   xhr.setRequestHeader
     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-  xhr.send(json_string);
+  xhr.send(new_entry);
 }
 
 function clean_previous_entry()
@@ -335,6 +324,7 @@ function clear_delete()
     get_by_name("choice_to_delete[]")[index].checked = false;
     index++;
   }
+  get_by_id("delete_checkbox").value = "";
 }
 
 /**
@@ -343,9 +333,8 @@ function clear_delete()
 function clear_add()
 {
   get_by_id("new_word").value = "";
-  get_by_id("def_new_word").value = "";
   get_by_id("speech").value = "";
-  get_by_id("new_part_speech").value = "";
+  get_by_id("def_new_word").value = "";
 }
 
 /**
