@@ -1,3 +1,12 @@
+/*
+Hengyi Li
+Version: 0.2.0
+A sql file to create tables.
+*/
+
+use hl3265;
+
+drop table if exists part, word;
 create table part
 (
 	id int unsigned not null auto_increment,

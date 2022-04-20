@@ -4,7 +4,7 @@
  * @brief This file is to get words from the file
  * @author Dr.Beck and Hengyi Li
  * @copyright 2022 Truman State University. All rights reserved
- * @version 1.0.3
+ * @version 1.0.4
  */
 
 require 'dblogin.php';
@@ -38,7 +38,8 @@ if (isset($_GET) && isset($_GET['search']) && preg_match('/^[a-z]+$/', $_GET['se
 		array( PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_ERRMODE =>
 		PDO::ERRMODE_EXCEPTION)
 	);
-	$word = $db->prepare("select word.word, part.part, word.definition from word join part on word.part_id = part.id where word like '$search%' order by word asc;" );
+	$word = $db->prepare('select word.word, part.part, word.definition from word join part on word.part_id = part.id where word like :search order by word asc;' );
+	$word->bindValue(':search', $search . '%', PDO::PARAM_STR);
 	$word->execute();
 	$db_word = $word->fetchAll();
 	$word_list = read_database_into_array($db_word);

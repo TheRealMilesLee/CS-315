@@ -26,8 +26,10 @@ if (isset($_POST) && isset($_POST['duplicate']))
   $words_duplicate = $duplicate_array[0];
   $speech_duplicate = $duplicate_array[1];
   $search = $db->prepare("select word.word, part.part from word
-                        join part on word.part_id = part_id
-                        where word.word = '$words_duplicate' and part.part ='$speech_duplicate';");
+                        join part on word.part_id = part.id
+                        where word.word = :duplicate_word and part.part = :duplicate_part;");
+  $search->bindValue(':duplicate_word', $words_duplicate, PDO::PARAM_STR);
+  $search->bindValue(':duplicate_part', $speech_duplicate, PDO::PARAM_STR);
   $search->execute();
   $search_results = $search->fetchAll();
   if (empty($search_results))
@@ -59,7 +61,7 @@ if (isset($_POST) && isset($_POST['new_entry']))
   $json_data = json_decode($_POST['new_entry']);
   $json_data[2] = str_replace("π", "&", $json_data[2]);
   $json_data[2] = str_replace("√", "+", $json_data[2]);
-  $new_word_entry = $json_data[0];
+  $new_word_entry = htmlspecialchars($json_data[0]);
   $new_speech_entry = $json_data[1];
   if ($new_speech_entry == "adjective")
   {
@@ -78,6 +80,10 @@ if (isset($_POST) && isset($_POST['new_entry']))
     $insert_speech = 4;
   }
   $new_definition_entry = htmlspecialchars($json_data[2]);
-  $insert_query = $db->prepare("insert into word (word, part_id, definition) values ('$new_word_entry','$insert_speech','$new_definition_entry');");
+  $insert_query = $db->prepare('insert into word (word, part_id, definition)
+  values (:word, :part_id, :definition);');
+  $insert_query->bindValue(':word', $new_word_entry, PDO::PARAM_STR);
+  $insert_query->bindValue(':part_id', $insert_speech, PDO::PARAM_INT);
+  $insert_query->bindValue(':definition', $new_definition_entry, PDO::PARAM_STR);
   $insert_query->execute();
 }

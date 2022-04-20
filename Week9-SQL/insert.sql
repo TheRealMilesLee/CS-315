@@ -1,5 +1,4 @@
 use hl3265;
-insert into word (word, part_id, definition) values ("abandon", 4, "to give up to the control or influence of another person or agent");
 insert into word (word, part_id, definition) values ("abate", 4, "to put an end to; nullify");
 insert into word (word, part_id, definition) values ("abeyance", 3, "a lapse in succession during which there is no person in whom a title is vested");
 insert into word (word, part_id, definition) values ("abjure", 4, "to renounce upon oath; to reject solemnly");
@@ -281,7 +280,6 @@ insert into word (word, part_id, definition) values ("plaintive", 1, "expressive
 insert into word (word, part_id, definition) values ("platitude", 3, "the quality or state of being dull or insipid");
 insert into word (word, part_id, definition) values ("pliant", 1, "easily bent, shaped, or twisted");
 insert into word (word, part_id, definition) values ("plumb", 3, "a lead weight attached to a line and used to indicate a vertical direction");
-insert into word (word, part_id, definition) values ("poi", 3, "+++++&amp;&amp;&amp;&amp;&amp;");
 insert into word (word, part_id, definition) values ("poignant", 1, "pungently pervasive");
 insert into word (word, part_id, definition) values ("ponderous", 1, "of very great weight");
 insert into word (word, part_id, definition) values ("portent", 3, "something that foreshadows a coming event; omen, sign");

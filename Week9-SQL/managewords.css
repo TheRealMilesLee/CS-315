@@ -10,8 +10,8 @@ body
   margin-right: auto;
   width: 90%;
   display:grid;
-  grid-template-columns: repeat(1fr, 4);
-  grid-template-rows: repeat(1fr, 4);
+  grid-template-columns: repeat(1, 2fr);
+  grid-template-rows: repeat(1, 2fr);
 }
 
 p
@@ -28,8 +28,6 @@ p
   padding: 15px;
   margin: 5px;
   text-align:center;
-  grid-column: 0/0;
-  grid-row: 0/0;
 }
 
 .word_manager

@@ -2,27 +2,35 @@
  * @description A program to manage the word list for the GRE quiz
  * @author Hengyi Li
  * @copyright Copyright (c). 2022 Hengyi Li. All rights reserved
- * @version 18.20.13 Release
+ * @version 39.20.13 Release
  */
 "use strict";
 let xhr = null; // a global variable to prevent race
 // Get the element by using the id
-const get_by_id = (id) => { return document.getElementById(id); };
+function get_by_id(id)
+{
+  return document.getElementById(id);
+}
 // Get the element by using the name
-let get_by_name = (name) => { return document.getElementsByName(name); };
-// Get the ele
-let get_by_tag = (tag) => { return document.getElementsByTagName(tag); };
+function get_by_name(name)
+{
+  return document.getElementsByName(name);
+}
 
+/**
+ * This function is to load with a empty div
+ */
 window.onload = function ()
 {
   create_new_div_entry();
-}
+};
 get_by_id("add_button").onclick = function ()
 {
   let new_word = get_by_id("new_word").value;
   let new_speech = get_by_id("speech").value;
   let new_definition = get_by_id("def_new_word").value;
-  for (let index = 0; index < new_definition.length; index++)
+  let index = 0;
+  while (index < new_definition.length)
   {
     if (new_definition[index] === "&")
     {
@@ -32,6 +40,7 @@ get_by_id("add_button").onclick = function ()
     {
       new_definition = new_definition.replace("+", "√");
     }
+    index += 1;
   }
   add_new_entry(new_word, new_speech, new_definition);
   clear_add();
@@ -48,13 +57,17 @@ get_by_id("add_button").onclick = function ()
  */
 get_by_id("add_word").onchange = function ()
 {
+  clear_delete();
+  clean_previous_entry();
+  get_by_id("search_delete").value = "";
   new_word_validate();
   speech_validate();
   new_definition_validate();
   let new_word = get_by_id("new_word").value;
   let new_speech = get_by_id("speech").value;
   let new_definition = get_by_id("def_new_word").value;
-  for (let index = 0; index < new_definition.length; index++)
+  let index = 0;
+  while (index < new_definition.length)
   {
     if (new_definition[index].charCodeAt() > 127)
     {
@@ -67,6 +80,7 @@ get_by_id("add_word").onchange = function ()
       new_word_validate();
       speech_validate();
     }
+    index += 1;
   }
   get_by_id("add_button").disabled = form_validation_add();
   duplicate_validation(new_word, new_speech);
@@ -77,19 +91,23 @@ get_by_id("search_delete").onkeyup = function ()
   clean_previous_entry();
   let search_string = get_by_id("search_delete").value;
   load_words_from_disk(search_string);
-}
+};
 
 get_by_id("delete_word").onchange = function ()
 {
+  clear_add();
+  new_word_validate();
+  speech_validate();
+  new_definition_validate();
   get_by_id("delete_submit").disabled = form_validation_delete();
-}
+};
 
 get_by_id("delete_submit").onclick = function ()
 {
   delete_word_button();
   clean_previous_entry();
   get_by_id("search_delete").value = "";
-}
+};
 
 /**
  * This function is to validate the input word
@@ -97,7 +115,7 @@ get_by_id("delete_submit").onclick = function ()
 function new_word_validate()
 {
   let regex_word = new RegExp("^[a-z]+$");
-  if (get_by_id("new_word").value == "")
+  if (get_by_id("new_word").value === "")
   {
     get_by_id("word_prompt").classList.remove("pass_sign_style");
     get_by_id("word_prompt").classList.add("warning_sign_style");
@@ -118,7 +136,7 @@ function new_word_validate()
     get_by_id("word_prompt").classList.add("pass_sign_style");
     get_by_id("word_prompt").innerHTML = "&check;";
   }
-};
+}
 
 /**
  * This function validate the speech
@@ -224,8 +242,8 @@ function clear_add()
 function find_duplicate(words, definition)
 {
   xhr = new XMLHttpRequest();
-  const search_string_array = [words, definition];
-  const duplicate_string = `duplicate=${ JSON.stringify(search_string_array)}`;
+  const search_string = [words, definition];
+  const duplicate_string = `duplicate=${JSON.stringify(search_string)}`;
   xhr.open("POST", "add_word.php");
   xhr.setRequestHeader
     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
@@ -241,7 +259,7 @@ function find_duplicate(words, definition)
       speech_validate();
       new_definition_validate();
     }
-  }
+  };
   xhr.send(duplicate_string);
 }
 
@@ -250,25 +268,37 @@ function find_duplicate(words, definition)
  */
 function load_words_from_disk(search_string)
 {
-  let response = [];
-  xhr = new XMLHttpRequest();
-  const url = "get_words.php?search=" + search_string;
-  xhr.open("GET", url, true);
-  xhr.onload = function ()
+  if (xhr)
   {
-    const results = JSON.parse(xhr.responseText);
-    for (let index = 0; index < results.length; index++)
+    xhr.abort();
+    xhr = null;
+  }
+  if (search_string !== "")
+  {
+    let response = [];
+    xhr = new XMLHttpRequest();
+    const url = "get_words.php?search=" + search_string;
+    console.log(url);
+    xhr.open("GET", url, true);
+    xhr.onload = function ()
     {
-      response.push(results[index]);
-    }
-    display(response);
-  };
-  xhr.send();
+      const results = JSON.parse(xhr.responseText);
+      let index = 0;
+      while (index < results.length)
+      {
+        response.push(results[index]);
+        index += 1;
+      }
+      display(response);
+    };
+    xhr.send();
+  }
 }
 
 function display(response)
 {
-  for (let index = 0; index < response.length; index++)
+  let index = 0;
+  while (index < response.length)
   {
     let checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
@@ -276,9 +306,9 @@ function display(response)
     checkbox.setAttribute("value", index);
     let new_word_line = document.createElement("span");
     new_word_line.innerHTML =
-      response[index]["word"] + "\t" +
-      response[index]["part"] + "\t" +
-      response[index]["definition"];
+      response[index].word + "\t" +
+      response[index].part + "\t" +
+      response[index].definition;
     new_word_line.classList.add("word_list");
     new_word_line.setAttribute("id", index);
     let original_div = get_by_id("display");
@@ -286,11 +316,17 @@ function display(response)
     original_div.appendChild(checkbox);
     original_div.appendChild(new_word_line);
     original_div.appendChild(newline);
+    index += 1;
   }
 }
 
 function add_new_entry(new_word, new_speech, new_definition)
 {
+  if (xhr)
+  {
+    xhr.abort();
+    xhr = null;
+  }
   xhr = new XMLHttpRequest();
   const data_array = [new_word, new_speech, new_definition];
   const new_entry = `new_entry=${ JSON.stringify(data_array) }`;
@@ -324,19 +360,9 @@ function clear_delete()
   while (index < get_by_name("choice_to_delete[]").length)
   {
     get_by_name("choice_to_delete[]")[index].checked = false;
-    index++;
+    index += 1;
   }
-  get_by_id()
-}
-
-/**
- * This function is to clean the addition
- */
-function clear_add()
-{
-  get_by_id("new_word").value = "";
-  get_by_id("speech").value = "";
-  get_by_id("def_new_word").value = "";
+  get_by_id();
 }
 
 /**
@@ -355,7 +381,7 @@ function form_validation_delete()
     {
       empty = false;
     }
-    index++;
+    index += 1;
   }
   return empty;
 }
@@ -366,20 +392,20 @@ function delete_word_button()
   let lines_to_delete = [];
   let words_to_delete = [];
   let selected_word = get_by_name("choice_to_delete[]");
-  console.log(selected_word);
   while (index < selected_word.length)
   {
     if (selected_word[index].checked === true)
     {
       lines_to_delete.push(get_by_id(index).innerHTML);
     }
-    index++;
+    index += 1;
   }
-  lines_to_delete.forEach((elements) =>
-  {
+  lines_to_delete.forEach(function (elements) {
     let split_array = elements.split("\t");
     words_to_delete.push(split_array[0]);
-  })
+    words_to_delete.push(split_array[1]);
+  });
+
   xhr = new XMLHttpRequest();
   const delete_string = `delete_word=${JSON.stringify(words_to_delete)}`;
   xhr.open("POST", "delete_word.php");
