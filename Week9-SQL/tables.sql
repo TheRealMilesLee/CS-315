@@ -1,5 +1,5 @@
-<<<<<<< HEAD
 /*
+*
 Hengyi Li
 Version: 0.2.0
 A sql file to create tables.
@@ -8,11 +8,6 @@ A sql file to create tables.
 use hl3265;
 
 drop table if exists part, word;
-=======
-use hl3265;
-
-drop table if exists part;
->>>>>>> refs/remotes/origin/main
 create table part
 (
 	id int unsigned not null auto_increment,
@@ -20,7 +15,6 @@ create table part
 	primary key(id)
 );
 
-drop table if exists word;
 create table word
 (
 	id int unsigned not null auto_increment,
@@ -30,5 +24,5 @@ create table word
 	primary key(id),
 	constraint part_fk foreign key(part_id) references part(id)
 );
-A
+
 
