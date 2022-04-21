@@ -26,9 +26,12 @@ window.onload = function ()
 };
 get_by_id("add_button").onclick = function ()
 {
+
   let new_word = get_by_id("new_word").value;
   let new_speech = get_by_id("speech").value;
   let new_definition = get_by_id("def_new_word").value;
+  duplicate_validation(new_word, new_speech);
+  console.log("Yee");
   let index = 0;
   while (index < new_definition.length)
   {
@@ -250,8 +253,8 @@ function find_duplicate(words, definition)
   xhr.onload = function ()
   {
     let duplicate_result = JSON.parse(xhr.responseText);
-    console.log(duplicate_result);
-    if (duplicate_result === true)
+    console.log(duplicate_result[0]);
+    if (duplicate_result[0] === "True")
     {
       window.alert(" The entry you entered is already exists!");
       clear_add();
