@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title> Manage Words </title>
     <meta name="author" content="Hengyi Li" />
+    <link rel="icon" href="Diary.png">
     <link rel="stylesheet" href="managewords.css" />
   </head>
   <body>
@@ -23,7 +24,7 @@
         <p>
           <label for="new_word"> What's the word? </label>
           <input type="text" id="new_word" name="new_word" />
-          <b id="word_prompt" class="prompt_user, warning_sign_style">&excl;</b>
+          <b id="word_prompt" class="prompt_user, warning_sign">&excl;</b>
         </p>
       </div>
       <!-- Add the part of speech -->
@@ -37,7 +38,7 @@
             <option value="adverb"> adverb </option>
             <option value="verb"> verb </option>
           </select>
-          <b id="speech_prompt" class="prompt_user, warning_sign_style">&excl;</b>
+          <b id="speech_prompt" class="prompt_user, warning_sign">&excl;</b>
         </p>
       </div>
       <!-- Add the definition -->
@@ -45,7 +46,8 @@
         <p>
           <label for="def_new_word"> Word Definition Is </label>
           <input type='text' id="def_new_word" name="def_new_word" />
-          <b id="definition_prompt" class="prompt_user, warning_sign_style"> &excl; </b>
+          <b id="definition_prompt" class="prompt_user, warning_sign">
+            &excl; </b>
         </p>
       </div>
       <!-- Add word submit button -->
@@ -59,16 +61,18 @@
     <!-- Delete word section -->
     <div id="delete_word">
       <p class="subtitle"> Delete a word </p>
-			<p> Type in the box below to search the word that you want to delete </p>
-				<!-- Delete word button -->
-			<div class="search_delete_box">
-				<input type="text" id="search_delete" name="search_delete" />
-        <input type="submit" id="delete_submit"  value="Delete!" name="submit" disabled/>
-			</div>
+      <p> Type in the box below to search the word that you want to delete
+      </p>
+      <!-- Delete word button -->
+      <div class="search_delete_box">
+        <input type="text" id="search_delete" name="search_delete" />
+        <input type="submit" id="delete_submit" value="Delete!" name="submit"
+          disabled/>
+      </div>
     </div>
     <div>
       <h2 class="word_manager"> Something for you to know </h2>
-      <p id="rick" >
+      <p id="rick">
         I will never gonna give you up <br />
         I will never gonna let you down <br />
         I will never gonna run around and desert you <br />

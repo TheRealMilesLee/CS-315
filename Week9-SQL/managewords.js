@@ -27,38 +27,6 @@ window.onload = function ()
 };
 
 /**
- * This control the submit a new entry
- */
-get_by_id("add_button").onclick = function ()
-{
-  clear_delete();
-  get_by_id("search_delete").value = "";
-  clean_previous_entry();
-  let new_word = get_by_id("new_word").value;
-  let new_speech = get_by_id("speech").value;
-  let new_definition = get_by_id("def_new_word").value;
-  let index = 0;
-  while (index < new_definition.length)
-  {
-    if (new_definition[index] === "&")
-    {
-      new_definition = new_definition.replace("&", "π");
-    }
-    else if (new_definition[index] === "+")
-    {
-      new_definition = new_definition.replace("+", "√");
-    }
-    index += 1;
-  }
-  add_new_entry(new_word, new_speech, new_definition);
-  clear_add();
-  get_by_id("search_delete").value = "";
-  new_word_validate();
-  speech_validate();
-  new_definition_validate();
-};
-
-/**
  * This is control the add section for validation
  */
 get_by_id("add_word").onchange = function ()
@@ -90,15 +58,36 @@ get_by_id("add_word").onchange = function ()
 };
 
 /**
- * This control the search to delete clean
+ * This control the submit a new entry
  */
-get_by_id("search_delete").onkeyup = function ()
+get_by_id("add_button").onclick = function ()
 {
+  clear_delete();
+  get_by_id("search_delete").value = "";
   clean_previous_entry();
-  let search_string = get_by_id("search_delete").value;
-  load_words_from_SQL(search_string);
+  let new_word = get_by_id("new_word").value;
+  let new_speech = get_by_id("speech").value;
+  let new_definition = get_by_id("def_new_word").value;
+  let index = 0;
+  while (index < new_definition.length)
+  {
+    if (new_definition[index] === "&")
+    {
+      new_definition = new_definition.replace("&", "π");
+    }
+    else if (new_definition[index] === "+")
+    {
+      new_definition = new_definition.replace("+", "√");
+    }
+    index += 1;
+  }
+  add_new_entry(new_word, new_speech, new_definition);
+  clear_add();
+  get_by_id("search_delete").value = "";
+  new_word_validate();
+  speech_validate();
+  new_definition_validate();
 };
-
 
 get_by_id("delete_word").onchange = function ()
 {
@@ -110,6 +99,16 @@ get_by_id("delete_word").onchange = function ()
 };
 
 /**
+ * This control the search to delete clean
+ */
+get_by_id("search_delete").onkeyup = function ()
+{
+  clean_previous_entry();
+  let search_string = get_by_id("search_delete").value;
+  load_words_from_SQL(search_string);
+};
+
+/**
  * This handle the clean up after the delete
  */
 get_by_id("delete_submit").onclick = function ()
@@ -118,6 +117,42 @@ get_by_id("delete_submit").onclick = function ()
   clean_previous_entry();
   get_by_id("search_delete").value = "";
 };
+
+/**
+ * This function is to find the duplicate
+ * @param {string} words is the words to find duplicate
+ * @param {string} part is the part of the words to find duplicate
+ * @param {string} definition is the definition of the words to find duplicate
+ */
+function add_new_entry(words, part, definition)
+{
+  if (words !== "" && part !== "" && definition !== "")
+  {
+    xhr = new XMLHttpRequest();
+    const search_string = [words, part, definition];
+    const new_entry_send = `validate=${ JSON.stringify(search_string) }`;
+    xhr.open("POST", "add_word.php");
+    xhr.setRequestHeader
+      ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    xhr.onload = function ()
+    {
+      let duplicate_result = JSON.parse(xhr.responseText);
+      if (duplicate_result === "True")
+      {
+        window.alert(" The entry you entered is already exists!");
+        clear_add();
+        new_word_validate();
+        speech_validate();
+        new_definition_validate();
+      }
+      else if (duplicate_result === "False")
+      {
+        window.alert("Add successful");
+      }
+    };
+    xhr.send(new_entry_send);
+  }
+}
 
 /**
  * This function is to validate the input word
@@ -167,7 +202,6 @@ function speech_validate()
   }
 }
 
-
 /**
  * This function validate the new definition
  */
@@ -186,7 +220,7 @@ function new_definition_validate()
     get_by_id("definition_prompt").classList.remove("pass_sign_style");
     get_by_id("definition_prompt").classList.add("warning_prompt_style");
     get_by_id("definition_prompt").innerHTML = "&excl;";
-   }
+  }
 }
 
 /**
@@ -196,8 +230,8 @@ function new_definition_validate()
 function form_validation_add()
 {
   if (get_by_id("new_word").value === "" &&
-      get_by_id("speech").value === "" &&
-      get_by_id("def_new_word").value === "")
+    get_by_id("speech").value === "" &&
+    get_by_id("def_new_word").value === "")
   {
     return true;
   }
@@ -223,6 +257,27 @@ function form_validation_add()
 }
 
 /**
+ * This function is to determine whether the checkbox is checked or not
+ * @returns true if the delete check box is empty,
+ * return false if the checkbox is not empty
+ */
+function form_validation_delete()
+{
+  let index = 0;
+  let empty = true;
+  let delete_choice = get_by_name("choice_to_delete[]");
+  while (index < delete_choice.length)
+  {
+    if (delete_choice[index].checked === true)
+    {
+      empty = false;
+    }
+    index += 1;
+  }
+  return empty;
+}
+
+/**
  * This function is to clean the addition
  */
 function clear_add()
@@ -230,43 +285,6 @@ function clear_add()
   get_by_id("new_word").value = "";
   get_by_id("speech").value = "";
   get_by_id("def_new_word").value = "";
-}
-
-/**
- * This function is to find the duplicate
- * @param {string} words is the words to find duplicate
- * @param {string} part is the part of the words to find duplicate
- * @param {string} definition is the definition of the words to find duplicate
- */
-function add_new_entry(words, part, definition)
-{
-  if (words !== "" && part !== "" && definition !== "")
-  {
-    xhr = new XMLHttpRequest();
-    const search_string = [words, part, definition];
-    const new_entry_send = `validate=${ JSON.stringify(search_string) }`;
-    xhr.open("POST", "add_word.php");
-    xhr.setRequestHeader
-      ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-    xhr.onload = function ()
-    {
-      let duplicate_result = JSON.parse(xhr.responseText);
-      console.log(duplicate_result);
-      if (duplicate_result === "True")
-      {
-        window.alert(" The entry you entered is already exists!");
-        clear_add();
-        new_word_validate();
-        speech_validate();
-        new_definition_validate();
-      }
-      else if (duplicate_result === "False")
-      {
-        window.alert("Add successful");
-      }
-    };
-    xhr.send(new_entry_send);
-  }
 }
 
 /**
@@ -353,27 +371,6 @@ function clear_delete()
   get_by_id();
 }
 
-/**
- * This function is to determine whether the checkbox is checked or not
- * @returns true if the delete check box is empty,
- * return false if the checkbox is not empty
- */
-function form_validation_delete()
-{
-  let index = 0;
-  let empty = true;
-  let delete_choice = get_by_name("choice_to_delete[]");
-  while (index < delete_choice.length)
-  {
-    if (delete_choice[index].checked === true)
-    {
-      empty = false;
-    }
-    index += 1;
-  }
-  return empty;
-}
-
 function delete_word_button()
 {
   let index = 0;
@@ -396,7 +393,7 @@ function delete_word_button()
   });
 
   xhr = new XMLHttpRequest();
-  const delete_string = `delete_word=${JSON.stringify(words_to_delete)}`;
+  const delete_string = `delete_word=${ JSON.stringify(words_to_delete) }`;
   xhr.open("POST", "delete_words.php");
   xhr.setRequestHeader
     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");

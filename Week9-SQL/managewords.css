@@ -73,7 +73,7 @@ p
   text-align:end;
 }
 
-.warning_sign_style
+.warning_sign
 {
   font-size: 10px;
   color: red;
@@ -84,6 +84,7 @@ p
     font-size: 10px;
     color: red;
 }
+
 .pass_sign_style
 {
     font-size: 15px;
@@ -106,7 +107,6 @@ p
   width: 100%;
   overflow-y: scroll;
 }
-
 
 #rick
 {
