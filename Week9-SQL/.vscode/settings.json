@@ -1,0 +1,17 @@
+{
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default"
+      },
+      "previewLimit": 50,
+      "server": "borax.truman.edu",
+      "port": 3306,
+      "driver": "MySQL",
+      "name": "BORAX",
+      "database": "hl3265",
+      "username": "hl3265",
+      "password": "53533265"
+    }
+  ]
+}
