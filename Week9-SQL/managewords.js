@@ -2,10 +2,11 @@
  * @description A program to manage the word list for the GRE quiz
  * @author Hengyi Li
  * @copyright Copyright (c). 2022 Hengyi Li. All rights reserved
- * @version 39.20.13 Release
+ * @version 40.32.1.0 Beta
  */
 "use strict";
-let xhr = null; // a global variable to prevent race
+// a global variable to prevent race
+let xhr = null;
 // Get the element by using the id
 function get_by_id(id)
 {
@@ -24,14 +25,18 @@ window.onload = function ()
 {
   create_new_div_entry();
 };
+
+/**
+ * This control the submit a new entry
+ */
 get_by_id("add_button").onclick = function ()
 {
-
+  clear_delete();
+  get_by_id("search_delete").value = "";
+  clean_previous_entry();
   let new_word = get_by_id("new_word").value;
   let new_speech = get_by_id("speech").value;
   let new_definition = get_by_id("def_new_word").value;
-  duplicate_validation(new_word, new_speech);
-  console.log("Yee");
   let index = 0;
   while (index < new_definition.length)
   {
@@ -47,9 +52,7 @@ get_by_id("add_button").onclick = function ()
   }
   add_new_entry(new_word, new_speech, new_definition);
   clear_add();
-  clear_delete();
   get_by_id("search_delete").value = "";
-  clean_previous_entry();
   new_word_validate();
   speech_validate();
   new_definition_validate();
@@ -66,8 +69,6 @@ get_by_id("add_word").onchange = function ()
   new_word_validate();
   speech_validate();
   new_definition_validate();
-  let new_word = get_by_id("new_word").value;
-  let new_speech = get_by_id("speech").value;
   let new_definition = get_by_id("def_new_word").value;
   let index = 0;
   while (index < new_definition.length)
@@ -86,15 +87,18 @@ get_by_id("add_word").onchange = function ()
     index += 1;
   }
   get_by_id("add_button").disabled = form_validation_add();
-  duplicate_validation(new_word, new_speech);
 };
 
+/**
+ * This control the search to delete clean
+ */
 get_by_id("search_delete").onkeyup = function ()
 {
   clean_previous_entry();
   let search_string = get_by_id("search_delete").value;
-  load_words_from_disk(search_string);
+  load_words_from_SQL(search_string);
 };
+
 
 get_by_id("delete_word").onchange = function ()
 {
@@ -105,6 +109,9 @@ get_by_id("delete_word").onchange = function ()
   get_by_id("delete_submit").disabled = form_validation_delete();
 };
 
+/**
+ * This handle the clean up after the delete
+ */
 get_by_id("delete_submit").onclick = function ()
 {
   delete_word_button();
@@ -182,18 +189,6 @@ function new_definition_validate()
    }
 }
 
-
-/**
- * This is to find the duplicate in the entry
- */
-function duplicate_validation(new_word, new_speech)
-{
-  if (new_word !== "" && new_speech !== "")
-  {
-    find_duplicate(new_word, new_speech);
-  }
-}
-
 /**
  * This function is to determine the add section is empty or not
  * @returns true if is empty
@@ -237,51 +232,54 @@ function clear_add()
   get_by_id("def_new_word").value = "";
 }
 
-
 /**
- * This function is to find the duplication
- * @param {string} compare_string is the string that user input.
+ * This function is to find the duplicate
+ * @param {string} words is the words to find duplicate
+ * @param {string} part is the part of the words to find duplicate
+ * @param {string} definition is the definition of the words to find duplicate
  */
-function find_duplicate(words, definition)
+function add_new_entry(words, part, definition)
 {
-  xhr = new XMLHttpRequest();
-  const search_string = [words, definition];
-  const duplicate_string = `duplicate=${JSON.stringify(search_string)}`;
-  xhr.open("POST", "add_word.php");
-  xhr.setRequestHeader
-    ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-  xhr.onload = function ()
+  if (words !== "" && part !== "" && definition !== "")
   {
-    let duplicate_result = JSON.parse(xhr.responseText);
-    console.log(duplicate_result[0]);
-    if (duplicate_result[0] === "True")
+    xhr = new XMLHttpRequest();
+    const search_string = [words, part, definition];
+    const new_entry_send = `validate=${ JSON.stringify(search_string) }`;
+    xhr.open("POST", "add_word.php");
+    xhr.setRequestHeader
+      ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    xhr.onload = function ()
     {
-      window.alert(" The entry you entered is already exists!");
-      clear_add();
-      new_word_validate();
-      speech_validate();
-      new_definition_validate();
-    }
-  };
-  xhr.send(duplicate_string);
+      let duplicate_result = JSON.parse(xhr.responseText);
+      console.log(duplicate_result);
+      if (duplicate_result === "True")
+      {
+        window.alert(" The entry you entered is already exists!");
+        clear_add();
+        new_word_validate();
+        speech_validate();
+        new_definition_validate();
+      }
+      else if (duplicate_result === "False")
+      {
+        window.alert("Add successful");
+      }
+    };
+    xhr.send(new_entry_send);
+  }
 }
 
 /**
- * This function is to get the file from the disk
+ * This function is to load from database
+ * @param {string} search_string is the string to search
  */
-function load_words_from_disk(search_string)
+function load_words_from_SQL(search_string)
 {
-  if (xhr)
-  {
-    xhr.abort();
-    xhr = null;
-  }
   if (search_string !== "")
   {
     let response = [];
     xhr = new XMLHttpRequest();
     const url = "get_words.php?search=" + search_string;
-    console.log(url);
     xhr.open("GET", url, true);
     xhr.onload = function ()
     {
@@ -298,6 +296,10 @@ function load_words_from_disk(search_string)
   }
 }
 
+/**
+ * This function is to display the entry
+ * @param {array} response is the array that received from the SQL
+ */
 function display(response)
 {
   let index = 0;
@@ -321,23 +323,6 @@ function display(response)
     original_div.appendChild(newline);
     index += 1;
   }
-}
-
-function add_new_entry(new_word, new_speech, new_definition)
-{
-  if (xhr)
-  {
-    xhr.abort();
-    xhr = null;
-  }
-  xhr = new XMLHttpRequest();
-  const data_array = [new_word, new_speech, new_definition];
-  const new_entry = `new_entry=${ JSON.stringify(data_array) }`;
-  console.log(new_entry);
-  xhr.open("POST", "add_word.php");
-  xhr.setRequestHeader
-    ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-  xhr.send(new_entry);
 }
 
 function clean_previous_entry()
@@ -411,7 +396,7 @@ function delete_word_button()
 
   xhr = new XMLHttpRequest();
   const delete_string = `delete_word=${JSON.stringify(words_to_delete)}`;
-  xhr.open("POST", "delete_word.php");
+  xhr.open("POST", "delete_words.php");
   xhr.setRequestHeader
     ("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
   xhr.send(delete_string);
