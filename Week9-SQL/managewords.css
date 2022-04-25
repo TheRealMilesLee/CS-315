@@ -5,7 +5,7 @@
 */
 body
 {
-  font-family: sans-serif, monospace, serif;
+  font-family: sans-serif;
   margin-left: auto;
   margin-right: auto;
   width: 90%;
@@ -16,7 +16,7 @@ body
 
 p
 {
-  font-family: sans-serif, serif;
+  font-family: sans-serif;
   font-size: 15px;
   font-style: italic;
   font-weight: normal;
@@ -32,7 +32,7 @@ p
 
 .word_manager
 {
-  font-family: sans-serif, serif;
+  font-family: sans-serif;
   font-size: 30px;
   font-style: italic;
   font-weight: bold;
@@ -73,6 +73,7 @@ p
   text-align:end;
 }
 
+
 .warning_sign
 {
   font-size: 10px;
@@ -88,7 +89,7 @@ p
 .pass_sign_style
 {
     font-size: 15px;
-    color: green;
+    color:green;
 }
 
 #delete_word
