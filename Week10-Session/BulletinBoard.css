@@ -6,9 +6,9 @@ body
   margin-right: auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   background-image: url("Login_Background.jpg");
-  background-position: 50%;
+  background-position: 45%;
 }
 
 input
