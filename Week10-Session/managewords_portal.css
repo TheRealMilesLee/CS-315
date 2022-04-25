@@ -1,0 +1,115 @@
+body
+{
+  width: 90%;
+  font-family: sans-serif, monospace, serif;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-image: url("Login_Background.jpg");
+  background-position: 45%;
+  background-size: 100% 300%;
+  background-repeat: no-repeat;
+}
+
+input
+{
+  outline: none;
+  background-color: #b1adb1;
+}
+
+a
+{
+  text-decoration: none;
+  color: white;
+}
+
+.tobefilled
+{
+  color:cadetblue;
+}
+
+.username
+{
+  background-color: #b1adb1;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.nickname
+{
+  background-color: #b1adb1;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.password
+{
+  background-color: #b1adb1;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+.submit
+{
+  width: 100%;
+  height: 20%;
+  border-radius: 15px;
+  color: white;
+  background-color:cadetblue;
+}
+.prompt
+{
+  font-family: 'Helvetica Neue', Noto Sans, sans-serif;
+}
+.warning_sign
+{
+  font-size: 10px;
+  color: red;
+}
+
+.warning_prompt_style
+{
+  font-size: 10px;
+  color: red;
+}
+
+.pass_sign_style
+{
+  font-size: 15px;
+  color: aqua;
+}
+#login
+{
+  text-align: center;
+  grid-column: 1/1;
+  grid-row:2/3;
+}
+
+#signup
+{
+  text-align: center;
+  grid-column: 1/1;
+  grid-row: 2/3;
+}
+
+.login_input
+{
+  border: none;
+  font-family: 'Helvetica Neue', Noto Sans, sans-serif;
+  font-size: 14px;
+  font-weight:bold;
+  line-height: 21px;
+  width: 85%;
+  height:25px;
+}
+
+.login_input_label
+{
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  top: 14px;
+  left: 12px;
+  color: black;
+  border: none;
+  font-family: 'Helvetica Neue', sans-serif;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title> Manage Words </title>
+    <meta name="author" content="Hengyi Li" />
+    <link rel="icon" href="Diary.png">
+    <link rel="stylesheet" href="managewords.css" />
+  </head>
+  <body>
+    <div id="intro_header">
+      <h1 class="word_manager"> Word Manager </h1>
+      <p id="welcome_prompt">
+        This is the Zelda's GRE vocabulary manager, welcome. <br />
+        Go to the left and fill in the blank to add the word, go down below
+        and select your choice to delete the words. Have fun.
+      </p>
+    </div>
+    <div id="add_word">
+      <!-- Add word section -->
+      <p class="subtitle"> Add a new word </p>
+      <!-- Add the new word -->
+      <div id="add_new_word">
+        <p>
+          <label for="new_word"> What's the word? </label>
+          <input type="text" id="new_word" name="new_word" />
+          <b id="word_prompt" class="prompt_user, warning_sign">&excl;</b>
+        </p>
+      </div>
+      <!-- Add the part of speech -->
+      <div>
+        <p>
+          <label for="speech"> Part of speech is </label>
+          <select name="speech" id="speech">
+            <option value=""> Make a choice </option>
+            <option value="noun"> noun </option>
+            <option value="adjective"> adjective </option>
+            <option value="adverb"> adverb </option>
+            <option value="verb"> verb </option>
+          </select>
+          <b id="speech_prompt" class="prompt_user, warning_sign">&excl;</b>
+        </p>
+      </div>
+      <!-- Add the definition -->
+      <div>
+        <p>
+          <label for="def_new_word"> Word Definition Is </label>
+          <input type='text' id="def_new_word" name="def_new_word" />
+          <b id="definition_prompt" class="prompt_user, warning_sign">
+            &excl; </b>
+        </p>
+      </div>
+      <!-- Add word submit button -->
+      <div>
+        <p>
+          <input type="submit" id="add_button" value="Add word" name="submit"
+            disabled />
+        </p>
+      </div>
+    </div>
+    <!-- Delete word section -->
+    <div id="delete_word">
+      <p class="subtitle"> Delete a word </p>
+      <p> Type in the box below to search the word that you want to delete
+      </p>
+      <!-- Delete word button -->
+      <div class="search_delete_box">
+        <input type="text" id="search_delete" name="search_delete" />
+        <input type="submit" id="delete_submit" value="Delete!" name="submit"
+          disabled/>
+      </div>
+    </div>
+    <div>
+      <h2 class="word_manager"> Something for you to know </h2>
+      <p id="rick">
+        I will never gonna give you up <br />
+        I will never gonna let you down <br />
+        I will never gonna run around and desert you <br />
+        I will never gonna make you cry <br />
+        I will never gonna say goodbye <br />
+        I will never gonna tell a lie and hurt you
+      </p>
+    </div>
+    <script src="managewords.js"></script>
+  </body>
+</html>
