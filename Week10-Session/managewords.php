@@ -1,17 +1,6 @@
 <?php
-
-/**
- * A program to serve a GRE vocabulary quiz
- * This program runs in two modes.
- * Mode 1: nothing has been submitted; this is the first time
- * Mode 2: this is not the first submission
- * @author Jon Beck
- * @version 1 February 2022
- */
-
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
-define('NUMBER_OF_CHOICES', 4);
 session_start();
 
 require 'dblogin.php';
@@ -25,21 +14,11 @@ $db = new PDO(
   )
 );
 
-function read_words($db_word)
+function logger($s)
 {
-  $index = 0;
-  $array = array();
-  while ($index < count($db_word))
-  {
-    $array[] =
-      array(
-        'word' => $db_word[$index]["word"],
-        'part' => $db_word[$index]["part"],
-        'definition' => $db_word[$index]["definition"]
-      );
-    $index++;
-  }
-  return $array;
+  $file = fopen('logger.txt', 'a');
+  fwrite($file, $s . PHP_EOL);
+  fclose($file);
 }
 
 function read_database_into_array($db_word)
@@ -131,38 +110,77 @@ if (isset($_SESSION['is_administrator']))
     <html lang="en">
 
     <head>
-      <title>GRE Vocab Quiz</title>
-      <meta name="author" content="Jon Beck" />
       <meta charset="utf-8" />
-      <link rel="stylesheet" href="quiz.css" />
+      <title> Manage Words </title>
+      <meta name="author" content="Hengyi Li" />
+      <link rel="icon" href="Diary.png">
+      <link rel="stylesheet" href="managewords.css" />
     </head>
 
     <body>
-      <div class="vocabulary">
-        <h1>Zelda&rsquo;s GRE Vocabulary</h1>
-        <div class=" display_word">
-          <?php
-          $word = $db->prepare('select word.word, part.part, word.definition
-          from word join part on word.part_id = part.id order by word asc;');
-          $word->execute();
-          $db_word = $word->fetchAll();
-          $word_list = read_words($db_word);
-          $index = 0;
-          while ($index < count($word_list))
-          {
-          ?>
-            <?= "<p>" ?>
-            <?= $word_list[$index]["word"] . "\t" . $word_list[$index]["part"] . "\t" . $word_list[$index]["definition"] ?>
-            <?= "</p>" ?>
-          <?php
-            $index++;
-          }
-          ?>
+      <div id="intro_header">
+        <h1 class="word_manager"> Word Manager </h1>
+        <p id="welcome_prompt">
+          This is the Zelda's GRE vocabulary manager, welcome. <br />
+          Go to the left and fill in the blank to add the word, go down below
+          and select your choice to delete the words. Have fun.
+        </p>
+      </div>
+      <div id="add_word">
+        <!-- Add word section -->
+        <p class="subtitle"> Add a new word </p>
+        <!-- Add the new word -->
+        <div id="add_new_word">
+          <p>
+            <label for="new_word"> What's the word? </label>
+            <input type="text" id="new_word" name="new_word" />
+            <b id="word_prompt" class="prompt_user, warning_sign">&excl;</b>
+          </p>
+        </div>
+        <!-- Add the part of speech -->
+        <div>
+          <p>
+            <label for="speech"> Part of speech is </label>
+            <select name="speech" id="speech">
+              <option value=""> Make a choice </option>
+              <option value="noun"> noun </option>
+              <option value="adjective"> adjective </option>
+              <option value="adverb"> adverb </option>
+              <option value="verb"> verb </option>
+            </select>
+            <b id="speech_prompt" class="prompt_user, warning_sign">&excl;</b>
+          </p>
+        </div>
+        <!-- Add the definition -->
+        <div>
+          <p>
+            <label for="def_new_word"> Word Definition Is </label>
+            <input type='text' id="def_new_word" name="def_new_word" />
+            <b id="definition_prompt" class="prompt_user, warning_sign">
+              &excl; </b>
+          </p>
+        </div>
+        <!-- Add word submit button -->
+        <div>
+          <p>
+            <input type="submit" id="add_button" value="Add word" name="submit" disabled />
+          </p>
         </div>
       </div>
-      <div class="manage_account">
-        <h2> Manage your account </h2>
-        <p id="prompt"> Fill the form below to change user status </p>
+      <!-- Delete word section -->
+      <div id="delete_word">
+        <p class="subtitle"> Delete a word </p>
+        <p> Type in the box below to search the word that you want to delete
+        </p>
+        <!-- Delete word button -->
+        <div class="search_delete_box">
+          <input type="text" id="search_delete" name="search_delete" />
+          <input type="submit" id="delete_submit" value="Delete!" name="submit" disabled />
+        </div>
+      </div>
+      <div>
+        <h2 class=" word_manager"> User Manager </h2>
+        <p id="rick"> Fill the form below to change user status </p>
         <form method="post" action="managewords.php">
           <fieldset class="username_login">
             <label class="input_label" for="username_login">Please input your username </label>
@@ -186,34 +204,21 @@ if (isset($_SESSION['is_administrator']))
             <button type="submit" class="submit" name="submit"> Submit </button>
           </a>
         </form>
-        <div>
-          <h3> Welcome, <?= $_SESSION['screen_name'] ?>. Your current account status is
-          <?php
-          if ($_SESSION['is_administrator'] === 1)
-          {
-            ?>
-            <?= "Administrator" ?>
-          <?php
-          }
-          else
-          {
-            ?>
-            <?= "Common user" ?>
-            <?php
-          }
-          ?>
-          </h3>
+        <div class="logout_button">
+          <p> Click to log out</p>
+          <a href="logout.php">
+            <button type="submit" class="submit" name="logout"> Log Out </button>
+          </a>
         </div>
       </div>
+      <script src="managewords.js"></script>
+
     <?php
   }
   else
   {
     ?>
-      <p> Nice try, but you are not Logged in</p>
-      <a href="managewords_portal_login.php">
-        <button type="submit" class="submit" name="Mainpage"> Take me to login </button>
-      </a>
+      <p> Nice try, but you are not the Administrator!</p>
     <?php
   }
 }
@@ -225,5 +230,4 @@ else
 }
   ?>
     </body>
-
     </html>

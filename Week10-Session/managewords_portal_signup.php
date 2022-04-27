@@ -6,7 +6,7 @@
   <title> Database Management System </title>
   <meta name="author" content="Hengyi Li" />
   <link rel="icon" href="datacenter.png">
-  <link rel="stylesheet" href="BulletinBoard.css" />
+  <link rel="stylesheet" href="managewords_portal.css" />
 </head>
 
 <body>
@@ -33,11 +33,11 @@
     <button type="submit" class="submit" name="submit"> Sign Up Now ! </button>
     <br />
     <p> Have an account already? Click below to login</p>
-    <a href="BulletinBoardLogin.php">
+    <a href="managewords_portal_login.php">
     <button type="submit" class="submit" name="submit"> Log In </button>
     </a>
   </div>
-  <script src="BulletinBoard.js"></script>
+  <script src="managewords_portal.js"></script>
 </body>
 </html>
 

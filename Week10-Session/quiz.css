@@ -1,42 +1,56 @@
-/* Jon Beck */
-/* CSS for Zelda's vocabulary quiz */
-
 body
 {
-  font-family: sans-serif;
-  margin-left: 4em;
+  width: 90%;
+  font-family: 'Helvetica Neue', Noto Sans, sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background-color:antiquewhite;
+  background-position: 45%;
+  background-size: 100% 300%;
+  background-repeat: no-repeat;
 }
 
-#choices
+input
 {
-  list-style-type: none;
-  text-indent: -33px;
+  outline: none;
+  background-color: antiquewhite;
 }
 
-li
+a
 {
-  padding-bottom: 1em;
+  text-decoration: none;
+  color: white;
 }
 
-.partofspeech
+.vocabulary
 {
-  font-style: italic;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 5px;
+  grid-row: 1/1;
 }
 
-#submit_section
+.display_word
+{
+  height: 650px;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.manage_account
 {
   text-align: center;
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 5px;
 }
 
-input[type="radio"]
+.prompt
 {
-  display: inline-block;
-  width: 20px;
-  vertical-align: text-top;
-}
-
-button[type="submit"]
-{
-  font-size: 16pt;
-  font-weight: bold;
+  font-family: cursive, fantasy;
+  font-size: 16px;
 }
