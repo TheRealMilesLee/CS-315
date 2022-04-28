@@ -1,0 +1,165 @@
+body
+{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header
+{
+  right:0;
+  left:0;
+  min-width:1024px;
+  height:48px;
+  border-width: 30px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: bold;
+  font-size:xx-large;
+  color: white;
+  background: #252b2e;
+  display: block;
+}
+
+.hyperlink
+{
+  color: white;
+}
+
+#container
+{
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 10px;
+}
+
+#introduction
+{
+  grid-row: 1/1;
+  grid-column: 2/5;
+}
+
+aside
+{
+  float: left;
+  border-width: 2px;
+  border-style:solid;
+  border-radius: 20px;
+  margin-right: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: white;
+  background-color:#252b2e;
+}
+
+.body_global_style
+{
+  font-family: sans-serif, monospace, serif;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+
+#title
+{
+  font-size: 30px;
+  font-style: normal;
+  font-weight: bold;
+  text-align: center;
+}
+
+.welcome_prompt
+{
+  font-family: cursive, fantasy;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+}
+
+.product_talking
+{
+  font-family: cursive, fantasy;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: normal;
+  text-align: center;
+}
+
+.product_price
+{
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.unordered_list
+{
+  list-style-type: lower-greek;
+  font-size: 20px;
+}
+
+.ordered_list
+{
+  list-style-type: armenian;
+    font-size: 20px;
+}
+
+.table_content_global_rule
+{
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.table_caption
+{
+  background-color: #99a4bc;
+}
+
+.caption_borders
+{
+  background-color: #99a4bc;
+  border-collapse: collapse;
+  border-top: 2px solid #5b5c54;
+  border-left: 2px solid #5b5c54;
+  border-right: 2px solid #5b5c54;
+}
+
+tr
+{
+  border: 2px solid #5b5c54;
+}
+
+tr:hover
+{
+  background-color: #99a4bc;
+}
+
+td
+{
+  border: 2px solid #5b5c54;
+}
+
+.align_footer
+{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  text-align: center;
+}
+
+footer
+{
+  font-size: 10px;
+  font-family: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  text-align:inherit;
+  border-width: 30px;
+  border-style:hidden;
+  color: black;
+  display: block;
+  text-size-adjust:100%;
+}

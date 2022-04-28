@@ -1,0 +1,7 @@
+aaa
+adjective
+adverb
+article
+conjunction
+noun
+verb
