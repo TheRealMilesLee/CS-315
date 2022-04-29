@@ -97,54 +97,7 @@ else
     ?>
       <p> You have already logged in! </p>
       <?php
-      if ($_SESSION['is_administrator'] == 1)
-      {
-      ?>
-        <!DOCTYPE html>
-        <html lang="en">
-
-        <head>
-          <meta charset="utf-8" />
-          <title> Database Management System </title>
-          <meta name="author" content="Hengyi Li" />
-          <link rel="icon" href="../Resources/favicon.png">
-          <link rel="stylesheet" href="managewords_portal.css" />
-        </head>
-
-        <body>
-          <button type="submit" class="submit" id="admin_page">
-            Take me to the main page
-          </button>
-          <script src="../JumpJS//admin_jump.js"></script>
-        </body>
-
-        </html>
-      <?php
-      }
-      else
-      {
-      ?>
-        <!DOCTYPE html>
-        <html lang="en">
-
-        <head>
-          <meta charset="utf-8" />
-          <title> Database Management System </title>
-          <meta name="author" content="Hengyi Li" />
-          <link rel="icon" href="../Resources/favicon.png">
-          <link rel="stylesheet" href="managewords_portal.css" />
-        </head>
-
-        <body>
-          <button type="submit" class="submit" id="user_page">
-            Take me to the main page
-          </button>
-          <script src="../JumpJS/user_jump.js"></script>
-        </body>
-
-        </html>
-      <?php
-      }
+        header("Location: Already_logged.php");
     }
     else
     {

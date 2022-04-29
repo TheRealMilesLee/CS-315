@@ -249,8 +249,8 @@ if (isset($_SESSION['is_administrator']))
             <p> Do you want to delete the user? </p>
             <input type="radio" id="delete_choice_yes" name="delete_choice_yes" value=1 />
             <label class="input_label" for="delete_choice_yes"> Yes </label>
-            <input type="radio" id="delete_choice_no" name="delete_choice" value=0 />
-            <label class="input_label" for="delete_choice"> No </label>
+            <input type="radio" id="delete_choice_no" name="delete_choice_no" value=0 />
+            <label class="input_label" for="delete_choice_no"> No </label>
           </fieldset>
           <button type="submit" class="submit" id="account_manage" name="submit"> Submit </button>
         </form>
