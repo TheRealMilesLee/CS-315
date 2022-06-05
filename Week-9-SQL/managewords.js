@@ -343,12 +343,18 @@ function display(response)
   }
 }
 
+/**
+ * It takes the element with the id of "display" and sets its innerHTML to an empty string
+ */
 function clean_previous_entry()
 {
   let original_text = get_by_id("display");
   original_text.innerHTML = "";
 }
 
+/**
+ * It creates a new div element and appends it to the element with the id "delete_word"
+ */
 function create_new_div_entry()
 {
   let display_section = document.createElement("div");
@@ -371,6 +377,9 @@ function clear_delete()
   get_by_id();
 }
 
+/**
+ * It takes the words that the user has selected to delete, and sends them to the server.
+ */
 function delete_word_button()
 {
   let index = 0;
