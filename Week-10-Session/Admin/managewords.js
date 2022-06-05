@@ -137,9 +137,11 @@ get_by_id("delete_submit").onclick = function ()
   clean_previous_entry();
   get_by_id("search_delete").value = "";
 };
+
 /**
- * This function is to validate the password
- * @param {string} password_id  is the id of the password
+ * It checks if the password is valid, and if it is, it displays a check mark, if it isn't, it displays
+ * a cross mark.
+ * @param password_id - The id of the password input field.
  */
 function password_validation(password_id)
 {
