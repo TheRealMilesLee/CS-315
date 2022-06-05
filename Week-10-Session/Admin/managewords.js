@@ -402,12 +402,18 @@ function display(response)
   }
 }
 
+/**
+ * It takes the text from the display and sets it to an empty string.
+ */
 function clean_previous_entry()
 {
   let original_text = get_by_id("display");
   original_text.innerHTML = "";
 }
 
+/**
+ * Create_new_div_entry() creates a new div element and appends it to the delete_word div element.
+ */
 function create_new_div_entry()
 {
   let display_section = document.createElement("div");
@@ -430,6 +436,9 @@ function clear_delete()
   get_by_id();
 }
 
+/**
+ * It takes the words that the user has selected to delete, and sends them to the server.
+ */
 function delete_word_button()
 {
   let index = 0;
@@ -459,6 +468,9 @@ function delete_word_button()
   xhr.send(delete_string);
 }
 
+/**
+ * If the user is inactive for more than 30 minutes, then log them out.
+ */
 function jump_logout()
 {
   window.location.href = "../Portal/logout.php";
