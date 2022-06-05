@@ -207,7 +207,9 @@ function add_new_entry(words, part, definition)
 }
 
 /**
- * This function is to validate the input word
+ * It checks if the input is empty, if it's not empty, it checks if the input is only lowercase
+ * alphabet letters, if it is, it displays a check mark, if it's not, it displays a warning sign and a
+ * warning message.
  */
 function new_word_validate()
 {
@@ -235,8 +237,11 @@ function new_word_validate()
   }
 }
 
+
 /**
- * This function validate the speech
+ * If the speech textarea is not empty, then remove the warning sign class and add the pass sign class,
+ * and change the prompt to a check mark. Otherwise, remove the pass sign class and add the warning
+ * sign class, and change the prompt to an exclamation mark.
  */
 function speech_validate()
 {
@@ -254,8 +259,9 @@ function speech_validate()
   }
 }
 
+
 /**
- * This function validate the new definition
+ * It validates the input of the new definition.
  */
 function new_definition_validate()
 {
@@ -276,8 +282,9 @@ function new_definition_validate()
 }
 
 /**
- * This function is to determine the add section is empty or not
- * @returns true if is empty
+ * If the input fields are empty, then return true. If the input fields are not empty, then return
+ * false.
+ * @returns the value of the variable "form_validation_add".
  */
 function form_validation_add()
 {
