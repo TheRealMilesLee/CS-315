@@ -89,6 +89,7 @@ get_by_id("add_button").onclick = function ()
   new_definition_validate();
 };
 
+/* To clear the add section and validate the delete section. */
 get_by_id("delete_word").onchange = function ()
 {
   clear_add();
