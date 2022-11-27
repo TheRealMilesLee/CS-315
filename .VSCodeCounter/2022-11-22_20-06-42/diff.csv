@@ -1,0 +1,89 @@
+"filename", "language", "PHP", "TXT", "CSS", "HTML", "JSON with Comments", "SQL", "Python", "JavaScript", "comment", "blank", "total"
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/.fleet/settings.json", "JSON with Comments", 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Exam 1/Exam1-HengyiLi.txt", "TXT", 0, -60, 0, 0, 0, 0, 0, 0, -2, -13, -75
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/PracticeTemplate/1.txt", "TXT", 0, -12, 0, 0, 0, 0, 0, 0, 0, -1, -13
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/PracticeTemplate/practice.css", "CSS", 0, 0, -26, 0, 0, 0, 0, 0, 0, -5, -31
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/PracticeTemplate/practice.html", "HTML", 0, 0, 0, -57, 0, 0, 0, 0, -2, -1, -60
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-1-CourseIntro/HelloWord.html", "HTML", 0, 0, 0, -1, 0, 0, 0, 0, 0, -1, -2
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-1-CourseIntro/HelloWord.txt", "TXT", 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, -2
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/Outlet.html", "HTML", 0, 0, 0, -52, 0, 0, 0, 0, 0, -1, -53
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/Toilet_light.html", "HTML", 0, 0, 0, -60, 0, 0, 0, 0, 0, -1, -61
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/Whiskey_glass.html", "HTML", 0, 0, 0, -47, 0, 0, 0, 0, 0, -1, -48
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/camping_gear.html", "HTML", 0, 0, 0, -50, 0, 0, 0, 0, 0, -1, -51
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/company.html", "HTML", 0, 0, 0, -188, 0, 0, 0, 0, -15, -1, -204
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/flashlight_glove.html", "HTML", 0, 0, 0, -51, 0, 0, 0, 0, 0, -1, -52
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/hat_light.html", "HTML", 0, 0, 0, -38, 0, 0, 0, 0, 0, -1, -39
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/shirt.html", "HTML", 0, 0, 0, -48, 0, 0, 0, 0, 0, -1, -49
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/submission.txt", "TXT", 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, -2
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/tool_band.html", "HTML", 0, 0, 0, -43, 0, 0, 0, 0, 0, -1, -44
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/toolkit.html", "HTML", 0, 0, 0, -47, 0, 0, 0, 0, 0, -1, -48
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/125.css", "CSS", 0, 0, -61, 0, 0, 0, 0, 0, 0, -13, -74
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/camping_gear.html", "HTML", 0, 0, 0, -46, 0, 0, 0, 0, 0, -1, -47
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/company.html", "HTML", 0, 0, 0, -190, 0, 0, 0, 0, -17, -1, -208
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/flash_glove.html", "HTML", 0, 0, 0, -48, 0, 0, 0, 0, 0, -1, -49
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/hat_light.html", "HTML", 0, 0, 0, -46, 0, 0, 0, 0, 0, -1, -47
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/outlet.html", "HTML", 0, 0, 0, -45, 0, 0, 0, 0, 0, -1, -46
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/shirt.html", "HTML", 0, 0, 0, -43, 0, 0, 0, 0, 0, -1, -44
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/toilet_RGB.html", "HTML", 0, 0, 0, -48, 0, 0, 0, 0, 0, -1, -49
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/tool_band.html", "HTML", 0, 0, 0, -47, 0, 0, 0, 0, 0, -1, -48
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/toolkit.html", "HTML", 0, 0, 0, -54, 0, 0, 0, 0, 0, -1, -55
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/whiskey_glass.html", "HTML", 0, 0, 0, -41, 0, 0, 0, 0, 0, -1, -42
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/submission.txt", "TXT", 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, -2
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/ClassExample/Grid Layout/Grid Example.html", "HTML", 0, 0, 0, -69, 0, 0, 0, 0, 0, -6, -75
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/ClassExample/PHP/hits.txt", "TXT", 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, -2
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/ClassExample/PHP/word.php", "PHP", -61, 0, 0, 0, 0, 0, 0, 0, -19, -11, -91
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/ClassExample/PHP/words.txt", "TXT", 0, -424, 0, 0, 0, 0, 0, 0, 0, -1, -425
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/204.css", "CSS", 0, 0, -144, 0, 0, 0, 0, 0, 0, -22, -166
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/camping_gear.html", "HTML", 0, 0, 0, -127, 0, 0, 0, 0, 0, -1, -128
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/company.html", "HTML", 0, 0, 0, -208, 0, 0, 0, 0, -15, -1, -224
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/flash_glove.html", "HTML", 0, 0, 0, -135, 0, 0, 0, 0, 0, -1, -136
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/hat_light.html", "HTML", 0, 0, 0, -132, 0, 0, 0, 0, 0, -3, -135
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/outlet.html", "HTML", 0, 0, 0, -130, 0, 0, 0, 0, 0, -1, -131
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/shirt.html", "HTML", 0, 0, 0, -130, 0, 0, 0, 0, 0, -1, -131
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/toilet_RGB.html", "HTML", 0, 0, 0, -137, 0, 0, 0, 0, 0, -1, -138
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/tool_band.html", "HTML", 0, 0, 0, -133, 0, 0, 0, 0, 0, -1, -134
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/toolkit.html", "HTML", 0, 0, 0, -139, 0, 0, 0, 0, 0, -1, -140
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/whiskey_glass.html", "HTML", 0, 0, 0, -126, 0, 0, 0, 0, 0, -1, -127
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/submission.txt", "TXT", 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, -2
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/managewords.css", "CSS", 0, 0, -27, 0, 0, 0, 0, 0, -3, -4, -34
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/managewords.php", "PHP", -183, 0, 0, 0, 0, 0, 0, 0, -35, -4, -222
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/quiz.css", "CSS", 0, 0, -33, 0, 0, 0, 0, 0, -2, -7, -42
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/quiz.php", "PHP", -127, 0, 0, 0, 0, 0, 0, 0, -27, -19, -173
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/submission.txt", "TXT", 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, -1
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/words.txt", "TXT", 0, -426, 0, 0, 0, 0, 0, 0, 0, -1, -427
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/managewords.css", "CSS", 0, 0, -34, 0, 0, 0, 0, 0, -3, -4, -41
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/managewords.php", "PHP", -268, 0, 0, 0, 0, 0, 0, 0, -56, -15, -339
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/parts.txt", "TXT", 0, -6, 0, 0, 0, 0, 0, 0, 0, -1, -7
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/quiz.css", "CSS", 0, 0, -33, 0, 0, 0, 0, 0, -2, -7, -42
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/quiz.php", "PHP", -127, 0, 0, 0, 0, 0, 0, 0, -27, -20, -174
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/submission.txt", "TXT", 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, -2
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/words.txt", "TXT", 0, -426, 0, 0, 0, 0, 0, 0, 0, -1, -427
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/managewords.css", "CSS", 0, 0, -90, 0, 0, 0, 0, 0, -3, -9, -102
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/managewords.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, -170, -34, -9, -213
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/managewords.php", "PHP", -315, 0, 0, 0, 0, 0, 0, 0, -56, -8, -379
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/parts.txt", "TXT", 0, -7, 0, 0, 0, 0, 0, 0, 0, -1, -8
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/quiz.css", "CSS", 0, 0, -33, 0, 0, 0, 0, 0, -2, -7, -42
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/quiz.php", "PHP", -127, 0, 0, 0, 0, 0, 0, 0, -27, -20, -174
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/submission.txt", "TXT", 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, -2
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/words.txt", "TXT", 0, -423, 0, 0, 0, 0, 0, 0, 0, -1, -424
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/get_words.php", "PHP", -18, 0, 0, 0, 0, 0, 0, 0, -11, -3, -32
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/managewords.css", "CSS", 0, 0, -110, 0, 0, 0, 0, 0, -5, -15, -130
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/managewords.html", "HTML", 0, 0, 0, -70, 0, 0, 0, 0, -7, -1, -78
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/managewords.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, -228, -38, -20, -286
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/put_word.php", "PHP", -89, 0, 0, 0, 0, 0, 0, 0, -27, -8, -124
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/words.txt", "TXT", 0, -426, 0, 0, 0, 0, 0, 0, 0, -1, -427
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/add_word.php", "PHP", -61, 0, 0, 0, 0, 0, 0, 0, -6, -4, -71
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/create_insert.py", "Python", 0, 0, 0, 0, 0, 0, -8, 0, 0, -4, -12
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/create_part.py", "Python", 0, 0, 0, 0, 0, 0, -5, 0, 0, -1, -6
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/dblogin.php", "PHP", -6, 0, 0, 0, 0, 0, 0, 0, -1, -2, -9
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/delete_words.php", "PHP", -44, 0, 0, 0, 0, 0, 0, 0, -4, -1, -49
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/get_words.php", "PHP", -40, 0, 0, 0, 0, 0, 0, 0, -11, -4, -55
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/insert.sql", "SQL", 0, 0, 0, 0, 0, -425, 0, 0, 0, -1, -426
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/managewords.css", "CSS", 0, 0, -109, 0, 0, 0, 0, 0, -5, -17, -131
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/managewords.html", "HTML", 0, 0, 0, -79, 0, 0, 0, 0, -7, -1, -87
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/managewords.js", "JavaScript", 0, 0, 0, 0, 0, 0, 0, -319, -72, -21, -412
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/part.sql", "SQL", 0, 0, 0, 0, 0, -5, 0, 0, 0, -1, -6
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/tables.sql", "SQL", 0, 0, 0, 0, 0, -18, 0, 0, -5, -4, -27
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/url.txt", "TXT", 0, -1, 0, 0, 0, 0, 0, 0, 0, -1, -2
+"/Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/words.txt", "TXT", 0, -424, 0, 0, 0, 0, 0, 0, 0, -1, -425
+"Total", "-", -1466, -2643, -700, -2905, 0, -448, -13, -717, -546, -363, -9801

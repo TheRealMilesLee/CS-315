@@ -1,0 +1,137 @@
+Date : 2022-11-22 20:06:42
+Directory : /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-10-Session
+Total : 87 files,  -8892 codes, -546 comments, -363 blanks, all -9801 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON with Comments |          1 |          0 |          0 |         -1 |         -1 |
+| Python             |          2 |        -13 |          0 |         -5 |        -18 |
+| SQL                |          3 |       -448 |         -5 |         -6 |       -459 |
+| CSS                |         11 |       -700 |        -25 |       -110 |       -835 |
+| JavaScript         |          3 |       -717 |       -144 |        -50 |       -911 |
+| PHP                |         13 |     -1,466 |       -307 |       -119 |     -1,892 |
+| TXT                |         19 |     -2,643 |         -2 |        -30 |     -2,675 |
+| HTML               |         35 |     -2,905 |        -63 |        -42 |     -3,010 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                               | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                  |         87 |     -8,892 |       -546 |       -363 |     -9,801 |
+| ..                                                                                                                 |         87 |     -8,892 |       -546 |       -363 |     -9,801 |
+| ../.fleet                                                                                                          |          1 |          0 |          0 |         -1 |         -1 |
+| ../Exam 1                                                                                                          |          1 |        -60 |         -2 |        -13 |        -75 |
+| ../PracticeTemplate                                                                                                |          3 |        -95 |         -2 |         -7 |       -104 |
+| ../Week-1-CourseIntro                                                                                              |          2 |         -2 |          0 |         -2 |         -4 |
+| ../Week-2-HTML                                                                                                     |         11 |       -625 |        -15 |        -11 |       -651 |
+| ../Week-3-CSS                                                                                                      |         12 |       -670 |        -17 |        -24 |       -711 |
+| ../Week-3-CSS/source_code                                                                                          |         11 |       -669 |        -17 |        -23 |       -709 |
+| ../Week-4-PHP & Layout                                                                                             |         16 |     -2,097 |        -34 |        -54 |     -2,185 |
+| ../Week-4-PHP & Layout/ClassExample                                                                                |          4 |       -555 |        -19 |        -19 |       -593 |
+| ../Week-4-PHP & Layout/ClassExample/Grid Layout                                                                    |          1 |        -69 |          0 |         -6 |        -75 |
+| ../Week-4-PHP & Layout/ClassExample/PHP                                                                            |          3 |       -486 |        -19 |        -13 |       -518 |
+| ../Week-4-PHP & Layout/Homework                                                                                    |         12 |     -1,542 |        -15 |        -35 |     -1,592 |
+| ../Week-4-PHP & Layout/Homework/source_code                                                                        |         11 |     -1,541 |        -15 |        -34 |     -1,590 |
+| ../Week-5-PHP                                                                                                      |          6 |       -797 |        -67 |        -35 |       -899 |
+| ../Week-6-PHPEnhanced                                                                                              |          7 |       -895 |        -88 |        -49 |     -1,032 |
+| ../Week-7-JavaScript                                                                                               |          8 |     -1,166 |       -122 |        -56 |     -1,344 |
+| ../Week-8-AJAX                                                                                                     |          6 |       -941 |        -88 |        -48 |     -1,077 |
+| ../Week-9-SQL                                                                                                      |         14 |     -1,544 |       -111 |        -63 |     -1,718 |
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                                           | language           | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/.fleet/settings.json                                           | JSON with Comments |          0 |          0 |         -1 |         -1 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Exam 1/Exam1-HengyiLi.txt                                      | TXT                |        -60 |         -2 |        -13 |        -75 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/PracticeTemplate/1.txt                                         | TXT                |        -12 |          0 |         -1 |        -13 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/PracticeTemplate/practice.css                                  | CSS                |        -26 |          0 |         -5 |        -31 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/PracticeTemplate/practice.html                                 | HTML               |        -57 |         -2 |         -1 |        -60 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-1-CourseIntro/HelloWord.html                              | HTML               |         -1 |          0 |         -1 |         -2 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-1-CourseIntro/HelloWord.txt                               | TXT                |         -1 |          0 |         -1 |         -2 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/Outlet.html                                        | HTML               |        -52 |          0 |         -1 |        -53 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/Toilet_light.html                                  | HTML               |        -60 |          0 |         -1 |        -61 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/Whiskey_glass.html                                 | HTML               |        -47 |          0 |         -1 |        -48 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/camping_gear.html                                  | HTML               |        -50 |          0 |         -1 |        -51 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/company.html                                       | HTML               |       -188 |        -15 |         -1 |       -204 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/flashlight_glove.html                              | HTML               |        -51 |          0 |         -1 |        -52 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/hat_light.html                                     | HTML               |        -38 |          0 |         -1 |        -39 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/shirt.html                                         | HTML               |        -48 |          0 |         -1 |        -49 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/submission.txt                                     | TXT                |         -1 |          0 |         -1 |         -2 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/tool_band.html                                     | HTML               |        -43 |          0 |         -1 |        -44 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-2-HTML/toolkit.html                                       | HTML               |        -47 |          0 |         -1 |        -48 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/125.css                                 | CSS                |        -61 |          0 |        -13 |        -74 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/camping_gear.html                       | HTML               |        -46 |          0 |         -1 |        -47 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/company.html                            | HTML               |       -190 |        -17 |         -1 |       -208 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/flash_glove.html                        | HTML               |        -48 |          0 |         -1 |        -49 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/hat_light.html                          | HTML               |        -46 |          0 |         -1 |        -47 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/outlet.html                             | HTML               |        -45 |          0 |         -1 |        -46 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/shirt.html                              | HTML               |        -43 |          0 |         -1 |        -44 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/toilet_RGB.html                         | HTML               |        -48 |          0 |         -1 |        -49 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/tool_band.html                          | HTML               |        -47 |          0 |         -1 |        -48 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/toolkit.html                            | HTML               |        -54 |          0 |         -1 |        -55 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/source_code/whiskey_glass.html                      | HTML               |        -41 |          0 |         -1 |        -42 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-3-CSS/submission.txt                                      | TXT                |         -1 |          0 |         -1 |         -2 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/ClassExample/Grid Layout/Grid Example.html | HTML               |        -69 |          0 |         -6 |        -75 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/ClassExample/PHP/hits.txt                  | TXT                |         -1 |          0 |         -1 |         -2 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/ClassExample/PHP/word.php                  | PHP                |        -61 |        -19 |        -11 |        -91 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/ClassExample/PHP/words.txt                 | TXT                |       -424 |          0 |         -1 |       -425 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/204.css               | CSS                |       -144 |          0 |        -22 |       -166 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/camping_gear.html     | HTML               |       -127 |          0 |         -1 |       -128 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/company.html          | HTML               |       -208 |        -15 |         -1 |       -224 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/flash_glove.html      | HTML               |       -135 |          0 |         -1 |       -136 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/hat_light.html        | HTML               |       -132 |          0 |         -3 |       -135 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/outlet.html           | HTML               |       -130 |          0 |         -1 |       -131 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/shirt.html            | HTML               |       -130 |          0 |         -1 |       -131 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/toilet_RGB.html       | HTML               |       -137 |          0 |         -1 |       -138 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/tool_band.html        | HTML               |       -133 |          0 |         -1 |       -134 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/toolkit.html          | HTML               |       -139 |          0 |         -1 |       -140 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/source_code/whiskey_glass.html    | HTML               |       -126 |          0 |         -1 |       -127 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-4-PHP & Layout/Homework/submission.txt                    | TXT                |         -1 |          0 |         -1 |         -2 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/managewords.css                                     | CSS                |        -27 |         -3 |         -4 |        -34 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/managewords.php                                     | PHP                |       -183 |        -35 |         -4 |       -222 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/quiz.css                                            | CSS                |        -33 |         -2 |         -7 |        -42 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/quiz.php                                            | PHP                |       -127 |        -27 |        -19 |       -173 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/submission.txt                                      | TXT                |         -1 |          0 |          0 |         -1 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-5-PHP/words.txt                                           | TXT                |       -426 |          0 |         -1 |       -427 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/managewords.css                             | CSS                |        -34 |         -3 |         -4 |        -41 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/managewords.php                             | PHP                |       -268 |        -56 |        -15 |       -339 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/parts.txt                                   | TXT                |         -6 |          0 |         -1 |         -7 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/quiz.css                                    | CSS                |        -33 |         -2 |         -7 |        -42 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/quiz.php                                    | PHP                |       -127 |        -27 |        -20 |       -174 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/submission.txt                              | TXT                |         -1 |          0 |         -1 |         -2 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-6-PHPEnhanced/words.txt                                   | TXT                |       -426 |          0 |         -1 |       -427 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/managewords.css                              | CSS                |        -90 |         -3 |         -9 |       -102 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/managewords.js                               | JavaScript         |       -170 |        -34 |         -9 |       -213 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/managewords.php                              | PHP                |       -315 |        -56 |         -8 |       -379 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/parts.txt                                    | TXT                |         -7 |          0 |         -1 |         -8 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/quiz.css                                     | CSS                |        -33 |         -2 |         -7 |        -42 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/quiz.php                                     | PHP                |       -127 |        -27 |        -20 |       -174 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/submission.txt                               | TXT                |         -1 |          0 |         -1 |         -2 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-7-JavaScript/words.txt                                    | TXT                |       -423 |          0 |         -1 |       -424 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/get_words.php                                      | PHP                |        -18 |        -11 |         -3 |        -32 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/managewords.css                                    | CSS                |       -110 |         -5 |        -15 |       -130 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/managewords.html                                   | HTML               |        -70 |         -7 |         -1 |        -78 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/managewords.js                                     | JavaScript         |       -228 |        -38 |        -20 |       -286 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/put_word.php                                       | PHP                |        -89 |        -27 |         -8 |       -124 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-8-AJAX/words.txt                                          | TXT                |       -426 |          0 |         -1 |       -427 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/add_word.php                                        | PHP                |        -61 |         -6 |         -4 |        -71 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/create_insert.py                                    | Python             |         -8 |          0 |         -4 |        -12 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/create_part.py                                      | Python             |         -5 |          0 |         -1 |         -6 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/dblogin.php                                         | PHP                |         -6 |         -1 |         -2 |         -9 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/delete_words.php                                    | PHP                |        -44 |         -4 |         -1 |        -49 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/get_words.php                                       | PHP                |        -40 |        -11 |         -4 |        -55 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/insert.sql                                          | SQL                |       -425 |          0 |         -1 |       -426 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/managewords.css                                     | CSS                |       -109 |         -5 |        -17 |       -131 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/managewords.html                                    | HTML               |        -79 |         -7 |         -1 |        -87 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/managewords.js                                      | JavaScript         |       -319 |        -72 |        -21 |       -412 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/part.sql                                            | SQL                |         -5 |          0 |         -1 |         -6 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/tables.sql                                          | SQL                |        -18 |         -5 |         -4 |        -27 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/url.txt                                             | TXT                |         -1 |          0 |         -1 |         -2 |
+| /Users/Silverhand/Developer/TrumanCodeSpaces/CS-315/Week-9-SQL/words.txt                                           | TXT                |       -424 |          0 |         -1 |       -425 |
+| Total                                                                                                              |                    |     -8,892 |       -546 |       -363 |     -9,801 |
++--------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
