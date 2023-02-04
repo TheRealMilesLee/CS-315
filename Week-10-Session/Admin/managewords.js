@@ -387,10 +387,7 @@ function display(response)
     checkbox.setAttribute("name", "choice_to_delete[]");
     checkbox.setAttribute("value", index);
     let new_word_line = document.createElement("span");
-    new_word_line.innerHTML =
-      response[index].word + "\t" +
-      response[index].part + "\t" +
-      response[index].definition;
+    new_word_line.innerHTML = response[index].word + "\t" + response[index].part + "\t" + response[index].definition;
     new_word_line.classList.add("word_list");
     new_word_line.setAttribute("id", index);
     let original_div = get_by_id("display");
@@ -453,13 +450,13 @@ function delete_word_button()
     }
     index += 1;
   }
+
   lines_to_delete.forEach(function (elements)
   {
     let split_array = elements.split("\t");
     words_to_delete.push(split_array[0]);
     words_to_delete.push(split_array[1]);
   });
-
   xhr = new XMLHttpRequest();
   const delete_string = `delete_word=${ JSON.stringify(words_to_delete) }`;
   xhr.open("POST", "delete_words.php");
